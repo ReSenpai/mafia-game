@@ -6,14 +6,11 @@ function App() {
   return (
     <HashRouter>
       <Switch>
-        <Route exact path='/'
-          render={ () => <Redirect to={'/game'} />} />
+        <Route exact path="/" render={() => <Redirect to={'/game'} />} />
 
-        <Route path='/game'
-          render={ () => <TestComponent />} />
+        <Route path="/game" render={() => <TestComponent />} />
 
-        <Route path='*'
-          render={ () => <Error404 />} />
+        <Route path="*" render={() => <Error404 />} />
       </Switch>
     </HashRouter>
   );

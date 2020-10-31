@@ -4,43 +4,39 @@ const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_CAPTCHA = 'auth/SET_CAPTCHA';
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
-    isAuth: false,
-    isFetching: true,
-    captcha: null
+  userId: null,
+  email: null,
+  login: null,
+  isAuth: false,
+  isFetching: true,
+  captcha: null,
 };
 
 const authReducer = (state = initialState, action) => {
-
-    switch (action.type) {
-        case SET_USER_DATA: {
-            return {
-                ...state,
-                ...action.payload
-            }
-        }
-        default:
-            return state;
-    }  
-}
+  switch (action.type) {
+    case SET_USER_DATA: {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
+    default:
+      return state;
+  }
+};
 /**
  * Actions
  */
-export const setAuthUserData = (userId, email, login, isAuth) => ({ 
-    type: SET_USER_DATA, 
-    payload: { userId, email, login, isAuth } 
+export const setAuthUserData = (userId, email, login, isAuth) => ({
+  type: SET_USER_DATA,
+  payload: { userId, email, login, isAuth },
 });
-
 
 /**
  * Thunks. Вся асинхронщина тут.
  */
-export const getAuthUserData = () => async (dispatch) => {
-
-    console.log('thunk here');
-}
-
+export const getAuthUserData = () => async dispatch => {
+  console.log('thunk here');
+};
 
 export default authReducer;
