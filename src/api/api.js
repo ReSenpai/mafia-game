@@ -3,13 +3,11 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'base-api-url',
+  baseURL: 'base-api-url',
 });
 
-
 export const authAPI = {
-    authMe () {
-        return instance.get(`auth/me`)
-        .then(response => response.data);
-    }
-}
+  authMe() {
+    return instance.get(`auth/me`).then(response => response.data);
+  },
+};

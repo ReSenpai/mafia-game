@@ -1,0 +1,7 @@
+# Ignore artifacts:
+build
+coverage
+
+# React files:
+src/reportWebVitals.js
+src/setupTests.js

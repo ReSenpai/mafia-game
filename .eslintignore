@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+node_modules
+
+# React files:
+src/reportWebVitals.ts
+src/setupTests.ts
+src/react-app-env.d.ts
