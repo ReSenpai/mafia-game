@@ -26,6 +26,11 @@
     "format": "prettier \"src/**/*.{js,jsx}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format & yarn lint"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -48,6 +53,7 @@
     "eslint": "^7.12.1",
     "eslint-plugin-react": "^7.21.5",
     "gh-pages": "^3.1.0",
+    "husky": "^4.3.0",
     "prettier": "2.1.2",
     "react-test-renderer": "^17.0.1"
   }
