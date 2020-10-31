@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TestComponent = props => {
+const TestComponent = () => {
   return (
     <Container>
       <Block>Вот так</Block>

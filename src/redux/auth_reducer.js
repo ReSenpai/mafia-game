@@ -1,7 +1,7 @@
 // Небольшой шаблон, как примерно пишуться редьюсеры, экшены, санки.
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
-const SET_CAPTCHA = 'auth/SET_CAPTCHA';
+// const SET_CAPTCHA = 'auth/SET_CAPTCHA';
 
 let initialState = {
   userId: null,
@@ -35,7 +35,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 /**
  * Thunks. Вся асинхронщина тут.
  */
-export const getAuthUserData = () => async dispatch => {
+export const getAuthUserData = () => async () => {
   console.log('thunk here');
 };
 

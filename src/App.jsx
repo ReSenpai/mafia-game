@@ -1,3 +1,4 @@
+import React from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { ReactComponent as Error404 } from './assets/icons/error_404.svg';
 import TestComponent from './components/TestComponent/Test';
