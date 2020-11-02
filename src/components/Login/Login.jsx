@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { lessThen } from '../../utils/mixins'
 
@@ -15,11 +14,6 @@ const LoginPopup = (props) => {
 }
 
 export default LoginPopup
-
-LoginPopup.propTypes = {
-  active: PropTypes.bool,
-  toggle: PropTypes.func
-}
 
 const Container = styled.div`
   display: ${props => (props.active ? 'block' : 'none')};

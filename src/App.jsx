@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react'
 
 // === router ===
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'
 
 // === components ===
-import HeaderContainer from './components/Header/HeaderContainer';
 import Main from './components/Main/Main'
 
+// === store ===
+import { connect } from 'react-redux'
+import {
+  getAuthUserDataThunk,
+} from './redux/reducers/auth_reducer'
 // === pages ===
 import {
   HomePage,
@@ -20,10 +24,18 @@ import {
   CurrentGamesPage,
 } from './pages';
 
-function App() {
+const App = (props) => {
+  const [isAuth, setIsAuth] = useState(props.isAuth)
+
+
+  if (!isAuth) {
+    return (
+      <Main/>
+    )
+  }
+
   return (
     <>
-      <HeaderContainer />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/game-rules" component={GameRulesPage} />
@@ -43,4 +55,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  isAuth: state.Auth.isAuth
+})
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    getAuthUserData: (groupId) => {
+      dispatch(getAuthUserDataThunk(groupId))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

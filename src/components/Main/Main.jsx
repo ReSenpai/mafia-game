@@ -16,13 +16,13 @@ const TestComponent = () => {
         <LinkContainer>
           <NavLink to='game-rules' activeClassName='active'>
             Правила
-            </NavLink>
+          </NavLink>
           <NavLink to='watch-game' activeClassName='active'>
             Посмотреть игру
-            </NavLink>
+          </NavLink>
           <NavLink to='contacts' activeClassName='active'>
             Контакты
-            </NavLink>
+          </NavLink>
         </LinkContainer>
         <Logo>
           <img src='./assets/icons/MAFIA.svg' alt='Mafia logo'></img>
@@ -90,7 +90,6 @@ const LinkContainer = styled.div`
         &.active {
             color: red;
             font-weight: 400;
-            font-size: 18px;
         }
     }
 `
