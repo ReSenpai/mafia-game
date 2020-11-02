@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="152c0c7e-d99b-4533-a11b-b4d33b83fb02" name="Default Changelist" comment="default changelist">
+    <list default="true" id="152c0c7e-d99b-4533-a11b-b4d33b83fb02" name="Default Changelist" comment="create layout">
       <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
@@ -104,7 +104,7 @@
       <workItem from="1604267630676" duration="229000" />
       <workItem from="1604268073519" duration="13000" />
       <workItem from="1604269736508" duration="275000" />
-      <workItem from="1604328019960" duration="2982000" />
+      <workItem from="1604328019960" duration="3340000" />
     </task>
     <servers />
   </component>
@@ -125,6 +125,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="create layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="create layout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604330699614">
