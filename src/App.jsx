@@ -1,18 +1,44 @@
 import React from 'react';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { ReactComponent as Error404 } from './assets/icons/error_404.svg';
+
+// === router ===
+import { Route, Switch } from 'react-router-dom';
+
+// === components ===
 import HeaderContainer from './components/Header/HeaderContainer';
+
+// === pages ===
+import {
+  HomePage,
+  Page404,
+  GameRulesPage,
+  WatchGamePage,
+  ContactsPage,
+  RegisterPage,
+  ForgottenPasswordPage,
+  GamePage,
+  CurrentGamesPage,
+} from './pages';
 
 function App() {
   return (
-    <HashRouter>
+    <>
       <HeaderContainer />
       <Switch>
-        <Route exact path="/" render={() => <Redirect to={'/game'} />} />
-
-        <Route path="*" render={() => <Error404 />} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/game-rules" component={GameRulesPage} />
+        <Route exact path="/watch-game" component={WatchGamePage} />
+        <Route exact path="/contacts" component={ContactsPage} />
+        <Route exact path="/register" component={RegisterPage} />
+        <Route
+          exact
+          path="/forgotten-password"
+          component={ForgottenPasswordPage}
+        />
+        <Route exact path="/game" component={GamePage} />
+        <Route exact path="/current-games" component={CurrentGamesPage} />
+        <Route path="*" component={Page404} />
       </Switch>
-    </HashRouter>
+    </>
   );
 }
 
