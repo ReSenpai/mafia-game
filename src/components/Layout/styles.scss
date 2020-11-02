@@ -1,0 +1,74 @@
+@import "../../common/styles/global";
+
+.layout {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: stretch;
+  flex-direction: column;
+  position: relative;
+
+  &_margin {
+    @include base-margins();
+  }
+}
+
+.layout_pointer {
+  cursor: pointer;
+}
+
+.layout_direction_column {
+  flex-direction: column;
+}
+
+.layout_direction_row {
+  flex-direction: row;
+}
+
+.layout_nowrap {
+  flex-wrap: nowrap;
+}
+
+.layout_widthAuto {
+  width: auto;
+}
+
+.layout_fullHeight {
+  height: 100%;
+}
+
+.layout_jc_flexStart {
+  justify-content: flex-start;
+}
+
+.layout_jc_flexEnd {
+  justify-content: flex-end;
+}
+
+.layout_jc_center {
+  justify-content: center;
+}
+
+.layout_jc_stretch {
+  justify-content: stretch;
+}
+
+.layout_jc_spaceBetween {
+  justify-content: space-between;
+}
+
+.layout_jc_spaceAround {
+  justify-content: space-around;
+}
+
+.layout_ai_center {
+  align-items: center;
+}
+
+.layout_ai_flexStart {
+  align-items: flex-start;
+}
+
+.layout_ai_flexEnd {
+  align-items: flex-end;
+}
