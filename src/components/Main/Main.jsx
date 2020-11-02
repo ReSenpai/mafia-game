@@ -25,7 +25,7 @@ const TestComponent = () => {
             </NavLink>
         </LinkContainer>
         <Logo>
-          <img src='./assets/MAFIA.svg' alt='Mafia logo'></img>
+          <img src='./assets/icons/MAFIA.svg' alt='Mafia logo'></img>
         </Logo>
 
         <ButtonWrapper>
@@ -50,7 +50,7 @@ const Background = styled.div`
   z-index: -10;
   overflow: hidden;
 
-  background-image: url(./assets/two_mans.jpg);
+  background-image: url(./assets/img/two_mans.jpg);
   background-position: 30vw center;
   background-repeat: no-repeat;
   background-attachment: fixed;
