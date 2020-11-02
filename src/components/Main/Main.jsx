@@ -18,7 +18,9 @@ const TestComponent = () => {
             Контакты
             </NavLink>
         </LinkContainer>
-        <Logo src='./assets/MAFIA.svg' />
+        <Logo>
+          <img src='./assets/MAFIA.svg' alt='Mafia logo'></img>
+        </Logo>
 
         <ButtonWrapper>
           <Button>
@@ -67,9 +69,9 @@ const Container = styled.main`
 `
 const LinkContainer = styled.div`
     display: flex;
+    justify-content: space-around;
     a {
         text-decoration: none;
-        padding-right: 30px;
         &:link {
             color: white;
         }
@@ -85,10 +87,14 @@ const LinkContainer = styled.div`
 `
 
 
-const Logo = styled.img`
+const Logo = styled.div`
   display: block;
   width: 100%;
-  max-width: 350px;
+  margin: auto;
+
+  img {
+    width: 100%
+  }
 `
 const ButtonWrapper = styled.div`
   margin: auto;
