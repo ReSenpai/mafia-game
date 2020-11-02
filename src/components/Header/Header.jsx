@@ -6,27 +6,27 @@ const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <NavLink to="/game-rules" activeClassName="active">
+        <NavLink to='game-rules' activeClassName='active'>
           Правила игры
-        </NavLink>
-        <NavLink to="/watch-game" activeClassName="active">
+                </NavLink>
+        <NavLink to='watch-game' activeClassName='active'>
           Посмотреть игру
-        </NavLink>
-        <NavLink to="/contacts" activeClassName="active">
+                </NavLink>
+        <NavLink to='contacts' activeClassName='active'>
           Контакты
-        </NavLink>
+                </NavLink>
       </Container>
       <Container>
-        <NavLink to="/register" activeClassName="active">
+        <NavLink to='register' activeClassName='active'>
           Регистрация
-        </NavLink>
-        <NavLink to="/forgotten-password" activeClassName="active">
+                </NavLink>
+        <NavLink to='forgotten-password' activeClassName='active'>
           Забыли пароль?
-        </NavLink>
+                </NavLink>
       </Container>
     </Wrapper>
-  );
-};
+  )
+}
 
 export default Header;
 
@@ -34,13 +34,13 @@ const Wrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   display: flex;
-  width: 100;
   padding-top: 60px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   font-size: 18px;
-`;
+  max-width: 1080px;
+  margin: auto;
+`
 
 const Container = styled.div`
   display: flex;
@@ -59,4 +59,4 @@ const Container = styled.div`
       font-size: 18px;
     }
   }
-`;
+`

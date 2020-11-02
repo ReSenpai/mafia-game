@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 // === components ===
 import HeaderContainer from './components/Header/HeaderContainer';
+import Main from './components/Main/Main'
 
 // === pages ===
 import {
