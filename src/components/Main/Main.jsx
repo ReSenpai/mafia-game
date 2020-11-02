@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { lessThen } from '../../utils/mixins'
+import LoginPopup from '../Login/Login'
+
 
 const TestComponent = () => {
+  const [popup, setPopup] = useState(false)
+
   return (
-    <MainWrapper>
+    <>
+      <LoginPopup active={popup} toggle={setPopup}/>
+      <Background />
       <Container>
         <LinkContainer>
           <NavLink to='game-rules' activeClassName='active'>
-            Правила игры
+            Правила
             </NavLink>
           <NavLink to='watch-game' activeClassName='active'>
             Посмотреть игру
@@ -23,21 +29,25 @@ const TestComponent = () => {
         </Logo>
 
         <ButtonWrapper>
-          <Button>
+          <Button onClick={() => setPopup(!popup)}>
             ВОЙТИ
           </Button>
         </ButtonWrapper>
       </Container>
-    </MainWrapper>
+    </>
   );
 };
 
 export default TestComponent;
 
-const MainWrapper = styled.div`
+const Background = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 100%;
+  width: 100%;
   margin: 0;
-  z-index: -100;
+  z-index: -10;
   overflow: hidden;
 
   background-image: url(./assets/two_mans.jpg);
@@ -53,19 +63,18 @@ const MainWrapper = styled.div`
 `
 
 const Container = styled.main`
-    width: 40vw;
-    height: 35vh;
-    position: absolute;
-    top: 55vh;
-    left: 20vw;
-    max-width: 400px;
-    transform: translateY(-70%);
-
-    ${lessThen.sm`
-      width: 80vw;
-      top: 50vh;
-      left: 10vw;
-    `}
+  position: absolute;
+  width: 40vw;
+  height: 35vh;
+  top: 60vh;
+  left: 20vw;
+  max-width: 400px;
+  transform: translateY(-70%);
+  ${lessThen.sm`
+    width: 80vw;
+    top: 50vh;
+    left: 10vw;
+  `}
 `
 const LinkContainer = styled.div`
     display: flex;
