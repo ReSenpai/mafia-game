@@ -1,25 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { lessThen } from '../../utils/mixins'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { lessThen } from '../../utils/mixins';
 
-
-const LoginPopup = (props) => {
+const LoginPopup = props => {
   return (
     <Container active={props.active} onClick={() => props.toggle(false)}>
       <Modal>
         <Title>Вход</Title>
       </Modal>
     </Container>
-  )
-}
+  );
+};
 
-export default LoginPopup
+export default LoginPopup;
 
 LoginPopup.propTypes = {
   active: PropTypes.bool,
-  toggle: PropTypes.func
-}
+  toggle: PropTypes.func,
+};
 
 const Container = styled.div`
   display: ${props => (props.active ? 'block' : 'none')};
@@ -32,7 +31,7 @@ const Container = styled.div`
 
   color: white;
   font-family: 'Roboto', sans-serif;
-`
+`;
 
 const Modal = styled.div`
   margin: auto;
@@ -51,11 +50,11 @@ const Modal = styled.div`
     width: 90%;
     height: 90%;
   `}
-`
+`;
 
 const Title = styled.span`
   display: block;
   font-size: 48px;
   width: fit-content;
   margin: 50px auto;
-`
+`;
