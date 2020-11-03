@@ -24,8 +24,8 @@ const authReducer = (state = initialState, action) => {
     case SET_IS_AUTH: {
       return {
         ...state,
-        isAuth: !state.isAuth
-      }
+        isAuth: !state.isAuth,
+      };
     }
     default:
       return state;
@@ -59,15 +59,19 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 
 export const setIsAuth = (isAuth = true) => ({
   type: SET_IS_AUTH,
-  isAuth
-})
+  isAuth,
+});
 
 /**
  * Thunks. Вся асинхронщина тут.
  */
 
-export const getAuthUserDataThunk = () => async (dispatch) => {
-  dispatch()
+export const getAuthUserDataThunk = (time) => async dispatch => {
+  const sleep = ms => new Promise(r => setTimeout(r, ms))
+
+  await sleep(time)
+
+  dispatch(setIsAuth(true));
 };
 
 export default authReducer;

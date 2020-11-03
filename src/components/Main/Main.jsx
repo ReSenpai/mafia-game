@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { lessThen } from '../../utils/mixins'
-import LoginPopup from '../Login/Login'
-
+import { lessThen } from '../../utils/mixins';
+import LoginPopup from '../Login/Login';
 
 const TestComponent = () => {
-  const [popup, setPopup] = useState(false)
+  const [popup, setPopup] = useState(false);
 
   return (
     <>
-      <LoginPopup active={popup} toggle={setPopup}/>
+      <LoginPopup active={popup} toggle={setPopup} />
       <Background />
       <Container>
         <LinkContainer>
-          <NavLink to='game-rules' activeClassName='active'>
+          <NavLink to="game-rules" activeClassName="active">
             Правила
           </NavLink>
-          <NavLink to='watch-game' activeClassName='active'>
+          <NavLink to="watch-game" activeClassName="active">
             Посмотреть игру
           </NavLink>
-          <NavLink to='contacts' activeClassName='active'>
+          <NavLink to="contacts" activeClassName="active">
             Контакты
           </NavLink>
         </LinkContainer>
         <Logo>
-          <img src='./assets/icons/MAFIA.svg' alt='Mafia logo'></img>
+          <img src="./assets/icons/MAFIA.svg" alt="Mafia logo"></img>
         </Logo>
 
         <ButtonWrapper>
-          <Button onClick={() => setPopup(!popup)}>
-            ВОЙТИ
-          </Button>
+          <Button onClick={() => setPopup(!popup)}>ВОЙТИ</Button>
         </ButtonWrapper>
       </Container>
     </>
@@ -60,7 +57,7 @@ const Background = styled.div`
   ${lessThen.sm`
     background-position: 50vw center;
   `}
-`
+`;
 
 const Container = styled.main`
   position: absolute;
@@ -75,25 +72,24 @@ const Container = styled.main`
     top: 50vh;
     left: 10vw;
   `}
-`
+`;
 const LinkContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
-    a {
-        text-decoration: none;
-        &:link {
-            color: white;
-        }
-        &:visited {
-            color: white;
-        }
-        &.active {
-            color: red;
-            font-weight: 400;
-        }
+  display: flex;
+  justify-content: space-around;
+  a {
+    text-decoration: none;
+    &:link {
+      color: white;
     }
-`
-
+    &:visited {
+      color: white;
+    }
+    &.active {
+      color: red;
+      font-weight: 400;
+    }
+  }
+`;
 
 const Logo = styled.div`
   display: block;
@@ -101,21 +97,21 @@ const Logo = styled.div`
   margin: auto;
 
   img {
-    width: 100%
+    width: 100%;
   }
-`
+`;
 const ButtonWrapper = styled.div`
   margin: auto;
   width: fit-content;
-`
+`;
 
 const Button = styled.div`
   padding: 10px 30px;
   border-radius: 4px;
   color: #fff;
   text-align: center;
-  border: 1px solid #AF0000;
-  background-color: #AF0000;
+  border: 1px solid #af0000;
+  background-color: #af0000;
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -125,4 +121,4 @@ const Button = styled.div`
   :hover {
     cursor: pointer;
   }
-`
+`;
