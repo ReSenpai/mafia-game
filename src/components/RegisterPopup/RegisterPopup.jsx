@@ -2,37 +2,44 @@ import React from 'react';
 import styled from 'styled-components';
 
 // === components ===
-import Button from '../Button/Button';
 import Input from '../Input/Input';
+import Button from '../Button/Button';
 import Popup from '../Popup/Popup';
 
 // === utils ===
-import { buttonReset } from '../../utils/mixins';
 import { colors } from '../../utils/variables';
 
-const LoginPopup = ({ active, toggle }) => {
+const RegisterPopup = ({ active, toggle }) => {
   return (
     <Popup {...{ active, toggle }}>
-      <ModalTitle>Вход</ModalTitle>
+      <ModalTitle>Регистрация</ModalTitle>
       <ModalForm>
         <ModalFormItem>
-          <ModalFormLabel>Логин</ModalFormLabel>
+          <Label>Имя</Label>
           <Input type="text" />
         </ModalFormItem>
 
         <ModalFormItem>
-          <ModalFormLabel>Пароль</ModalFormLabel>
-          <Input type="password" />
+          <Label>Email</Label>
+          <Input type="text" />
         </ModalFormItem>
 
-        <Button>войти</Button>
-        <ModalRegister>регистрация</ModalRegister>
+        <ModalFormItem>
+          <Label>Логин</Label>
+          <Input type="text" />
+        </ModalFormItem>
+
+        <ModalFormItem>
+          <Label>Пароль</Label>
+          <Input type="password" />
+        </ModalFormItem>
+        <Button>регистрация</Button>
       </ModalForm>
     </Popup>
   );
 };
 
-export default LoginPopup;
+export default RegisterPopup;
 
 const { lightgray } = colors;
 
@@ -54,7 +61,7 @@ const ModalForm = styled.form`
   }
 `;
 
-const ModalFormLabel = styled.label`
+const Label = styled.label`
   display: block;
   text-align: left;
   color: ${lightgray};
@@ -63,15 +70,4 @@ const ModalFormLabel = styled.label`
 const ModalFormItem = styled.div`
   text-align: center;
   width: 100%;
-`;
-
-const ModalRegister = styled.button`
-  ${buttonReset()}
-
-  background-color: transparent;
-  text-transform: capitalize;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;

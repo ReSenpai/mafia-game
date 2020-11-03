@@ -5,19 +5,20 @@ import styled from 'styled-components';
 import { colors } from '../../utils/variables';
 import { buttonReset } from '../../utils/mixins';
 
-const LoginButton = ({
+const Button = ({
   popupOptions = { popup: false, setPopup: () => {} },
+  children = 'войти',
 }) => {
   const { popup, setPopup } = popupOptions;
 
   return (
     <ButtonWrapper>
-      <Button onClick={() => setPopup(!popup)}>войти</Button>
+      <CustomButton onClick={() => setPopup(!popup)}>{children}</CustomButton>
     </ButtonWrapper>
   );
 };
 
-export default LoginButton;
+export default Button;
 
 const { white, crimson } = colors;
 
@@ -26,7 +27,7 @@ const ButtonWrapper = styled.div`
   width: fit-content;
 `;
 
-const Button = styled.button`
+const CustomButton = styled.button`
   ${buttonReset()}
 
   padding: 10px 30px;

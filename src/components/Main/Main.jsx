@@ -7,8 +7,8 @@ import TitleLogo from '../../assets/icons/MAFIA.svg';
 import BgImg from '../../assets/img/main-page-1-bg.png';
 
 // === components ===
+import Button from '../Button/Button';
 import LoginPopup from '../LoginPopup/LoginPopup';
-import LoginButton from '../LoginButton/LoginButton';
 
 // === utils ===
 import { lessThen } from '../../utils/mixins';
@@ -38,7 +38,7 @@ const Main = () => {
         <Logo>
           <img src={TitleLogo} alt="Mafia logo" />
         </Logo>
-        <LoginButton popupOptions={{ popup, setPopup }} />
+        <Button popupOptions={{ popup, setPopup }}>войти</Button>
       </Container>
     </>
   );
