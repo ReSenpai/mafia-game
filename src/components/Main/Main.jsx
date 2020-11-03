@@ -7,7 +7,8 @@ import TitleLogo from '../../assets/icons/MAFIA.svg';
 import BgImg from '../../assets/img/main-page-1-bg.png';
 
 // === components ===
-import LoginPopup from '../Login/Login';
+import LoginPopup from '../LoginPopup/LoginPopup';
+import LoginButton from '../LoginButton/LoginButton';
 
 // === utils ===
 import { lessThen } from '../../utils/mixins';
@@ -18,7 +19,7 @@ const Main = () => {
 
   return (
     <>
-      <LoginPopup active={popup} toggle={setPopup} />
+      <LoginPopup active={popup} toggle={() => {}} />
       <Background>
         <img src={BgImg} alt="" />
       </Background>
@@ -37,10 +38,7 @@ const Main = () => {
         <Logo>
           <img src={TitleLogo} alt="Mafia logo" />
         </Logo>
-
-        <ButtonWrapper>
-          <Button onClick={() => setPopup(!popup)}>ВОЙТИ</Button>
-        </ButtonWrapper>
+        <LoginButton popupOptions={{ popup, setPopup }} />
       </Container>
     </>
   );
@@ -48,7 +46,7 @@ const Main = () => {
 
 export default Main;
 
-const { white, red, crimson } = colors;
+const { white, red } = colors;
 
 const Background = styled.div`
   display: flex;
@@ -104,28 +102,5 @@ const Logo = styled.div`
 
   img {
     width: 100%;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  margin: auto;
-  width: fit-content;
-`;
-
-const Button = styled.div`
-  padding: 10px 30px;
-  border-radius: 4px;
-  color: #fff;
-  text-align: center;
-  border: 1px solid ${crimson};
-  background-color: ${crimson};
-
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  letter-spacing: 1.25px;
-
-  :hover {
-    cursor: pointer;
   }
 `;
