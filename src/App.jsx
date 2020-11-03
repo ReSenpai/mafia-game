@@ -23,7 +23,7 @@ import {
 } from './pages';
 
 const App = () => {
-  const { isAuth } = useSelector(state => state.Auth)
+  const { isAuth } = useSelector(state => state.Auth);
 
   if (!isAuth) {
     return <Main />;
@@ -50,4 +50,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;

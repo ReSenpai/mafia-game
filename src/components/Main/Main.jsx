@@ -7,19 +7,16 @@ import LoginPopup from '../Login/Login';
 import { getAuthUserDataThunk } from '../../redux/reducers/auth_reducer';
 
 const TestComponent = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [popup, setPopup] = useState(false);
 
-  const logIn = useCallback(
-    () => {
-      dispatch(getAuthUserDataThunk())
-    },
-    [dispatch],
-  )
+  const logIn = useCallback(() => {
+    dispatch(getAuthUserDataThunk());
+  }, [dispatch]);
 
   return (
     <>
-      <LoginPopup active={popup} toggle={setPopup} logIn={logIn}/>
+      <LoginPopup active={popup} toggle={setPopup} logIn={logIn} />
       <Background />
       <Container>
         <LinkContainer>

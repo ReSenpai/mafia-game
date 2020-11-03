@@ -19,19 +19,19 @@ const authReducer = (state = initialState, action) => {
     case SET_USER_DATA: {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     }
     case SET_IS_AUTH: {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     }
     case SET_IS_FETCHING: {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     }
     default:
@@ -64,7 +64,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
  * }
  */
 
-export const setIsAuth = (isAuth) => ({
+export const setIsAuth = isAuth => ({
   type: SET_IS_AUTH,
   payload: { isAuth },
 });
@@ -76,7 +76,7 @@ export const setIsAuth = (isAuth) => ({
  * }
  */
 
-export const setIsFetching = (isFetching) => ({
+export const setIsFetching = isFetching => ({
   type: SET_IS_FETCHING,
   payload: { isFetching },
 });
@@ -86,12 +86,12 @@ export const setIsFetching = (isFetching) => ({
  */
 
 export const getAuthUserDataThunk = (time = 8000) => async dispatch => {
-  const sleep = ms => new Promise(r => setTimeout(r, ms))
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-  dispatch(setIsFetching(true))
-  await sleep(time)
-  console.log('getAuthUserDataThunk')
-  dispatch(setIsFetching(false))
+  dispatch(setIsFetching(true));
+  await sleep(time);
+  console.log('getAuthUserDataThunk');
+  dispatch(setIsFetching(false));
 
   dispatch(setIsAuth(true));
 };
