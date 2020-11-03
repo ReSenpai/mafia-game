@@ -1,7 +1,10 @@
 import React from 'react';
 
+// === components ===
+import Rules from '../../components/Rules/Rules';
+
 const GameRulesPage = () => {
-  return <>Game rules</>;
+  return <Rules />;
 };
 
 export default GameRulesPage;
