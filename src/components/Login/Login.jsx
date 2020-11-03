@@ -7,6 +7,9 @@ const LoginPopup = props => {
     <Container active={props.active} onClick={() => props.toggle(false)}>
       <Modal>
         <Title>Вход</Title>
+        <ButtonWrapper>
+          <Button onClick={props.logIn}>Войти</Button>
+        </ButtonWrapper>
       </Modal>
     </Container>
   );
@@ -51,4 +54,27 @@ const Title = styled.span`
   font-size: 48px;
   width: fit-content;
   margin: 50px auto;
+`;
+
+const ButtonWrapper = styled.div`
+  margin: auto;
+  width: fit-content;
+`;
+
+const Button = styled.div`
+  padding: 10px 30px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #af0000;
+  background-color: #af0000;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.25px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;

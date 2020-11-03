@@ -2,6 +2,7 @@
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_IS_AUTH = 'auth/SET_IS_AUTH';
+const SET_IS_FETCHING = 'auth/SET_IS_FETCHING';
 // const SET_CAPTCHA = 'auth/SET_CAPTCHA';
 
 let initialState = {
@@ -9,7 +10,7 @@ let initialState = {
   email: null,
   login: null,
   isAuth: false,
-  isFetching: true,
+  isFetching: false,
   captcha: null,
 };
 
@@ -18,13 +19,19 @@ const authReducer = (state = initialState, action) => {
     case SET_USER_DATA: {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     }
     case SET_IS_AUTH: {
       return {
         ...state,
-        isAuth: !state.isAuth,
+        ...action.payload
+      };
+    }
+    case SET_IS_FETCHING: {
+      return {
+        ...state,
+        ...action.payload
       };
     }
     default:
@@ -57,19 +64,34 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
  * }
  */
 
-export const setIsAuth = (isAuth = true) => ({
+export const setIsAuth = (isAuth) => ({
   type: SET_IS_AUTH,
-  isAuth,
+  payload: { isAuth },
+});
+
+/**
+ * type setIsFetchingType = {
+ * type: typeof SET_IS_FETCHING,
+ * isFetching: boolean
+ * }
+ */
+
+export const setIsFetching = (isFetching) => ({
+  type: SET_IS_FETCHING,
+  payload: { isFetching },
 });
 
 /**
  * Thunks. Вся асинхронщина тут.
  */
 
-export const getAuthUserDataThunk = (time) => async dispatch => {
+export const getAuthUserDataThunk = (time = 8000) => async dispatch => {
   const sleep = ms => new Promise(r => setTimeout(r, ms))
 
+  dispatch(setIsFetching(true))
   await sleep(time)
+  console.log('getAuthUserDataThunk')
+  dispatch(setIsFetching(false))
 
   dispatch(setIsAuth(true));
 };

@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { lessThen } from '../../utils/mixins';
 import LoginPopup from '../Login/Login';
+import { getAuthUserDataThunk } from '../../redux/reducers/auth_reducer';
 
 const TestComponent = () => {
+  const dispatch = useDispatch()
   const [popup, setPopup] = useState(false);
+
+  const logIn = useCallback(
+    () => {
+      dispatch(getAuthUserDataThunk())
+    },
+    [dispatch],
+  )
 
   return (
     <>
-      <LoginPopup active={popup} toggle={setPopup} />
+      <LoginPopup active={popup} toggle={setPopup} logIn={logIn}/>
       <Background />
       <Container>
         <LinkContainer>
@@ -100,6 +110,7 @@ const Logo = styled.div`
     width: 100%;
   }
 `;
+
 const ButtonWrapper = styled.div`
   margin: auto;
   width: fit-content;
