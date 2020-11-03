@@ -7,8 +7,8 @@ import { Route, Switch } from 'react-router-dom';
 import Main from './components/Main/Main';
 
 // === store ===
-import { useSelector, useDispatch } from 'react-redux';
-import { getAuthUserDataThunk } from './redux/reducers/auth_reducer';
+import { useSelector } from 'react-redux';
+
 // === pages ===
 import {
   HomePage,

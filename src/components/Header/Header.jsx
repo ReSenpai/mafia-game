@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { colors } from '../../utils/variables';
+
 const Header = () => {
   return (
     <Wrapper>
@@ -30,7 +32,12 @@ const Header = () => {
 
 export default Header;
 
+const { white, red } = colors;
+
 const Wrapper = styled.header`
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   display: flex;
@@ -45,17 +52,19 @@ const Wrapper = styled.header`
 
 const Container = styled.div`
   display: flex;
+  gap: 30px;
+
   a {
     text-decoration: none;
-    padding-right: 30px;
+
     &:link {
-      color: white;
+      color: ${white};
     }
     &:visited {
-      color: white;
+      color: ${white};
     }
     &.active {
-      color: red;
+      color: ${red};
       font-weight: 400;
       font-size: 18px;
     }

@@ -1,7 +1,10 @@
 import React from 'react';
 
+// === components ===
+import Main from '../../components/Main/Main';
+
 const HomePage = () => {
-  return <div style={{ color: 'white' }}>Home Page</div>;
+  return <Main />;
 };
 
 export default HomePage;
