@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { colors } from '../variables';
 
 const breakpoints = {
   xs: '480px',
@@ -24,3 +25,11 @@ export const moreThen = Object.keys(breakpoints).reduce((a, l) => {
   `;
   return a;
 }, {});
+
+export const buttonReset = () => {
+  return css`
+    color: ${colors.white};
+    border: none;
+    cursor: pointer;
+  `;
+};
