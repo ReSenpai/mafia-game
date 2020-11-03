@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { lessThen } from '../../utils/mixins';
+
+// === components ===
 import LoginPopup from '../Login/Login';
+
+// === utils ===
+import { lessThen } from '../../utils/mixins';
+import { colors } from '../../utils/variables';
 
 const TestComponent = () => {
   const [popup, setPopup] = useState(false);
@@ -37,6 +42,8 @@ const TestComponent = () => {
 
 export default TestComponent;
 
+const { white, black, red } = colors;
+
 const Background = styled.div`
   position: absolute;
   top: 0px;
@@ -52,7 +59,7 @@ const Background = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: auto 100%;
-  background-color: #000;
+  background-color: ${black};
 
   ${lessThen.sm`
     background-position: 50vw center;
@@ -79,13 +86,13 @@ const LinkContainer = styled.div`
   a {
     text-decoration: none;
     &:link {
-      color: white;
+      color: ${white};
     }
     &:visited {
-      color: white;
+      color: ${white};
     }
     &.active {
-      color: red;
+      color: ${red};
       font-weight: 400;
       font-size: 18px;
     }

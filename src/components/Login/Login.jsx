@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+// === utils ===
 import { lessThen } from '../../utils/mixins';
+import { colors } from '../../utils/variables';
 
 const LoginPopup = props => {
   return (
@@ -20,6 +23,8 @@ LoginPopup.propTypes = {
   toggle: PropTypes.func,
 };
 
+const { white, darkgray } = colors;
+
 const Container = styled.div`
   display: ${props => (props.active ? 'block' : 'none')};
   position: absolute;
@@ -29,7 +34,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  color: white;
+  color: ${white};
   font-family: 'Roboto', sans-serif;
 `;
 
@@ -43,7 +48,7 @@ const Modal = styled.div`
   height: 80%;
   max-width: 800px;
   max-height: 540px;
-  background-color: #202020;
+  background-color: ${darkgray};
 
   ${lessThen.sm`
     transform: translate(-50%, -55%);
