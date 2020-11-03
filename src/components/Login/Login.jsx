@@ -1,27 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-// === utils ===
 import { lessThen } from '../../utils/mixins';
 import { colors } from '../../utils/variables';
 
 const LoginPopup = props => {
+  const close = event => {
+    console.log(event.currentTarget === event.target);
+    if (event.currentTarget === event.target) {
+      props.toggle(false);
+    }
+  };
+
   return (
-    <Container active={props.active} onClick={() => props.toggle(false)}>
+    <Container active={props.active} onClick={close}>
       <Modal>
         <Title>Вход</Title>
+        <ButtonWrapper>
+          <Button onClick={props.logIn}>Войти</Button>
+        </ButtonWrapper>
       </Modal>
     </Container>
   );
 };
 
 export default LoginPopup;
-
-LoginPopup.propTypes = {
-  active: PropTypes.bool,
-  toggle: PropTypes.func,
-};
 
 const { white, darkgray } = colors;
 
@@ -62,4 +64,27 @@ const Title = styled.span`
   font-size: 48px;
   width: fit-content;
   margin: 50px auto;
+`;
+
+const ButtonWrapper = styled.div`
+  margin: auto;
+  width: fit-content;
+`;
+
+const Button = styled.div`
+  padding: 10px 30px;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #af0000;
+  background-color: #af0000;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.25px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
