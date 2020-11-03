@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+// === assets ===
+import TitleLogo from '../../assets/icons/MAFIA.svg';
+import BgImg from '../../assets/img/main-page-1-bg.png';
+
 // === components ===
 import LoginPopup from '../Login/Login';
 
@@ -9,13 +13,15 @@ import LoginPopup from '../Login/Login';
 import { lessThen } from '../../utils/mixins';
 import { colors } from '../../utils/variables';
 
-const TestComponent = () => {
+const Main = () => {
   const [popup, setPopup] = useState(false);
 
   return (
     <>
       <LoginPopup active={popup} toggle={setPopup} />
-      <Background />
+      <Background>
+        <img src={BgImg} alt="" />
+      </Background>
       <Container>
         <LinkContainer>
           <NavLink to="game-rules" activeClassName="active">
@@ -29,7 +35,7 @@ const TestComponent = () => {
           </NavLink>
         </LinkContainer>
         <Logo>
-          <img src="./assets/icons/MAFIA.svg" alt="Mafia logo"></img>
+          <img src={TitleLogo} alt="Mafia logo" />
         </Logo>
 
         <ButtonWrapper>
@@ -40,49 +46,42 @@ const TestComponent = () => {
   );
 };
 
-export default TestComponent;
+export default Main;
 
-const { white, black, red } = colors;
+const { white, red, crimson } = colors;
 
 const Background = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  z-index: -10;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   overflow: hidden;
 
-  background-image: url(./assets/img/two_mans.jpg);
-  background-position: 30vw center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: auto 100%;
-  background-color: ${black};
+  img {
+    height: 100vh;
+    object-fit: cover;
+  }
 
   ${lessThen.sm`
-    background-position: 50vw center;
+    justify-content: flex-start;
   `}
 `;
 
 const Container = styled.main`
   position: absolute;
-  width: 40vw;
-  height: 35vh;
-  top: 60vh;
-  left: 20vw;
-  max-width: 400px;
-  transform: translateY(-70%);
+  top: 50%;
+  left: 0;
+  transform: translate(30%, -50%);
+  max-width: 500px;
+
   ${lessThen.sm`
-    width: 80vw;
-    top: 50vh;
-    left: 10vw;
-  `}
+    transform: translate(0, -50%);
+  `};
 `;
+
 const LinkContainer = styled.div`
   display: flex;
   justify-content: space-around;
+
   a {
     text-decoration: none;
     &:link {
@@ -100,7 +99,6 @@ const LinkContainer = styled.div`
 `;
 
 const Logo = styled.div`
-  display: block;
   width: 100%;
   margin: auto;
 
@@ -108,6 +106,7 @@ const Logo = styled.div`
     width: 100%;
   }
 `;
+
 const ButtonWrapper = styled.div`
   margin: auto;
   width: fit-content;
@@ -118,8 +117,8 @@ const Button = styled.div`
   border-radius: 4px;
   color: #fff;
   text-align: center;
-  border: 1px solid #af0000;
-  background-color: #af0000;
+  border: 1px solid ${crimson};
+  background-color: ${crimson};
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;
