@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { colors } from '../../utils/variables';
 
 const Header = () => {
@@ -34,23 +35,21 @@ export default Header;
 const { white, red } = colors;
 
 const Wrapper = styled.header`
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  display: flex;
-  padding-top: 60px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 400;
   font-size: 18px;
-  max-width: 1080px;
-  margin: auto;
 `;
 
 const Container = styled.div`
   display: flex;
+  gap: 30px;
+
   a {
     text-decoration: none;
-    padding-right: 30px;
+
     &:link {
       color: ${white};
     }
