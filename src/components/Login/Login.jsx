@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { lessThen } from '../../utils/mixins';
 
 const LoginPopup = props => {
-  const close = (event) => {
-    console.log(event.currentTarget === event.target)
+  const close = event => {
+    console.log(event.currentTarget === event.target);
     if (event.currentTarget === event.target) {
-      props.toggle(false)
+      props.toggle(false);
     }
-  }
+  };
 
   return (
     <Container active={props.active} onClick={close}>
