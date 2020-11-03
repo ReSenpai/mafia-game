@@ -40,7 +40,14 @@ const Wrapper = styled.header`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  display: flex;
+  padding-top: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
   font-size: 18px;
+  max-width: 1080px;
+  margin: auto;
 `;
 
 const Container = styled.div`

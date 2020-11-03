@@ -3,6 +3,12 @@ import React from 'react';
 // === router ===
 import { Route, Switch } from 'react-router-dom';
 
+// === components ===
+import Main from './components/Main/Main';
+
+// === store ===
+import { useSelector } from 'react-redux';
+
 // === pages ===
 import {
   HomePage,
@@ -16,7 +22,13 @@ import {
   CurrentGamesPage,
 } from './pages';
 
-function App() {
+const App = () => {
+  const { isAuth } = useSelector(state => state.Auth);
+
+  if (!isAuth) {
+    return <Main />;
+  }
+
   return (
     <>
       <Switch>
@@ -36,6 +48,6 @@ function App() {
       </Switch>
     </>
   );
-}
+};
 
 export default App;
