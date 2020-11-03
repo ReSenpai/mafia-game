@@ -1,0 +1,25 @@
+.rec .rec-dot {
+  display: none;
+}
+
+.rec-arrow-left, .rec-arrow-right {
+  position: absolute;
+  font-size: 14px !important;
+  font-weight: bold;
+  z-index: 5;
+}
+
+.hpaQSF,.bTtStj {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.rec-arrow-left {
+  top: 751px;
+  right: 320px;
+}
+.rec-arrow-right {
+  top: 751px;
+  right: 280px;
+}
+
