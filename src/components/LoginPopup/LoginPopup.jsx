@@ -1,33 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+// === components ===
 import LoginButton from '../LoginButton/LoginButton';
+import Input from '../Input/Input';
 
 // === utils ===
 import { buttonReset, lessThen } from '../../utils/mixins';
 import { colors } from '../../utils/variables';
 
-// === icons ===
-import { BsEye } from 'react-icons/bs';
-
-const LoginPopup = props => {
-  // EyeIcon for password field
-  // <BsEye color={colors.lightgray} size="24px" />;
-
+const LoginPopup = ({ active, toggle }) => {
   return (
-    <Container active={props.active} onClick={() => props.toggle(false)}>
+    <Container active={active} onClick={() => toggle(false)}>
       <Modal>
         <ModalTitle>Вход</ModalTitle>
         <ModalForm>
           <ModalFormItem>
             <ModalFormLabel>Логин</ModalFormLabel>
-            <ModalFormLoginInput />
+            <Input type="text" />
           </ModalFormItem>
 
           <ModalFormItem>
             <ModalFormLabel>Пароль</ModalFormLabel>
-            <ModalFormPasswordInput type="password" />
+            <Input type="password" />
           </ModalFormItem>
           <LoginButton />
           <ModalRegister>Регистрация</ModalRegister>
@@ -39,12 +34,7 @@ const LoginPopup = props => {
 
 export default LoginPopup;
 
-LoginPopup.propTypes = {
-  active: PropTypes.bool,
-  toggle: PropTypes.func,
-};
-
-const { white, middlegray, darkgray, lightgray } = colors;
+const { white, darkgray, lightgray } = colors;
 
 const Container = styled.div`
   display: ${props => (props.active ? 'block' : 'none')};
@@ -91,18 +81,10 @@ const ModalForm = styled.form`
   margin-top: 2em;
 
   input {
-    color: ${white};
-    padding: 22px 16px 10px;
     margin-top: 0.5em;
-    width: 100%;
-    background-color: ${middlegray};
-    border: none;
-    border-bottom: 1px solid ${white};
-    border-radius: 4px 4px 0 0;
   }
 `;
-const ModalFormLoginInput = styled.input``;
-const ModalFormPasswordInput = styled.input``;
+
 const ModalFormLabel = styled.label`
   display: block;
   text-align: left;
