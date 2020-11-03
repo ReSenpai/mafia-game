@@ -26,7 +26,7 @@ const ButtonWrapper = styled.div`
   width: fit-content;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   ${buttonReset()}
 
   padding: 10px 30px;
