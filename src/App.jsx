@@ -4,10 +4,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // === components ===
-import Main from './components/Main/Main';
-
-// === store ===
-import { useSelector } from 'react-redux';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 // === pages ===
 import {
@@ -23,14 +20,9 @@ import {
 } from './pages';
 
 const App = () => {
-  const { isAuth } = useSelector(state => state.Auth);
-
-  if (!isAuth) {
-    return <Main />;
-  }
-
   return (
     <>
+      <HeaderContainer />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/game-rules" component={GameRulesPage} />
