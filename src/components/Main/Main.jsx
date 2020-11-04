@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 // === assets ===
 import TitleLogo from '../../assets/icons/MAFIA.svg';
-import BgImg from '../../assets/img/main-page-1-bg.png';
+import BgImg from '../../assets/img/main-page-1-bg.jpg';
 
 // === components ===
 import Button from '../Button/Button';
