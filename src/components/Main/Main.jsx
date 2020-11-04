@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 // === assets ===
-<<<<<<< HEAD
 import TitleLogo from '../../assets/icons/MAFIA.svg';
 import BgImg from '../../assets/img/main-page-1-bg.jpg';
-=======
-import BgImg from '../../assets/img/main-page-2-bg.png';
->>>>>>> 7e85c30bb06fde85401c464453fe3b13047ef6bc
 
 // === components ===
 import Button from '../Button/Button';
