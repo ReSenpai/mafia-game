@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 // === assets ===
-import TitleLogo from '../../assets/icons/MAFIA.svg';
 import BgImg from '../../assets/img/main-page-1-bg.png';
 
 // === components ===
 import Button from '../Button/Button';
 import LoginPopup from '../LoginPopup/LoginPopup';
+import Logo from '../Logo/Logo';
 
 // === utils ===
 import { lessThen } from '../../utils/mixins';
@@ -35,9 +35,7 @@ const Main = () => {
             Контакты
           </NavLink>
         </LinkContainer>
-        <Logo>
-          <img src={TitleLogo} alt="Mafia logo" />
-        </Logo>
+        <Logo />
         <Button popupOptions={{ popup, setPopup }}>войти</Button>
       </Container>
     </>
@@ -93,14 +91,5 @@ const LinkContainer = styled.div`
       font-weight: 400;
       font-size: 18px;
     }
-  }
-`;
-
-const Logo = styled.div`
-  width: 100%;
-  margin: auto;
-
-  img {
-    width: 100%;
   }
 `;
