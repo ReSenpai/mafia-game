@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderContainer from '../Header/HeaderContainer';
 import Layout from '../Layout/Layout';
 import { colors } from '../../utils/variables';
 
 const Rules = () => {
   return (
     <Layout>
-      <HeaderContainer />
       <RulesContainer>
         <RulesTitle>Правила</RulesTitle>
         <RulesList>
