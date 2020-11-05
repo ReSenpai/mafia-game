@@ -117,9 +117,7 @@ export default Rules;
 
 const { red } = colors;
 
-const RulesContainer = styled.div`
-  margin-top: 4em;
-`;
+const RulesContainer = styled.div``;
 
 const RulesTitle = styled.div`
   font-size: 3em;
@@ -132,6 +130,7 @@ const RulesList = styled.ul`
   flex-direction: column;
   gap: 3em;
 `;
+
 const RulesItem = styled.li`
   list-style-type: none;
 `;

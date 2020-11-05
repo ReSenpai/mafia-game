@@ -14,13 +14,13 @@ const Main = () => {
 
   return (
     <>
-      <LoginPopup active={popup} toggle={() => {}} />
       <Background>
         <img src={BgImg} alt="" />
       </Background>
       <Container>
         <Logo />
         <Online>online</Online>
+        <LoginPopup active={popup} toggle={() => setPopup(false)} />
         <Button popupOptions={{ popup, setPopup }}>войти</Button>
       </Container>
     </>
