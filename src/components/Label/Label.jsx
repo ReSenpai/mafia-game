@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-
 // === utils ===
-import { colors } from '../../utils/variables';
+import { colors } from 'src/utils/variables';
 
 const Label = ({ children }) => {
   return <CustomLabel>{children}</CustomLabel>;

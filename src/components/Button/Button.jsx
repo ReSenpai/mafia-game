@@ -1,11 +1,13 @@
 import styled from 'styled-components';
-
 // === utils ===
-import { colors } from '../../utils/variables';
-import { buttonReset } from '../../utils/mixins';
+import { colors } from 'src/utils/variables';
+import { buttonReset } from 'src/utils/mixins';
 
 const Button = ({
-  popupOptions = { popup: false, setPopup: () => {} },
+  popupOptions = {
+    popup: false,
+    setPopup: () => {},
+  },
   children = 'войти',
 }) => {
   const { setPopup } = popupOptions;
