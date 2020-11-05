@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-
 // === components ===
-import Button from '../Button/Button';
-import Input from '../Input/Input';
-import Popup from '../Popup/Popup';
-
+import { Button, Input, Popup } from 'src/components';
 // === utils ===
-import { colors } from '../../utils/variables';
+import { colors } from 'src/utils/variables';
 
 const LoginPopup = ({ active, toggle }) => {
   return (

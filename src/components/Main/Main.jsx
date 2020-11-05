@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 // === assets ===
-import BgImg from '../../assets/img/main-page-2-bg.png';
+import BgImg from 'src/assets/img/main-page-2-bg.png';
 // === components ===
-import Button from '../Button/Button';
-import LoginPopup from '../LoginPopup/LoginPopup';
-import Logo from '../Logo/Logo';
+import { Button, LoginPopup, Logo } from 'src/components';
 
 const Main = () => {
   const [popup, setPopup] = useState(false);

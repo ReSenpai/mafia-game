@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
-import CloseIcon from '../../assets/icons/remove-gray.svg';
-
+// === assets ===
+import CloseIcon from 'src/assets/icons/remove-gray.svg';
 // === utils ===
-import { useClickOutside } from '../../hooks/useClickOutside';
-import { buttonReset, lessThen } from '../../utils/mixins';
-import { colors } from '../../utils/variables';
+import { useClickOutside } from 'src/hooks/useClickOutside';
+import { buttonReset, lessThen } from 'src/utils/mixins';
+import { colors } from 'src/utils/variables';
 
 const Popup = ({ children, active, toggle }) => {
   const ref = useRef();

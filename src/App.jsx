@@ -1,19 +1,17 @@
 // === router ===
 import { Route, Switch } from 'react-router-dom';
-
 // === components ===
-import HeaderContainer from './components/Header/HeaderContainer';
-
+import { HeaderContainer } from 'src/components';
 // === pages ===
 import {
-  HomePage,
-  Page404,
-  GameRulesPage,
-  WatchGamePage,
   ContactsPage,
+  CurrentGamesPage,
   ForgottenPasswordPage,
   GamePage,
-  CurrentGamesPage,
+  GameRulesPage,
+  HomePage,
+  Page404,
+  WatchGamePage,
 } from './pages';
 
 const App = () => {

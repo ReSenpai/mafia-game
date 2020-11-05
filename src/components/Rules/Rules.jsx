@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import Layout from '../Layout/Layout';
-import { colors } from '../../utils/variables';
+// === components ===
+import { Layout } from 'src/components';
+// === utils ===
+import { colors } from 'src/utils/variables';
 
 const Rules = () => {
   return (

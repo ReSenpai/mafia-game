@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-
 // === assets ===
-import TitleLogo from '../../assets/icons/MAFIA.svg';
+import TitleLogo from 'src/assets/icons/MAFIA.svg';
 
 const Logo = ({ size }) => {
   return (

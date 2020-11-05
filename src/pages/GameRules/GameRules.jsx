@@ -1,5 +1,5 @@
 // === components ===
-import Rules from '../../components/Rules/Rules';
+import { Rules } from 'src/components';
 
 const GameRulesPage = () => {
   return <Rules />;

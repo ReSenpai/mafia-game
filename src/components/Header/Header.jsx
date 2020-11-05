@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
-import Layout from '../Layout/Layout';
-import RegisterPopup from '../RegisterPopup/RegisterPopup';
-
-import { colors } from '../../utils/variables';
+// === components ===
+import { Layout, RegisterPopup } from 'src/components';
+// === utils ===
+import { colors } from 'src/utils/variables';
 
 const Header = () => {
   const [popup, setPopup] = useState(false);
