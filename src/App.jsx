@@ -1,5 +1,3 @@
-import React from 'react';
-
 // === router ===
 import { Route, Switch } from 'react-router-dom';
 
