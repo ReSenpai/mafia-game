@@ -19,7 +19,8 @@ _NOTE_: Please, make sure that you fixed all errors before commit.
 ## Tech Stack
 
 * React
-* Redux(thunks)
+* Redux(thunk)
+* Docker
 
 ## Design on figma [here](https://www.figma.com/file/3UbRLupkyIEUk2U4RkrmY5/Untitled-(Copy)?node-id=0%3A1)
 
