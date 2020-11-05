@@ -1,5 +1,3 @@
-import React from 'react';
-
 // === components ===
 import Rules from '../../components/Rules/Rules';
 
