@@ -46,7 +46,6 @@ const Wrapper = styled.header`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  display: flex;
 `;
 
 const Container = styled.div`
