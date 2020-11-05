@@ -18,7 +18,7 @@ const LogoWrapper = styled.div`
   width: 100%;
   height: auto;
   margin: 0 auto;
-  max-width: ${({ size }) => size || 'auto'};
+  max-width: ${({ size }) => size};
 
   img {
     width: 100%;
