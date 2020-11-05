@@ -27,3 +27,9 @@ code {
 #root {
   height: 100%;
 }
+
+a {
+  cursor: pointer;
+  color: currentColor;
+  text-decoration: none;
+}

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Layout from '../Layout/Layout';
+import RegisterPopup from '../RegisterPopup/RegisterPopup';
 
 import { colors } from '../../utils/variables';
 
 const Header = () => {
+  const [popup, setPopup] = useState(false);
+
   return (
     <Layout>
       <Wrapper>
@@ -22,9 +25,8 @@ const Header = () => {
           </NavLink>
         </Container>
         <Container>
-          <NavLink to="register" activeClassName="active">
-            Регистрация
-          </NavLink>
+          <RegisterPopup active={popup} toggle={() => setPopup(false)} />
+          <a onClick={() => setPopup(true)}>Регистрация</a>
           <NavLink to="forgotten-password" activeClassName="active">
             Забыли пароль?
           </NavLink>
@@ -64,7 +66,6 @@ const Container = styled.div`
     &.active {
       color: ${red};
       font-weight: 400;
-      font-size: 18px;
     }
   }
 `;

@@ -9,11 +9,11 @@ const Button = ({
   popupOptions = { popup: false, setPopup: () => {} },
   children = 'войти',
 }) => {
-  const { popup, setPopup } = popupOptions;
+  const { setPopup } = popupOptions;
 
   return (
     <ButtonWrapper>
-      <CustomButton onClick={() => setPopup(!popup)}>{children}</CustomButton>
+      <CustomButton onClick={() => setPopup(true)}>{children}</CustomButton>
     </ButtonWrapper>
   );
 };

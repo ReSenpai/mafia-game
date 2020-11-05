@@ -13,7 +13,6 @@ import {
   GameRulesPage,
   WatchGamePage,
   ContactsPage,
-  RegisterPage,
   ForgottenPasswordPage,
   GamePage,
   CurrentGamesPage,
@@ -25,17 +24,12 @@ const App = () => {
       <HeaderContainer />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/game-rules" component={GameRulesPage} />
-        <Route exact path="/watch-game" component={WatchGamePage} />
-        <Route exact path="/contacts" component={ContactsPage} />
-        <Route exact path="/register" component={RegisterPage} />
-        <Route
-          exact
-          path="/forgotten-password"
-          component={ForgottenPasswordPage}
-        />
-        <Route exact path="/game" component={GamePage} />
-        <Route exact path="/current-games" component={CurrentGamesPage} />
+        <Route path="/game-rules" component={GameRulesPage} />
+        <Route path="/watch-game" component={WatchGamePage} />
+        <Route path="/contacts" component={ContactsPage} />
+        <Route path="/forgotten-password" component={ForgottenPasswordPage} />
+        <Route path="/game" component={GamePage} />
+        <Route path="/current-games" component={CurrentGamesPage} />
         <Route path="*" component={Page404} />
       </Switch>
     </>
