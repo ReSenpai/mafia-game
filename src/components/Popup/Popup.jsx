@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import CloseIcon from '../../assets/icons/remove-gray.svg';
 
 // === utils ===
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { buttonReset, lessThen } from '../../utils/mixins';
 import { colors } from '../../utils/variables';
 
 const Popup = ({ children, active, toggle }) => {
+  const ref = useRef();
+  useClickOutside(ref, toggle);
+
   return (
     <Container active={active}>
-      <Modal>
+      <Modal ref={ref}>
         <ModalClose>
           <button onClick={toggle}>
             <img src={CloseIcon} alt="" />
