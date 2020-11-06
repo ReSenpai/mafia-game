@@ -1,5 +1,11 @@
+import { UserList, Layout } from '../../components';
+
 const GamePage = () => {
-  return <>Game</>;
+  return (
+    <Layout>
+      <UserList />
+    </Layout>
+  );
 };
 
 export default GamePage;

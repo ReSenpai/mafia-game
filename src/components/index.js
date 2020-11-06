@@ -10,3 +10,4 @@ export { default as Main } from './Main/Main';
 export { default as Popup } from './Popup/Popup';
 export { default as RegisterPopup } from './RegisterPopup/RegisterPopup';
 export { default as Rules } from './Rules/Rules';
+export { default as UserList } from './UserList/UserList';
