@@ -1,7 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
-import Layout from '../Layout/Layout';
-import { colors } from '../../utils/variables';
+// === components ===
+import { Layout } from 'src/components';
+// === utils ===
+import { colors } from 'src/utils/variables';
 
 const Rules = () => {
   return (
@@ -117,9 +118,7 @@ export default Rules;
 
 const { red } = colors;
 
-const RulesContainer = styled.div`
-  margin-top: 4em;
-`;
+const RulesContainer = styled.div``;
 
 const RulesTitle = styled.div`
   font-size: 3em;
@@ -132,6 +131,7 @@ const RulesList = styled.ul`
   flex-direction: column;
   gap: 3em;
 `;
+
 const RulesItem = styled.li`
   list-style-type: none;
 `;

@@ -1,7 +1,5 @@
-import React from 'react';
-
 // === components ===
-import Main from '../../components/Main/Main';
+import { Main } from 'src/components';
 
 const HomePage = () => {
   return <Main />;

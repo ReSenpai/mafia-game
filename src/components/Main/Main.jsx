@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-
 // === assets ===
-import TitleLogo from '../../assets/icons/MAFIA.svg';
-import BgImg from '../../assets/img/main-page-1-bg.jpg';
-
+import BgImg from 'src/assets/img/main-page-2-bg.png';
 // === components ===
-import Button from '../Button/Button';
-import LoginPopup from '../LoginPopup/LoginPopup';
-import Logo from '../Logo/Logo';
+import { Button, LoginPopup, Logo } from 'src/components';
 
 const Main = () => {
   const [popup, setPopup] = useState(false);
 
   return (
     <>
-      <LoginPopup active={popup} toggle={() => {}} />
       <Background>
         <img src={BgImg} alt="" />
       </Background>
       <Container>
         <Logo />
         <Online>online</Online>
+        <LoginPopup active={popup} toggle={() => setPopup(false)} />
         <Button popupOptions={{ popup, setPopup }}>войти</Button>
       </Container>
     </>
@@ -34,8 +29,8 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   margin: 0;

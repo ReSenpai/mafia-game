@@ -1,14 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
-
 // === components ===
-import Button from '../Button/Button';
-import Input from '../Input/Input';
-import Popup from '../Popup/Popup';
-
+import { Button, Input, Popup } from 'src/components';
 // === utils ===
-import { buttonReset } from '../../utils/mixins';
-import { colors } from '../../utils/variables';
+import { colors } from 'src/utils/variables';
 
 const LoginPopup = ({ active, toggle }) => {
   return (
@@ -26,7 +20,6 @@ const LoginPopup = ({ active, toggle }) => {
         </ModalFormItem>
 
         <Button>войти</Button>
-        <ModalRegister>регистрация</ModalRegister>
       </ModalForm>
     </Popup>
   );
@@ -63,15 +56,4 @@ const ModalFormLabel = styled.label`
 const ModalFormItem = styled.div`
   text-align: center;
   width: 100%;
-`;
-
-const ModalRegister = styled.button`
-  ${buttonReset()}
-
-  background-color: transparent;
-  text-transform: capitalize;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;

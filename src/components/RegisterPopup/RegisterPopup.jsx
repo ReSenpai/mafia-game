@@ -1,13 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
-
 // === components ===
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import Popup from '../Popup/Popup';
-
+import { Button, Input, Popup } from 'src/components';
 // === utils ===
-import { colors } from '../../utils/variables';
+import { colors } from 'src/utils/variables';
 
 const RegisterPopup = ({ active, toggle }) => {
   return (

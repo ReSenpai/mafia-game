@@ -1,14 +1,26 @@
-import React from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-
+// === assets ===
+import CloseIcon from 'src/assets/icons/remove-gray.svg';
 // === utils ===
-import { lessThen } from '../../utils/mixins';
-import { colors } from '../../utils/variables';
+import { useClickOutside } from 'src/hooks/useClickOutside';
+import { buttonReset, lessThen } from 'src/utils/mixins';
+import { colors } from 'src/utils/variables';
 
 const Popup = ({ children, active, toggle }) => {
+  const ref = useRef();
+  useClickOutside(ref, toggle);
+
   return (
-    <Container active={active} onClick={() => toggle(false)}>
-      <Modal>{children}</Modal>
+    <Container active={active}>
+      <Modal ref={ref}>
+        <ModalClose>
+          <button onClick={toggle}>
+            <img src={CloseIcon} alt="" />
+          </button>
+        </ModalClose>
+        {children}
+      </Modal>
     </Container>
   );
 };
@@ -37,9 +49,22 @@ const Modal = styled.div`
   width: 80%;
   max-width: 800px;
   background-color: ${darkgray};
-  padding: 2em;
+  padding: 1em 2em;
 
   ${lessThen.sm`
     width: 90%;
   `}
+`;
+
+const ModalClose = styled.div`
+  text-align: right;
+
+  button {
+    ${buttonReset};
+    background-color: transparent;
+
+    img {
+      transform: scale(0.8);
+    }
+  }
 `;
