@@ -1,4 +1,4 @@
-@import './assets/fonts/fonts.css';
+@import '~antd/dist/antd.css';
 
 * {
   margin: 0;
