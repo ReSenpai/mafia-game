@@ -58,7 +58,7 @@ const { white } = colors;
 
 const Wrapper = styled.div`
   width: fit-content;
-  max-width: 300px;
+  min-width: 300px;
   background-color: ${white};
 `;
 
