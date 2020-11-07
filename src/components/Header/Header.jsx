@@ -6,9 +6,6 @@ import styled from 'styled-components';
 // === components ===
 import { Layout, RegisterPopup } from 'src/components';
 
-// === utils ===
-import { colors } from 'src/utils/variables';
-
 const Header = () => {
   const [popup, setPopup] = useState(false);
   const theme = useTheme();
