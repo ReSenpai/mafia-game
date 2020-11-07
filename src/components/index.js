@@ -13,3 +13,4 @@ export { default as Rules } from './Rules/Rules';
 export { default as UserList } from './UserList/UserList';
 export { default as Chat } from './Chat/Chat';
 export { default as Lobby } from './Lobby/Lobby';
+export { default as ChatContainer } from './Chat/ChatContainer';

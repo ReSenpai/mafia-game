@@ -14,12 +14,29 @@ const { Text } = Typography;
 
 // === utils ===
 import { colors } from '../../utils/variables';
+import { useState } from 'react';
 
-const Chat = () => {
+const Chat = ({
+  chatMessages,
+  addMessage
+}) => {
   const initialPanes = [
     { title: 'Общий чат', key: '1' },
     { title: 'Логово мафии', key: '2' },
   ];
+
+  const [messageValue, changeMessage] = useState('');
+
+  const onChangeMessage = (event) => {
+    const text = event.target.value;
+    console.log(text);
+    changeMessage(text);
+  }
+
+  const sendMessage = () => {
+    addMessage(messageValue);
+    changeMessage('');
+  }
 
   return (
     <ChatWrapper>
@@ -31,102 +48,7 @@ const Chat = () => {
         ))}
       </Tabs>
 
-      <ChatMessages>
-        <ChatItem>
-          <Avatar shape="square" icon={<UserOutlined />} />
-          <ChatItemMessage>
-            <Text type="secondary">Name</Text>
-            <Text type="primary">
-              Design principles, practical patterns and high quality design
-              resources, to help people create their product prototypes
-              beautifully and efficiently.
-            </Text>
-
-            <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <LikeOutlined /> 0 <DislikeOutlined /> 0
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>05 Ноября 23:37</ChatItemMessageDate>
-            </ChatItemMessageInfo>
-          </ChatItemMessage>
-        </ChatItem>
-
-        <ChatItem>
-          <Avatar shape="square" icon={<UserOutlined />} />
-          <ChatItemMessage>
-            <Text type="secondary">Name</Text>
-            <Text type="primary">
-              Design principles, practical patterns and high quality design
-              resources, to help people create their product prototypes
-              beautifully and efficiently.
-            </Text>
-
-            <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <LikeOutlined /> 0 <DislikeOutlined /> 0
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>05 Ноября 23:37</ChatItemMessageDate>
-            </ChatItemMessageInfo>
-          </ChatItemMessage>
-        </ChatItem>
-
-        <ChatItem>
-          <Avatar shape="square" icon={<UserOutlined />} />
-          <ChatItemMessage>
-            <Text type="secondary">Name</Text>
-            <Text type="primary">
-              Design principles, practical patterns and high quality design
-              resources, to help people create their product prototypes
-              beautifully and efficiently.
-            </Text>
-
-            <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <LikeOutlined /> 0 <DislikeOutlined /> 0
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>05 Ноября 23:37</ChatItemMessageDate>
-            </ChatItemMessageInfo>
-          </ChatItemMessage>
-        </ChatItem>
-
-        <ChatItem>
-          <Avatar shape="square" icon={<UserOutlined />} />
-          <ChatItemMessage>
-            <Text type="secondary">Name</Text>
-            <Text type="primary">
-              Design principles, practical patterns and high quality design
-              resources, to help people create their product prototypes
-              beautifully and efficiently.
-            </Text>
-
-            <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <LikeOutlined /> 0 <DislikeOutlined /> 0
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>05 Ноября 23:37</ChatItemMessageDate>
-            </ChatItemMessageInfo>
-          </ChatItemMessage>
-        </ChatItem>
-
-        <ChatItem>
-          <Avatar shape="square" icon={<UserOutlined />} />
-          <ChatItemMessage>
-            <Text type="secondary">Name</Text>
-            <Text type="primary">
-              Design principles, practical patterns and high quality design
-              resources, to help people create their product prototypes
-              beautifully and efficiently.
-            </Text>
-
-            <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <LikeOutlined /> 0 <DislikeOutlined /> 0
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>05 Ноября 23:37</ChatItemMessageDate>
-            </ChatItemMessageInfo>
-          </ChatItemMessage>
-        </ChatItem>
-      </ChatMessages>
+      <ChatMessagesComponent {...{ chatMessages }}/>
 
       <ChatMoves>
         <Text type="secondary">Дадим мафии договориться</Text>
@@ -138,14 +60,45 @@ const Chat = () => {
           placeholder="Введите сообщение"
           size="large"
           suffix={<SmileTwoTone />}
+          value={ messageValue }
+          onChange={ onChangeMessage }
         />
-        <Button type="primary" size="large">
+        <Button type="primary" size="large" onClick={ sendMessage }>
           Отправить
         </Button>
       </ChatForm>
     </ChatWrapper>
   );
 };
+
+const ChatMessagesComponent = ({
+  chatMessages
+}) => {
+  return (
+    <ChatMessages>
+      {
+        chatMessages.map(user => (
+          <ChatItem key={ user.id }>
+            { user.avatar 
+              ?  <Avatar shape="square" src={ user.avatar } />
+              : <Avatar shape="square" icon={<UserOutlined />} />
+            }
+            <ChatItemMessage>
+              <Text type="secondary">{ user.name }</Text>
+              <Text type="primary">{ user.text }</Text>
+              <ChatItemMessageInfo>
+                <ChatItemMessageCtrl>
+                  <LikeOutlined /> { user.likes } <DislikeOutlined /> { user.dislikes }
+                </ChatItemMessageCtrl>
+                <ChatItemMessageDate>{ user.messageTime }</ChatItemMessageDate>
+              </ChatItemMessageInfo>
+            </ChatItemMessage>
+          </ChatItem>
+        ))
+      }
+    </ChatMessages>
+  )
+}
 
 export default Chat;
 
@@ -158,6 +111,8 @@ const ChatWrapper = styled.div`
   width: 100%;
   background-color: ${white};
   color: ${black};
+  padding: 0 20px;
+  height: 80vh;
 `;
 
 const ChatForm = styled.form`
@@ -171,12 +126,14 @@ const ChatMessages = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
+  overflow-y: scroll;
 `;
 const ChatItem = styled.div`
   display: flex;
   gap: 1em;
 `;
 const ChatItemMessage = styled.div`
+  width: 100%;
   * {
     display: block;
   }

@@ -44,6 +44,7 @@ const authReducer = (state = initialState, action) => {
  */
 
 // хз как лучше типы описывать, но в редьюсерах совсем без них будет боль, мб их на тс писать?
+// Можно хотя бы в jsdoc писать :)
 
 /**
  * @param {Number} userId
