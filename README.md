@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 `yarn start` - runs the app in the development mode.
 
+`sh dev.sh` - runs the app in the Docker(dev mode)
+
 `yarn build` - builds the app for production to the `build` folder.
 
 `yarn lint` - linting project using ESLint.
