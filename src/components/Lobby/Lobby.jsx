@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
 // === material-ui ===
 import { List, ListItem, Typography } from '@material-ui/core';
@@ -36,15 +35,11 @@ const Lobby = () => {
   });
 
   return (
-    <Container>
+    <>
       <Typography variant="h6">Текущие игры</Typography>
       <List>{games}</List>
-    </Container>
+    </>
   );
 };
-
-const Container = styled.div`
-  color: lightgray;
-`;
 
 export default Lobby;
