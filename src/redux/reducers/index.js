@@ -8,5 +8,5 @@ import gamesReducer from './game_reducer';
 
 export default combineReducers({
   Auth: authReducer,
-  Game: gamesReducer
+  Game: gamesReducer,
 });

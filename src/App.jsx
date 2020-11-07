@@ -12,7 +12,7 @@ import {
   HomePage,
   Page404,
   WatchGamePage,
-  GameLobby
+  GameLobby,
 } from './pages';
 
 const App = () => {
