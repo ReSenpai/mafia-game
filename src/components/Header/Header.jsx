@@ -19,6 +19,9 @@ const Header = () => {
           <NavLink to="watch-game" activeClassName="active">
             Посмотреть игру
           </NavLink>
+          <NavLink to="lobby" activeClassName="active">
+            Лобби
+          </NavLink>
           <NavLink to="contacts" activeClassName="active">
             Контакты
           </NavLink>
