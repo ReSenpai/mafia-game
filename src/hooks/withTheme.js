@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { connect, useSelector } from 'react-redux'
+import { Component } from 'react';
+import { connect, useSelector } from 'react-redux';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { StylesProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
@@ -10,16 +10,16 @@ let palette = {
   },
   secondary: {
     main: '#f3d8d8',
-  }
-}
+  },
+};
 
 function createTheme(type, primary) {
   if (type && primary) {
     palette = {
       type: type,
       primary: primary,
-      secondary: { main: '#ef9a9a' }
-    }
+      secondary: { main: '#ef9a9a' },
+    };
   }
 
   return createMuiTheme({
@@ -28,14 +28,14 @@ function createTheme(type, primary) {
       danger: 'orange',
     },
     MuiAppBar: {
-      flexDirection: "row"
-    }
+      flexDirection: 'row',
+    },
   });
 }
 
 function withTheme(WrappedComponent) {
-  const ThemeWrapper = (props) => {
-    const { type, primary } = useSelector(state => state.Game.theme)
+  const ThemeWrapper = props => {
+    const { type, primary } = useSelector(state => state.Game.theme);
     const theme = createTheme(type, primary);
 
     return (
@@ -45,7 +45,7 @@ function withTheme(WrappedComponent) {
         </MuiThemeProvider>
       </StylesProvider>
     );
-  }
+  };
   return ThemeWrapper;
 }
 

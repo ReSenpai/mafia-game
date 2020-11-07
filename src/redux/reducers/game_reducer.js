@@ -66,7 +66,7 @@ const getInitialGame = () => {
 let initialState = {
   lobby: [],
   currentGame: {},
-  theme: {}
+  theme: {},
 };
 
 const gameReducer = (state = initialState, action) => {

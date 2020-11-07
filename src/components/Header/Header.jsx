@@ -11,40 +11,39 @@ import { colors } from 'src/utils/variables';
 
 const Header = () => {
   const [popup, setPopup] = useState(false);
-  const theme = useTheme()
+  const theme = useTheme();
 
   const Wrapper = styled.header`
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-`;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  `;
 
   const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
 
-  a {
-    text-decoration: none;
+    a {
+      text-decoration: none;
 
-    &:link {
-      color: ${theme.palette.text.main};
+      &:link {
+        color: ${theme.palette.text.main};
+      }
+      &:hover {
+        color: ${theme.palette.text.dark};
+      }
+      &:visited {
+        color: ${theme.palette.text.dark};
+      }
+      &.active {
+        color: ${theme.danger};
+        font-weight: 400;
+      }
     }
-    &:hover {
-      color: ${theme.palette.text.dark};
-    }
-    &:visited {
-      color: ${theme.palette.text.dark};
-    }
-    &.active {
-      color: ${theme.danger};
-      font-weight: 400;
-    }
-  }
-`;
-
+  `;
 
   return (
     <Layout>
