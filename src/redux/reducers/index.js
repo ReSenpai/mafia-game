@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './auth_reducer';
+import gamesReducer from './game_reducer';
 import chatReducer from './chat_reducer';
 
 /**
@@ -8,5 +9,6 @@ import chatReducer from './chat_reducer';
 
 export default combineReducers({
   Auth: authReducer,
-  Chat: chatReducer
+  Game: gamesReducer,
+  Chat: chatReducer,
 });

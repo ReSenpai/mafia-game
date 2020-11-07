@@ -16,10 +16,7 @@ const { Text } = Typography;
 import { colors } from '../../utils/variables';
 import { useState } from 'react';
 
-const Chat = ({
-  chatMessages,
-  addMessage
-}) => {
+const Chat = ({ chatMessages, addMessage }) => {
   const initialPanes = [
     { title: 'Общий чат', key: '1' },
     { title: 'Логово мафии', key: '2' },
@@ -27,16 +24,16 @@ const Chat = ({
 
   const [messageValue, changeMessage] = useState('');
 
-  const onChangeMessage = (event) => {
+  const onChangeMessage = event => {
     const text = event.target.value;
     console.log(text);
     changeMessage(text);
-  }
+  };
 
   const sendMessage = () => {
     addMessage(messageValue);
     changeMessage('');
-  }
+  };
 
   return (
     <ChatWrapper>
@@ -48,7 +45,7 @@ const Chat = ({
         ))}
       </Tabs>
 
-      <ChatMessagesComponent {...{ chatMessages }}/>
+      <ChatMessagesComponent {...{ chatMessages }} />
 
       <ChatMoves>
         <Text type="secondary">Дадим мафии договориться</Text>
@@ -60,10 +57,10 @@ const Chat = ({
           placeholder="Введите сообщение"
           size="large"
           suffix={<SmileTwoTone />}
-          value={ messageValue }
-          onChange={ onChangeMessage }
+          value={messageValue}
+          onChange={onChangeMessage}
         />
-        <Button type="primary" size="large" onClick={ sendMessage }>
+        <Button type="primary" size="large" onClick={sendMessage}>
           Отправить
         </Button>
       </ChatForm>
@@ -71,34 +68,32 @@ const Chat = ({
   );
 };
 
-const ChatMessagesComponent = ({
-  chatMessages
-}) => {
+const ChatMessagesComponent = ({ chatMessages }) => {
   return (
     <ChatMessages>
-      {
-        chatMessages.map(user => (
-          <ChatItem key={ user.id }>
-            { user.avatar 
-              ?  <Avatar shape="square" src={ user.avatar } />
-              : <Avatar shape="square" icon={<UserOutlined />} />
-            }
-            <ChatItemMessage>
-              <Text type="secondary">{ user.name }</Text>
-              <Text type="primary">{ user.text }</Text>
-              <ChatItemMessageInfo>
-                <ChatItemMessageCtrl>
-                  <LikeOutlined /> { user.likes } <DislikeOutlined /> { user.dislikes }
-                </ChatItemMessageCtrl>
-                <ChatItemMessageDate>{ user.messageTime }</ChatItemMessageDate>
-              </ChatItemMessageInfo>
-            </ChatItemMessage>
-          </ChatItem>
-        ))
-      }
+      {chatMessages.map(user => (
+        <ChatItem key={user.id}>
+          {user.avatar ? (
+            <Avatar shape="square" src={user.avatar} />
+          ) : (
+            <Avatar shape="square" icon={<UserOutlined />} />
+          )}
+          <ChatItemMessage>
+            <Text type="secondary">{user.name}</Text>
+            <Text type="primary">{user.text}</Text>
+            <ChatItemMessageInfo>
+              <ChatItemMessageCtrl>
+                <LikeOutlined /> {user.likes} <DislikeOutlined />{' '}
+                {user.dislikes}
+              </ChatItemMessageCtrl>
+              <ChatItemMessageDate>{user.messageTime}</ChatItemMessageDate>
+            </ChatItemMessageInfo>
+          </ChatItemMessage>
+        </ChatItem>
+      ))}
     </ChatMessages>
-  )
-}
+  );
+};
 
 export default Chat;
 

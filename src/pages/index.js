@@ -6,3 +6,4 @@ export { default as ContactsPage } from './Contacts/Contacts';
 export { default as ForgottenPasswordPage } from './ForgottenPassword/ForgottenPassword';
 export { default as GamePage } from './Game/Game';
 export { default as CurrentGamesPage } from './CurrentGames/CurrentGames';
+export { default as GameLobby } from './GameLobby/GameLobby';

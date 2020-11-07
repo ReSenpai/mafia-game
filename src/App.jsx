@@ -1,6 +1,7 @@
 // === router ===
 import { Route, Switch } from 'react-router-dom';
 // === components ===
+import withTheme from 'src/hooks/withTheme';
 import { HeaderContainer } from 'src/components';
 // === pages ===
 import {
@@ -12,6 +13,7 @@ import {
   HomePage,
   Page404,
   WatchGamePage,
+  GameLobby,
 } from './pages';
 
 const App = () => {
@@ -22,6 +24,7 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route path="/game-rules" component={GameRulesPage} />
         <Route path="/watch-game" component={WatchGamePage} />
+        <Route path="/lobby" component={GameLobby} />
         <Route path="/contacts" component={ContactsPage} />
         <Route path="/forgotten-password" component={ForgottenPasswordPage} />
         <Route path="/game" component={GamePage} />
@@ -32,4 +35,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withTheme(App);
