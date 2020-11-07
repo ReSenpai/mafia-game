@@ -10,5 +10,5 @@ import chatReducer from './chat_reducer';
 export default combineReducers({
   Auth: authReducer,
   Game: gamesReducer,
-  Chat: chatReducer
+  Chat: chatReducer,
 });

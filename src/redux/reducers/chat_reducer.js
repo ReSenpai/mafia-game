@@ -1,4 +1,4 @@
-import { chatAPI } from "src/api/api";
+import { chatAPI } from 'src/api/api';
 
 const SET_CHAT_MESSAGES = 'chat/SET_CHAT_MESSAGES';
 const SET_IS_FETCHING = 'chat/SET_IS_FETCHING';
@@ -6,7 +6,7 @@ const ADD_MESSAGE = 'chat/ADD_MESSAGE';
 
 let initialState = {
   chatMessages: [],
-  isFetching: false
+  isFetching: false,
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -26,15 +26,19 @@ const chatReducer = (state = initialState, action) => {
     case ADD_MESSAGE: {
       return {
         ...state,
-        chatMessages: [...state.chatMessages, {
+        chatMessages: [
+          ...state.chatMessages,
+          {
             id: state.chatMessages.length + 1,
-            avatar : "https://www.myinstants.com/media/instants_images/van-darkholme.jpg.pagespeed.ce.vKDHBPAGKh.jpg",
-            name: "Van",
+            avatar:
+              'https://www.myinstants.com/media/instants_images/van-darkholme.jpg.pagespeed.ce.vKDHBPAGKh.jpg',
+            name: 'Van',
             text: action.message,
             likes: 0,
             dislikes: 0,
-            messageTime: "06 Ноября 17:38"
-          }]
+            messageTime: '06 Ноября 17:38',
+          },
+        ],
       };
     }
     default:
@@ -44,10 +48,15 @@ const chatReducer = (state = initialState, action) => {
 
 // Actions
 
-export const setChatMessages = (chatMessages) => ({ type: SET_CHAT_MESSAGES, chatMessages });
-export const setIsFetching = (isFetching) => ({ type: SET_IS_FETCHING, isFetching });
-export const addMessage = (message) => ({ type: ADD_MESSAGE, message });
-
+export const setChatMessages = chatMessages => ({
+  type: SET_CHAT_MESSAGES,
+  chatMessages,
+});
+export const setIsFetching = isFetching => ({
+  type: SET_IS_FETCHING,
+  isFetching,
+});
+export const addMessage = message => ({ type: ADD_MESSAGE, message });
 
 // Thunks
 
