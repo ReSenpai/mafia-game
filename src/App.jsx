@@ -1,6 +1,7 @@
 // === router ===
 import { Route, Switch } from 'react-router-dom';
 // === components ===
+import withTheme from 'src/hooks/withTheme'
 import { HeaderContainer } from 'src/components';
 // === pages ===
 import {
@@ -34,4 +35,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withTheme(App);

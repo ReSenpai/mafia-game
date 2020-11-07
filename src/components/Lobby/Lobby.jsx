@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { List, ListItem, Typography } from '@material-ui/core';
 
 // === components ===
+import withTheme from 'src/hooks/withTheme'
 import Game from './GameInLobby';
 
 // === utils ===
