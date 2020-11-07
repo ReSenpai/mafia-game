@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 // === components ===
-import { UserList, Layout, Chat } from '../../components';
+import { UserList, Layout, ChatContainer } from '../../components';
 
 // === utils ===
 import { colors } from '../../utils/variables';
@@ -10,7 +10,7 @@ const GamePage = () => {
   return (
     <Layout>
       <GameRoom>
-        <Chat />
+        <ChatContainer />
         <UserList />
       </GameRoom>
     </Layout>
