@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+
 // === components ===
 import { Layout } from 'src/components';
+
 // === utils ===
 import { colors } from 'src/utils/variables';
 

@@ -1,17 +1,11 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
 // === material-ui ===
 import { List, ListItem, Typography } from '@material-ui/core';
 
 // === components ===
-import withTheme from 'src/hooks/withTheme';
 import Game from './GameInLobby';
-
-// === utils ===
-import { colors } from '../../utils/variables';
-const { lightgray } = colors;
 
 // === thunks ===
 import { getGameListThunk } from 'src/redux/reducers/game_reducer';
@@ -41,15 +35,11 @@ const Lobby = () => {
   });
 
   return (
-    <Container>
+    <>
       <Typography variant="h6">Текущие игры</Typography>
       <List>{games}</List>
-    </Container>
+    </>
   );
 };
-
-const Container = styled.div`
-  color: lightgray;
-`;
 
 export default Lobby;

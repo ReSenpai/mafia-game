@@ -2,12 +2,7 @@ import styled from 'styled-components';
 // === utils ===
 import { colors } from 'src/utils/variables';
 
-// === icons ===
-// import { BsEye } from 'react-icons/bs';
-
 const Input = props => {
-  // EyeIcon for password field
-  // <BsEye color={colors.lightgray} size="24px" />;
   return <CustomInput {...props} />;
 };
 
