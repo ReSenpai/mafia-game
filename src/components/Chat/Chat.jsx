@@ -35,7 +35,7 @@ const Chat = ({ chatMessages, addMessage }) => {
     <ChatWrapper>
       <Tab type="editable-card">
         {initialPanes.map(pane => (
-          <TabPanel  tab={pane.title} key={pane.key} closable={pane.closable}>
+          <TabPanel tab={pane.title} key={pane.key} closable={pane.closable}>
             {pane.content}
           </TabPanel>
         ))}
@@ -45,7 +45,9 @@ const Chat = ({ chatMessages, addMessage }) => {
 
       <ChatMoves>
         <Typography type="secondary">Дадим мафии договориться</Typography>
-        <Typography type="secondary">Следующий ход через: 2 мин 40 сек</Typography>
+        <Typography type="secondary">
+          Следующий ход через: 2 мин 40 сек
+        </Typography>
       </ChatMoves>
 
       <ChatForm>

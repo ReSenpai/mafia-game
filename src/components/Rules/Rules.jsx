@@ -12,7 +12,9 @@ const Rules = () => {
         <RulesTitle>Правила</RulesTitle>
         <RulesList>
           <RulesItem>
-            <Typography variant='h5' color='primary'>Как общаться с другими игроками?</Typography>
+            <Typography variant="h5" color="primary">
+              Как общаться с другими игроками?
+            </Typography>
 
             <RulesItemText>
               Если нажать на чей-то ник, то можно написать сообщение,
@@ -23,7 +25,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Как начать игру?</Typography>
+            <Typography variant="h5" color="primary">
+              Как начать игру?
+            </Typography>
 
             <RulesItemText>
               На главной странице можно создать партию самому, нажав кнопку
@@ -35,7 +39,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Как проходит игра?</Typography>
+            <Typography variant="h5" color="primary">
+              Как проходит игра?
+            </Typography>
 
             <RulesItemText>
               Первые две минуты игры уходят на то, чтоб мафия могла обсудить
@@ -60,7 +66,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Какие роли есть в игре?</Typography>
+            <Typography variant="h5" color="primary">
+              Какие роли есть в игре?
+            </Typography>
 
             <RulesItemText>
               После начала партии случайным образом происходит распределение
@@ -70,7 +78,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Комиссар (ком, шериф)</Typography>
+            <Typography variant="h5" color="primary">
+              Комиссар (ком, шериф)
+            </Typography>
 
             <RulesItemText>
               Комиссар в свой ход может узнать роль любого другого игрока. А
@@ -81,7 +91,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Честный человек (чиж, мир)</Typography>
+            <Typography variant="h5" color="primary">
+              Честный человек (чиж, мир)
+            </Typography>
 
             <RulesItemText>
               Знает только свою роль. Должен помнить, что в игре есть комиссар,
@@ -90,7 +102,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Мафия</Typography>
+            <Typography variant="h5" color="primary">
+              Мафия
+            </Typography>
 
             <RulesItemText>
               Мафия видит свою роль и роль напарника. В первые две минуты у них
@@ -101,7 +115,9 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <Typography variant='h5' color='primary'>Задача в игре</Typography>
+            <Typography variant="h5" color="primary">
+              Задача в игре
+            </Typography>
 
             <RulesItemText>
               Для мафии — убить всех честных жителей, для честных жителей —

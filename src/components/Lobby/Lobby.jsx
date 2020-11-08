@@ -5,7 +5,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 // === material-ui ===
 import { List, ListItem, Typography } from '@material-ui/core';
-import { makeStyles  } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // === components ===
 import Game from './GameInLobby';
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 const Lobby = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const dispatch = useDispatch();
   const lobby = useSelector(state => state.Game.lobby);
 
@@ -46,11 +46,8 @@ const Lobby = () => {
 
   return (
     <section>
-      <Typography
-        variant="h5"
-        className={classes.root}
-      >
-      Текущие игры
+      <Typography variant="h5" className={classes.root}>
+        Текущие игры
       </Typography>
       <List>{games}</List>
     </section>
