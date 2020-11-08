@@ -42,7 +42,9 @@ const Lobby = () => {
       </TitleWrapper>
       <List>{games}</List>
       <ButtonWrapper>
-        <Button onClick={() => console.log('Coздать игру')}>Создать</Button>
+        <Button color="primary" variant="contained">
+          Создать
+        </Button>
       </ButtonWrapper>
     </>
   );
@@ -50,6 +52,7 @@ const Lobby = () => {
 
 const ButtonWrapper = styled('div')({
   width: '100%',
+  margin: '10px 0',
   display: 'flex',
   justifyContent: 'flex-end',
 });
