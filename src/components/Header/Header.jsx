@@ -44,6 +44,15 @@ const Header = props => {
     };
   });
 
+  const RegLink = styled('a')(({ theme }) => {
+    return {
+      '&:hover': {
+        textDecoration: 'none',
+        color: theme.palette.secondary.main,
+      },
+    };
+  });
+
   return (
     <Layout>
       <Wrapper>
@@ -63,7 +72,7 @@ const Header = props => {
         </Container>
         <Container>
           <RegisterPopup active={popup} toggle={() => setPopup(false)} />
-          <a onClick={() => setPopup(true)}>Регистрация</a>
+          <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
           <HeaderLink to="forgotten-password" activeClassName="active">
             Забыли пароль?
           </HeaderLink>
