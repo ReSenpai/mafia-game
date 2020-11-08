@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // === material-ui ===
-import { List, ListItem, Typography } from '@material-ui/core';
+import { Button, List, ListItem, Typography } from '@material-ui/core';
+import { styled } from '@material-ui/core/styles';
 
 // === components ===
 import Game from './GameInLobby';
@@ -36,10 +37,25 @@ const Lobby = () => {
 
   return (
     <>
-      <Typography variant="h6">Текущие игры</Typography>
+      <TitleWrapper>
+        <Typography variant="h6">Текущие игры</Typography>
+      </TitleWrapper>
       <List>{games}</List>
+      <ButtonWrapper>
+        <Button onClick={() => console.log('Coздать игру')}>Создать</Button>
+      </ButtonWrapper>
     </>
   );
 };
+
+const ButtonWrapper = styled('div')({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'flex-end',
+});
+
+const TitleWrapper = styled('div')({
+  padding: '16px',
+});
 
 export default Lobby;
