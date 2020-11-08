@@ -35,6 +35,14 @@ const Chat = ({ chatMessages, addMessage }) => {
     changeMessage('');
   };
 
+  const pressEnter = (event) => {
+    if (event.shiftKey && event.key === 'Enter') return;
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
   return (
     <ChatWrapper>
       <Tabs type="editable-card">
@@ -59,6 +67,7 @@ const Chat = ({ chatMessages, addMessage }) => {
           suffix={<SmileTwoTone />}
           value={messageValue}
           onChange={onChangeMessage}
+          onKeyPress={ pressEnter }
         />
         <Button type="primary" size="large" onClick={sendMessage}>
           Отправить
