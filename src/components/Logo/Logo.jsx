@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 // === assets ===
 import TitleLogo from 'src/assets/icons/MAFIA.svg';
 
