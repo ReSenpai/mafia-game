@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 // === components ===
 import withTheme from 'src/hooks/withTheme';
 import { HeaderContainer } from 'src/components';
-import { Paper, Container } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 // === pages ===
 import {
   ContactsPage,

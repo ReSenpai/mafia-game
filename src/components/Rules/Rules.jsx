@@ -3,8 +3,6 @@ import styled from 'styled-components';
 // === components ===
 import { Layout } from 'src/components';
 import { Typography } from '@material-ui/core';
-// === utils ===
-import { colors } from 'src/utils/variables';
 
 const Rules = () => {
   return (
@@ -133,8 +131,6 @@ const Rules = () => {
 };
 
 export default Rules;
-
-const { red } = colors;
 
 const RulesContainer = styled.div``;
 

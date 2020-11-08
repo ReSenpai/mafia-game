@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-// === utils ===
-import { colors } from '../../utils/variables';
-
 const UserList = () => {
   const data = [
     { avatar: '', name: 'Den Ri', count: 2, isMafia: true },
@@ -50,21 +47,22 @@ const UserList = () => {
 
 export default UserList;
 
-const { white } = colors;
-
 const Wrapper = styled.div`
-  width: fit-content;
-  min-width: 300px;
-  /* background-color: ${white}; */
+  /* width: 100%; */
+  height: 80vh;
+  overflow-y: scroll;
+  flex-grow: 1;
 `;
 
 const StyledText = styled.div`
-  text-align: right;
+  text-align: left;
   padding: 0.5em 0;
 `;
 
 const StyledList = styled.ul`
-  /* background-color: ${white}; */
+  li {
+    padding-left: 0;
+  }
 `;
 
 const StyledListItem = styled.div`
