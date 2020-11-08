@@ -1,70 +1,72 @@
 import { useState } from 'react';
-import { useTheme } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { styled } from '@material-ui/core/styles';
 
 // === components ===
 import { Layout, RegisterPopup } from 'src/components';
 
-const Header = () => {
+const Header = props => {
+  console.log(props);
   const [popup, setPopup] = useState(false);
-  const theme = useTheme();
 
-  const Wrapper = styled.header`
-    display: flex;
-    gap: 2em;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  `;
+  const Wrapper = styled('header')({
+    display: 'flex',
+    gap: '2em',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  });
 
-  const Container = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em;
+  const Container = styled('div')({
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '2em',
+  });
 
-    a {
-      text-decoration: none;
-
-      &:link {
-        color: ${theme.palette.text.main};
-      }
-      &:hover {
-        color: ${theme.palette.text.dark};
-      }
-      &:visited {
-        color: ${theme.palette.text.dark};
-      }
-      &.active {
-        color: ${theme.danger};
-        font-weight: 400;
-      }
-    }
-  `;
+  const HeaderLink = styled(NavLink)(({ theme }) => {
+    return {
+      textDecoration: 'none',
+      '&:link': {
+        textDecoration: 'none',
+      },
+      '&:hover': {
+        textDecoration: 'none',
+        color: theme.palette.primary.main,
+      },
+      '&:visited': {
+        textDecoration: 'none',
+      },
+      '&.active': {
+        color: theme.palette.primary.main,
+        textDecoration: 'none',
+        fontWeight: 400,
+      },
+    };
+  });
 
   return (
     <Layout>
       <Wrapper>
         <Container>
-          <NavLink to="game-rules" activeClassName="active">
+          <HeaderLink to="game-rules" activeClassName="active">
             Правила
-          </NavLink>
-          <NavLink to="watch-game" activeClassName="active">
+          </HeaderLink>
+          <HeaderLink to="watch-game" activeClassName="active">
             Посмотреть игру
-          </NavLink>
-          <NavLink to="lobby" activeClassName="active">
+          </HeaderLink>
+          <HeaderLink to="lobby" activeClassName="active">
             Лобби
-          </NavLink>
-          <NavLink to="contacts" activeClassName="active">
+          </HeaderLink>
+          <HeaderLink to="contacts" activeClassName="active">
             Контакты
-          </NavLink>
+          </HeaderLink>
         </Container>
         <Container>
           <RegisterPopup active={popup} toggle={() => setPopup(false)} />
           <a onClick={() => setPopup(true)}>Регистрация</a>
-          <NavLink to="forgotten-password" activeClassName="active">
+          <HeaderLink to="forgotten-password" activeClassName="active">
             Забыли пароль?
-          </NavLink>
+          </HeaderLink>
         </Container>
       </Wrapper>
     </Layout>
