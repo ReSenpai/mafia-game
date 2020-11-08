@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
-// === antd ===
-import { Tab, Input, Button, Typography, Avatar } from '@material-ui/core';
+// === material-ui ===
+import { Tab, TextField, Button, Typography, Avatar } from '@material-ui/core';
 import { TabPanel } from '@material-ui/lab';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
-import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
 // === utils ===
-import { colors } from '../../utils/variables';
 import { useState } from 'react';
 
 const Chat = ({ chatMessages, addMessage }) => {
@@ -22,7 +20,6 @@ const Chat = ({ chatMessages, addMessage }) => {
 
   const onChangeMessage = event => {
     const text = event.target.value;
-    console.log(text);
     changeMessage(text);
   };
 
@@ -31,20 +28,20 @@ const Chat = ({ chatMessages, addMessage }) => {
     changeMessage('');
   };
 
-  const pressEnter = (event) => {
+  const pressEnter = event => {
     if (event.shiftKey && event.key === 'Enter') return;
     if (event.key === 'Enter') {
       event.preventDefault();
       sendMessage();
     }
-  }
+  };
 
   return (
     <ChatWrapper>
       <Tab type="editable-card">
-        {initialPanes.map(pane => (
-          <TabPanel tab={pane.title} key={pane.key} closable={pane.closable}>
-            {pane.content}
+        {initialPanes.map(({ title, key, closable, content }) => (
+          <TabPanel tab={title} key={key} closable={closable}>
+            {content}
           </TabPanel>
         ))}
       </Tab>
@@ -59,13 +56,14 @@ const Chat = ({ chatMessages, addMessage }) => {
       </ChatMoves>
 
       <ChatForm>
-        <Input
-          placeholder="Введите сообщение"
-          size="large"
-          suffix={<EmojiEmotionsOutlinedIcon />}
+        <TextField
+          fullWidth
+          variant="filled"
+          label="Введите сообщение"
+          size="small"
           value={messageValue}
           onChange={onChangeMessage}
-          onKeyPress={ pressEnter }
+          onKeyPress={pressEnter}
         />
         <Button type="primary" size="large" onClick={sendMessage}>
           Отправить
@@ -90,7 +88,7 @@ const ChatMessagesComponent = ({ chatMessages }) => {
             <Typography type="primary">{user.text}</Typography>
             <ChatItemMessageInfo>
               <ChatItemMessageCtrl>
-                <ThumbUpOutlinedIcon /> {user.likes} <ThumbDownOutlinedIcon />{' '}
+                <ThumbUpOutlinedIcon /> {user.likes} <ThumbDownOutlinedIcon />
                 {user.dislikes}
               </ChatItemMessageCtrl>
               <ChatItemMessageDate>{user.messageTime}</ChatItemMessageDate>
@@ -104,17 +102,12 @@ const ChatMessagesComponent = ({ chatMessages }) => {
 
 export default Chat;
 
-const { white, black } = colors;
-
 const ChatWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  /* background-color: ${white}; */
-  /* color: ${black}; */
-  padding: 0 20px;
   height: 80vh;
+  flex-grow: 1;
 `;
 
 const ChatForm = styled.form`
@@ -130,10 +123,12 @@ const ChatMessages = styled.div`
   gap: 2em;
   overflow-y: scroll;
 `;
+
 const ChatItem = styled.div`
   display: flex;
   gap: 1em;
 `;
+
 const ChatItemMessage = styled.div`
   width: 100%;
   * {
@@ -154,7 +149,6 @@ const ChatItemMessageCtrl = styled.div`
 
   svg {
     cursor: pointer;
-    transform: scale(1.2);
 
     &:hover {
       fill: blue;

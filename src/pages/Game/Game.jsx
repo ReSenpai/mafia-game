@@ -3,9 +3,6 @@ import styled from 'styled-components';
 // === components ===
 import { UserList, Layout, ChatContainer } from '../../components';
 
-// === utils ===
-import { colors } from '../../utils/variables';
-
 const GamePage = () => {
   return (
     <Layout>
@@ -19,10 +16,10 @@ const GamePage = () => {
 
 export default GamePage;
 
-const { white } = colors;
-
 const GameRoom = styled.div`
   display: flex;
   justify-content: space-between;
-  /* background-color: ${white}; */
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4em;
 `;
