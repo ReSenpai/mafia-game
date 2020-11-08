@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 // === components ===
 import { Layout } from 'src/components';
+import { Typography } from '@material-ui/core';
 // === utils ===
 import { colors } from 'src/utils/variables';
 
@@ -11,7 +12,7 @@ const Rules = () => {
         <RulesTitle>Правила</RulesTitle>
         <RulesList>
           <RulesItem>
-            <RulesItemTitle>Как общаться с другими игроками?</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Как общаться с другими игроками?</Typography>
 
             <RulesItemText>
               Если нажать на чей-то ник, то можно написать сообщение,
@@ -22,7 +23,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Как начать игру?</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Как начать игру?</Typography>
 
             <RulesItemText>
               На главной странице можно создать партию самому, нажав кнопку
@@ -34,7 +35,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Как проходит игра?</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Как проходит игра?</Typography>
 
             <RulesItemText>
               Первые две минуты игры уходят на то, чтоб мафия могла обсудить
@@ -59,7 +60,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Какие роли есть в игре?</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Какие роли есть в игре?</Typography>
 
             <RulesItemText>
               После начала партии случайным образом происходит распределение
@@ -69,7 +70,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Комиссар (ком, шериф)</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Комиссар (ком, шериф)</Typography>
 
             <RulesItemText>
               Комиссар в свой ход может узнать роль любого другого игрока. А
@@ -80,7 +81,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Честный человек (чиж, мир)</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Честный человек (чиж, мир)</Typography>
 
             <RulesItemText>
               Знает только свою роль. Должен помнить, что в игре есть комиссар,
@@ -89,7 +90,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Мафия</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Мафия</Typography>
 
             <RulesItemText>
               Мафия видит свою роль и роль напарника. В первые две минуты у них
@@ -100,7 +101,7 @@ const Rules = () => {
           </RulesItem>
 
           <RulesItem>
-            <RulesItemTitle>Задача в игре</RulesItemTitle>
+            <Typography variant='h5' color='primary'>Задача в игре</Typography>
 
             <RulesItemText>
               Для мафии — убить всех честных жителей, для честных жителей —
@@ -140,12 +141,12 @@ const ListItemPar = styled.p`
   margin-left: 10px;
 `;
 
-const RulesItemTitle = styled.div`
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: ${red};
-  line-height: 146%;
-`;
+// const Typography = styled.div`
+//   font-size: 1.5rem;
+//   font-weight: 500;
+//   color: ${red};
+//   line-height: 146%;
+// `;
 
 const RulesItemText = styled.div`
   font-size: 1rem;

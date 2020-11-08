@@ -1,22 +1,26 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { useTheme } from '@material-ui/core/styles';
 
 // === material-ui ===
 import { List, ListItem, Typography } from '@material-ui/core';
+import { makeStyles  } from '@material-ui/core/styles';
 
 // === components ===
-import withTheme from 'src/hooks/withTheme';
 import Game from './GameInLobby';
-
-// === utils ===
-import { colors } from '../../utils/variables';
-const { lightgray } = colors;
 
 // === thunks ===
 import { getGameListThunk } from 'src/redux/reducers/game_reducer';
 
+const useStyles = makeStyles({
+  root: {
+    // color: 'white'
+  },
+});
+
 const Lobby = () => {
+  const classes = useStyles()
   const dispatch = useDispatch();
   const lobby = useSelector(state => state.Game.lobby);
 
@@ -41,15 +45,16 @@ const Lobby = () => {
   });
 
   return (
-    <Container>
-      <Typography variant="h6">Текущие игры</Typography>
+    <section>
+      <Typography
+        variant="h5"
+        className={classes.root}
+      >
+      Текущие игры
+      </Typography>
       <List>{games}</List>
-    </Container>
+    </section>
   );
 };
-
-const Container = styled.div`
-  color: lightgray;
-`;
 
 export default Lobby;

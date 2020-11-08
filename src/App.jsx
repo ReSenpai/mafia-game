@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 // === components ===
 import withTheme from 'src/hooks/withTheme';
 import { HeaderContainer } from 'src/components';
+import { Paper, Container  } from '@material-ui/core'
 // === pages ===
 import {
   ContactsPage,
@@ -18,7 +19,7 @@ import {
 
 const App = () => {
   return (
-    <>
+    <Paper square >
       <HeaderContainer />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -31,7 +32,7 @@ const App = () => {
         <Route path="/current-games" component={CurrentGamesPage} />
         <Route path="*" component={Page404} />
       </Switch>
-    </>
+    </Paper>
   );
 };
 

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 // === styles ===
-import 'normalize.css';
+// import 'normalize.css';
 import './index.css';
 
 import App from './App';

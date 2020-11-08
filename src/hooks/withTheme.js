@@ -5,38 +5,54 @@ import { StylesProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 let palette = {
+  common: {
+    "black": "rgba(50, 50, 50, 1)",
+    "white": "rgba(255, 255, 255, 1)"
+  },
+  background: {
+    "paper": "rgba(37, 37, 37, 1)",
+    "default": "rgba(48, 48, 48, 1)"
+  },
   primary: {
-    main: '#8c2020',
+    "light": "rgba(203, 121, 121, 1)",
+    "main": "rgba(181, 63, 63, 1)",
+    "dark": "rgba(159, 48, 48, 1)",
+    "contrastText": "rgba(217, 217, 217, 1)"
   },
   secondary: {
-    main: '#f3d8d8',
+    "light": "rgba(181, 48, 93, 1)",
+    "main": "rgba(150, 64, 94, 1)",
+    "dark": "rgba(148, 16, 75, 1)",
+    "contrastText": "rgba(211, 211, 211, 1)"
   },
-};
-
-function createTheme(type, primary) {
-  if (type && primary) {
-    palette = {
-      type: type,
-      primary: primary,
-      secondary: { main: '#ef9a9a' },
-    };
+  error: {
+    "light": "#e57373",
+    "main": "#f44336",
+    "dark": "#d32f2f",
+    "contrastText": "rgba(199, 199, 199, 1)"
+  },
+  text: {
+    "primary": "rgba(180, 180, 180, 0.87)",
+    "secondary": "rgba(189, 189, 189, 0.54)",
+    "disabled": "rgba(167, 167, 167, 0.69)",
+    "hint": "rgba(202, 202, 202, 0.38)"
   }
+}
 
+
+function createTheme(type = 'dark') {
   return createMuiTheme({
-    palette,
-    status: {
-      danger: 'orange',
-    },
-    MuiAppBar: {
-      flexDirection: 'row',
-    },
+    palette: {
+      ...palette,
+      type
+    }
   });
 }
 
 function withTheme(WrappedComponent) {
   const ThemeWrapper = props => {
-    const { type, primary } = useSelector(state => state.Game.theme);
-    const theme = createTheme(type, primary);
+    const { type } = useSelector(state => state.Game.theme);
+    const theme = createTheme(type);
 
     return (
       <StylesProvider injectFirst={true}>

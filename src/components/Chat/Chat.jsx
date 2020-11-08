@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
 // === antd ===
-import { Tabs, Input, Button, Typography, Avatar } from 'antd';
-import {
-  UserOutlined,
-  LikeOutlined,
-  DislikeOutlined,
-  SmileTwoTone,
-} from '@ant-design/icons';
-
-const { TabPane } = Tabs;
-const { Text } = Typography;
+import { Tab, Input, Button, Typography, Avatar } from '@material-ui/core';
+import { TabPanel } from '@material-ui/lab';
+import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
+import EmojiEmotionsOutlinedIcon from '@material-ui/icons/EmojiEmotionsOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
 // === utils ===
 import { colors } from '../../utils/variables';
@@ -37,26 +33,26 @@ const Chat = ({ chatMessages, addMessage }) => {
 
   return (
     <ChatWrapper>
-      <Tabs type="editable-card">
+      <Tab type="editable-card">
         {initialPanes.map(pane => (
-          <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>
+          <TabPanel  tab={pane.title} key={pane.key} closable={pane.closable}>
             {pane.content}
-          </TabPane>
+          </TabPanel>
         ))}
-      </Tabs>
+      </Tab>
 
       <ChatMessagesComponent {...{ chatMessages }} />
 
       <ChatMoves>
-        <Text type="secondary">Дадим мафии договориться</Text>
-        <Text type="secondary">Следующий ход через: 2 мин 40 сек</Text>
+        <Typography type="secondary">Дадим мафии договориться</Typography>
+        <Typography type="secondary">Следующий ход через: 2 мин 40 сек</Typography>
       </ChatMoves>
 
       <ChatForm>
         <Input
           placeholder="Введите сообщение"
           size="large"
-          suffix={<SmileTwoTone />}
+          suffix={<EmojiEmotionsOutlinedIcon />}
           value={messageValue}
           onChange={onChangeMessage}
         />
@@ -76,14 +72,14 @@ const ChatMessagesComponent = ({ chatMessages }) => {
           {user.avatar ? (
             <Avatar shape="square" src={user.avatar} />
           ) : (
-            <Avatar shape="square" icon={<UserOutlined />} />
+            <Avatar shape="square" icon={<PermIdentityOutlinedIcon />} />
           )}
           <ChatItemMessage>
-            <Text type="secondary">{user.name}</Text>
-            <Text type="primary">{user.text}</Text>
+            <Typography type="secondary">{user.name}</Typography>
+            <Typography type="primary">{user.text}</Typography>
             <ChatItemMessageInfo>
               <ChatItemMessageCtrl>
-                <LikeOutlined /> {user.likes} <DislikeOutlined />{' '}
+                <ThumbUpOutlinedIcon /> {user.likes} <ThumbDownOutlinedIcon />{' '}
                 {user.dislikes}
               </ChatItemMessageCtrl>
               <ChatItemMessageDate>{user.messageTime}</ChatItemMessageDate>
@@ -104,8 +100,8 @@ const ChatWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  background-color: ${white};
-  color: ${black};
+  /* background-color: ${white}; */
+  /* color: ${black}; */
   padding: 0 20px;
   height: 80vh;
 `;
