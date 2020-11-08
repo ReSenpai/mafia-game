@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-// === antd ===
-import { List, Avatar, Badge, Typography } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-const { Text } = Typography;
+// === ui ===
+import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
 // === utils ===
 import { colors } from '../../utils/variables';
@@ -27,26 +26,23 @@ const UserList = () => {
   return (
     <Wrapper>
       <StyledText>
-        <Text type="secondary">Участники: {data.length}</Text>
+        <Typography type="secondary">Участники: {data.length}</Typography>
       </StyledText>
       <StyledList>
-        <List
-          size="large"
-          bordered
-          dataSource={data}
-          renderItem={item => (
-            <List.Item>
+        <List>
+          {data.map(item => (
+            <ListItem key={item.name}>
               <StyledListItem>
-                <Avatar shape="square" icon={<UserOutlined />} />
+                <Avatar shape="square" icon={<PermIdentityOutlinedIcon />} />
                 <ListItemText>{item.name}</ListItemText>
                 <Badge count={item.count} showZero />
               </StyledListItem>
-            </List.Item>
-          )}
-        />
+            </ListItem>
+          ))}
+        </List>
       </StyledList>
       <StyledText>
-        <Text type="secondary">Мафиози в игре: {countMafia()}</Text>
+        <Typography type="secondary">Мафиози в игре: {countMafia()}</Typography>
       </StyledText>
     </Wrapper>
   );
@@ -59,7 +55,7 @@ const { white } = colors;
 const Wrapper = styled.div`
   width: fit-content;
   min-width: 300px;
-  background-color: ${white};
+  /* background-color: ${white}; */
 `;
 
 const StyledText = styled.div`
@@ -68,7 +64,7 @@ const StyledText = styled.div`
 `;
 
 const StyledList = styled.ul`
-  background-color: ${white};
+  /* background-color: ${white}; */
 `;
 
 const StyledListItem = styled.div`

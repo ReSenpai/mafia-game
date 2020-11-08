@@ -24,5 +24,5 @@ const { white } = colors;
 const GameRoom = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${white};
+  /* background-color: ${white}; */
 `;
