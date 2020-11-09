@@ -1,63 +1,85 @@
-import React from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { styled } from '@material-ui/core/styles';
 
-const Header = () => {
-    return (
-        <Wrapper>
-            <Container>
-                <NavLink to='/game-rules' activeClassName='active'>
-                    Правила игры
-                </NavLink>
-                <NavLink to='/watch-game' activeClassName='active'>
-                    Посмотреть игру
-                </NavLink>
-                <NavLink to='/contacts' activeClassName='active'>
-                    Контакты
-                </NavLink>
-            </Container>
-            <Container>
-                <NavLink to='/register' activeClassName='active'>
-                    Регистрация
-                </NavLink>
-                <NavLink to='/forgotten-password' activeClassName='active'>
-                    Забыли пароль?
-                </NavLink>
-            </Container>
-        </Wrapper>
-    )
-}
+// === components ===
+import { Layout, RegisterPopup } from 'src/components';
+
+const Header = props => {
+  console.log(props);
+  const [popup, setPopup] = useState(false);
+
+  const Wrapper = styled('header')({
+    display: 'flex',
+    gap: '2em',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  });
+
+  const Container = styled('div')({
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '2em',
+  });
+
+  const HeaderLink = styled(NavLink)(({ theme }) => {
+    return {
+      textDecoration: 'none',
+      '&:link': {
+        textDecoration: 'none',
+      },
+      '&:hover': {
+        textDecoration: 'none',
+        color: theme.palette.primary.main,
+      },
+      '&:visited': {
+        textDecoration: 'none',
+      },
+      '&.active': {
+        color: theme.palette.primary.main,
+        textDecoration: 'none',
+        fontWeight: 400,
+      },
+    };
+  });
+
+  const RegLink = styled('a')(({ theme }) => {
+    return {
+      '&:hover': {
+        textDecoration: 'none',
+        color: theme.palette.secondary.main,
+      },
+    };
+  });
+
+  return (
+    <Layout>
+      <Wrapper>
+        <Container>
+          <HeaderLink to="game-rules" activeClassName="active">
+            Правила
+          </HeaderLink>
+          <HeaderLink to="watch-game" activeClassName="active">
+            Посмотреть игру
+          </HeaderLink>
+          <HeaderLink to="lobby" activeClassName="active">
+            Лобби
+          </HeaderLink>
+          <HeaderLink to="contacts" activeClassName="active">
+            Контакты
+          </HeaderLink>
+        </Container>
+        <Container>
+          <RegisterPopup active={popup} toggle={() => setPopup(false)} />
+          <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
+          <HeaderLink to="forgotten-password" activeClassName="active">
+            Забыли пароль?
+          </HeaderLink>
+        </Container>
+      </Wrapper>
+    </Layout>
+  );
+};
 
 export default Header;
-
-const Wrapper = styled.header`
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    width: 100;
-    padding-top: 60px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-`
-
-const Container = styled.div`
-    display: flex;
-    a {
-        text-decoration: none;
-        padding-right: 30px;
-        &:link {
-            color: white;
-        }
-        &:visited {
-            color: white;
-        }
-        &.active {
-            color: red;
-            font-weight: 400;
-            font-size: 18px;
-        }
-    }
-
-    
-`

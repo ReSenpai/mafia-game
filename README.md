@@ -8,6 +8,8 @@ In the project directory, you can run:
 
 `yarn start` - runs the app in the development mode.
 
+`sh dev.sh` - runs the app in the Docker(dev mode)
+
 `yarn build` - builds the app for production to the `build` folder.
 
 `yarn lint` - linting project using ESLint.
@@ -18,8 +20,21 @@ _NOTE_: Please, make sure that you fixed all errors before commit.
 
 ## Tech Stack
 
-* React
-* Redux(thunks)
+* ### Frontend
+  * React
+  * Redux(thunk)
+
+* ### CI/CD
+  * Docker
+  * TravisCI
+
+* ### [Backend](https://github.com/TicTak21/mafia-game-backend)
+  * Koa
+  * GraphQL
+  * MongoDB
+
+* ### Tests
+  * _Soon..._
 
 ## Design on figma [here](https://www.figma.com/file/3UbRLupkyIEUk2U4RkrmY5/Untitled-(Copy)?node-id=0%3A1)
 
