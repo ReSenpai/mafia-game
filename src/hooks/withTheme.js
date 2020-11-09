@@ -19,9 +19,9 @@ let palette = {
     contrastText: 'rgba(217, 217, 217, 1)',
   },
   secondary: {
-    light: 'rgba(181, 48, 93, 1)',
-    main: 'rgba(150, 64, 94, 1)',
-    dark: 'rgba(148, 16, 75, 1)',
+    light: 'rgba(41, 188, 93, 1)',
+    main: 'rgba(70, 134, 94, 1)',
+    dark: 'rgba(16, 150, 75, 1)',
     contrastText: 'rgba(211, 211, 211, 1)',
   },
   error: {
