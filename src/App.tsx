@@ -1,9 +1,13 @@
+import React from 'react';
+
 // === router ===
 import { Route, Switch } from 'react-router-dom';
+
 // === components ===
 import withTheme from 'src/hooks/withTheme';
 import { HeaderContainer } from 'src/components';
 import { Paper } from '@material-ui/core';
+
 // === pages ===
 import {
   ContactsPage,

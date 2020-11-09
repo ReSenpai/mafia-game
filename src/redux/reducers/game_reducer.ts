@@ -1,9 +1,7 @@
-// Небольшой шаблон, как примерно пишутся редьюсеры, экшены, санки.
-
+import { IAction } from 'src/types/index';
 const SET_USER_DATA = 'game/SET_USER_DATA';
 const SET_IS_FETCHING = 'game/SET_IS_FETCHING';
 const SET_GAMES_LIST = 'game/SET_GAMES_LIST';
-
 // const SET_CAPTCHA = 'auth/SET_CAPTCHA';
 
 /**
@@ -63,13 +61,18 @@ const getInitialGame = () => {
   };
 };
 
-let initialState = {
+interface IInitialState {
+  lobby: [];
+  currentGame: Record<string, unknown>;
+  theme: Record<string, unknown>;
+}
+const initialState: IInitialState = {
   lobby: [],
   currentGame: {},
   theme: {},
 };
 
-const gameReducer = (state = initialState, action) => {
+const gameReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case SET_GAMES_LIST: {
       return {
@@ -92,40 +95,22 @@ const gameReducer = (state = initialState, action) => {
  * Actions
  */
 
-// хз как лучше типы описывать, но в редьюсерах совсем без них будет боль, мб их на тс писать?
-
-/**
- * @param {Number} userId
- * @param {String} email
- * @param {String} login
- * @param {Boolean} isAuth
- */
-
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+export const setAuthUserData = (
+  userId: number,
+  email: string,
+  login: string,
+  isAuth: boolean,
+): IAction => ({
   type: SET_USER_DATA,
   payload: { userId, email, login, isAuth },
 });
 
-/**
- * type setIsAuthType = {
- * type: typeof SET_GAMES_LIST,
- * isAuth: boolean
- * }
- */
-
-export const setGamesList = lobby => ({
+export const setGamesList = (lobby: any): IAction => ({
   type: SET_GAMES_LIST,
   payload: { lobby },
 });
 
-/**
- * type setIsFetchingType = {
- * type: typeof SET_IS_FETCHING,
- * isFetching: boolean
- * }
- */
-
-export const setIsFetching = isFetching => ({
+export const setIsFetching = (isFetching: boolean): IAction => ({
   type: SET_IS_FETCHING,
   payload: { isFetching },
 });
@@ -134,9 +119,11 @@ export const setIsFetching = isFetching => ({
  * Thunks. Вся асинхронщина тут.
  */
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
-export const getGameListThunk = (page = 0) => async dispatch => {
+export const getGameListThunk = (page = 0) => async (
+  dispatch: any,
+): Promise<void> => {
   dispatch(setIsFetching(true));
   await sleep(1 * 1e3);
 

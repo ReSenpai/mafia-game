@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 // === assets ===
-import BgImg from 'src/assets/img/main-page-2-bg.png';
+import BgImg from '../../assets/img/main-page-2-bg.png';
 
 // === components ===
 import { Button, LoginPopup, Logo } from 'src/components';

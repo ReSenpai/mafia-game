@@ -1,9 +1,9 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import { StylesProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { StylesProvider, MuiThemeProvider } from '@material-ui/core';
 
-let palette = {
+const palette: Record<string, unknown> = {
   common: {
     black: 'rgba(50, 50, 50, 1)',
     white: 'rgba(255, 255, 255, 1)',
@@ -38,7 +38,12 @@ let palette = {
   },
 };
 
-function createTheme(type = 'dark') {
+enum EThemeType {
+  dark = 'dark',
+  light = 'light',
+}
+
+function createTheme(type: EThemeType = EThemeType.dark) {
   return createMuiTheme({
     palette: {
       ...palette,
@@ -47,9 +52,9 @@ function createTheme(type = 'dark') {
   });
 }
 
-function withTheme(WrappedComponent) {
-  const ThemeWrapper = props => {
-    const { type } = useSelector(state => state.Game.theme);
+function withTheme(WrappedComponent: React.FC) {
+  const ThemeWrapper = (props: any) => {
+    const { type } = useSelector((state: { Game: any }) => state.Game.theme);
     const theme = createTheme(type);
 
     return (

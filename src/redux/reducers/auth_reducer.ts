@@ -1,11 +1,22 @@
 // Небольшой шаблон, как примерно пишутся редьюсеры, экшены, санки.
 
+import { IAction } from '../../types';
+
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_IS_AUTH = 'auth/SET_IS_AUTH';
 const SET_IS_FETCHING = 'auth/SET_IS_FETCHING';
 // const SET_CAPTCHA = 'auth/SET_CAPTCHA';
 
-let initialState = {
+interface IInitialState {
+  userId: number | null;
+  email: string | null;
+  login: string | null;
+  isAuth: boolean;
+  isFetching: boolean;
+  captcha: string | null;
+}
+
+const initialState: IInitialState = {
   userId: null,
   email: null,
   login: null,
@@ -14,7 +25,7 @@ let initialState = {
   captcha: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: IAction): IInitialState => {
   switch (action.type) {
     case SET_USER_DATA: {
       return {
@@ -43,41 +54,22 @@ const authReducer = (state = initialState, action) => {
  * Actions
  */
 
-// хз как лучше типы описывать, но в редьюсерах совсем без них будет боль, мб их на тс писать?
-// Можно хотя бы в jsdoc писать :)
-
-/**
- * @param {Number} userId
- * @param {String} email
- * @param {String} login
- * @param {Boolean} isAuth
- */
-
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+export const setAuthUserData = (
+  userId: number,
+  email: string,
+  login: string,
+  isAuth: boolean,
+): IAction => ({
   type: SET_USER_DATA,
   payload: { userId, email, login, isAuth },
 });
 
-/**
- * type setIsAuthType = {
- * type: typeof SET_IS_AUTH,
- * isAuth: boolean
- * }
- */
-
-export const setIsAuth = isAuth => ({
+export const setIsAuth = (isAuth: boolean): IAction => ({
   type: SET_IS_AUTH,
   payload: { isAuth },
 });
 
-/**
- * type setIsFetchingType = {
- * type: typeof SET_IS_FETCHING,
- * isFetching: boolean
- * }
- */
-
-export const setIsFetching = isFetching => ({
+export const setIsFetching = (isFetching: boolean): IAction => ({
   type: SET_IS_FETCHING,
   payload: { isFetching },
 });
@@ -86,8 +78,10 @@ export const setIsFetching = isFetching => ({
  * Thunks. Вся асинхронщина тут.
  */
 
-export const getAuthUserDataThunk = (time = 8000) => async dispatch => {
-  const sleep = ms => new Promise(r => setTimeout(r, ms));
+export const getAuthUserDataThunk = (time = 8000) => async (
+  dispatch: any,
+): Promise<void> => {
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
   dispatch(setIsFetching(true));
   await sleep(time);

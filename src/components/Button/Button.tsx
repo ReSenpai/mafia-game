@@ -1,16 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === utils ===
 import { colors } from 'src/utils/variables';
 import { buttonReset } from 'src/utils/mixins';
 
-const Button = ({
-  popupOptions = {
-    popup: false,
-    setPopup: () => {},
-  },
-  children = 'войти',
-}) => {
+interface ButtonProps {
+  popupOptions: {
+    popup: false;
+    setPopup: (bool: boolean) => Record<string, unknown>;
+  };
+  children: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({ popupOptions, children }) => {
   const { setPopup } = popupOptions;
 
   return (
@@ -22,7 +25,7 @@ const Button = ({
 
 export default Button;
 
-const { white, crimson } = colors;
+const { crimson, white } = colors;
 
 const ButtonWrapper = styled.div`
   margin: 0 auto;

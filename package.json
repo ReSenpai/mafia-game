@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-dom": "^16.9.9",
     "axios": "^0.21.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -21,6 +22,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "styled-components": "^5.2.1",
+    "typescript": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -28,8 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier \"src/**/*.{js,jsx}\" --write",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --fix"
+    "format": "prettier \"src/**/*.{js,jsx,ts,tsx}\" --write",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "husky": {
     "hooks": {
@@ -55,6 +57,11 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.11",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/styled-components": "^5.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
     "eslint": "^7.12.1",
     "eslint-plugin-react": "^7.21.5",
     "gh-pages": "^3.1.0",

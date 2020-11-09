@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-export function useClickOutside(ref, handler) {
+export function useClickOutside(ref: any, handler: any): void {
   useEffect(() => {
-    const listener = event => {
+    const listener = (event: Event) => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }

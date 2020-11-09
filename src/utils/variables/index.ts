@@ -1,4 +1,4 @@
-export const colors = {
+export const colors: any = {
   white: '#ffffff',
   whitesmoke: '#f4f4f4',
   black: '#000000',
@@ -10,4 +10,4 @@ export const colors = {
   sand: '#fce4ac',
 };
 
-export const transitions = {};
+export const transitions: any = {};

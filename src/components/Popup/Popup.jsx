@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 
 // === assets ===
-import CloseIcon from 'src/assets/icons/remove-gray.svg';
+import CloseIcon from '../../assets/icons/remove-gray.svg';
 
 // === utils ===
 import { useClickOutside } from 'src/hooks/useClickOutside';

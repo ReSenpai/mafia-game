@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 // === router ===
@@ -16,13 +16,13 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 ReactDOM.render(
-  <StrictMode>
+  <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-  </StrictMode>,
+  </React.StrictMode>,
   document.getElementById('root'),
 );
 
