@@ -14,7 +14,9 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ popupOptions, children }) => {
-  const fixMePlease = () => { console.log('Нихера не пришло') };
+  const fixMePlease = () => {
+    console.log('Нихера не пришло');
+  };
   const { setPopup } = popupOptions || fixMePlease;
 
   return (

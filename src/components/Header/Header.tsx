@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 
 // === components ===
 import { Layout, RegisterPopup } from 'src/components';
 
-const Header = props => {
-  console.log(props);
+const Header: React.FC<unknown> = () => {
   const [popup, setPopup] = useState(false);
 
   const Wrapper = styled('header')({
