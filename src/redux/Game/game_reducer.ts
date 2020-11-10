@@ -1,3 +1,4 @@
+import { EThemeType } from './../../hooks/withTheme';
 import getInitialGame, {
   IGetInitialGame,
 } from './../../utils/helpers/date_generators/initial_game_generator';
@@ -8,6 +9,7 @@ export const SET_GAMES_LIST = 'game/SET_GAMES_LIST';
 const initialState = {
   lobby: [] as Array<IGetInitialGame>,
   isFetching: false as boolean,
+  theme: {} as Record<string, unknown>
 };
 
 type InitialStateType = typeof initialState;
