@@ -1,9 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === utils ===
 import { colors } from 'src/utils/variables';
 
-const Label = ({ children }) => {
+interface LabelProps {
+  children: React.ReactNode;
+}
+
+const Label: React.FC<LabelProps> = ({ children }) => {
   return <CustomLabel>{children}</CustomLabel>;
 };
 
