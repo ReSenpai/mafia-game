@@ -1,24 +1,24 @@
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
 
 // === material-ui ===
-import { Tab, TextField, Button, Typography, Avatar } from '@material-ui/core';
-import { TabPanel } from '@material-ui/lab';
+import { TextField, Button, Typography, Avatar } from '@material-ui/core';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-// === utils ===
-import { useState } from 'react';
+// === types ===
+import { IChatMessage } from 'src/types';
 
-const Chat = ({ chatMessages, addMessage }) => {
-  const initialPanes = [
-    { title: 'Общий чат', key: '1' },
-    { title: 'Логово мафии', key: '2' },
-  ];
+interface ChatProps {
+  chatMessages: IChatMessage[];
+  addMessage: any;
+}
 
+const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
   const [messageValue, changeMessage] = useState('');
 
-  const onChangeMessage = event => {
+  const onChangeMessage = (event: ChangeEvent<HTMLInputElement>) => {
     const text = event.target.value;
     changeMessage(text);
   };
@@ -28,7 +28,7 @@ const Chat = ({ chatMessages, addMessage }) => {
     changeMessage('');
   };
 
-  const pressEnter = event => {
+  const pressEnter = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.shiftKey && event.key === 'Enter') return;
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -38,19 +38,11 @@ const Chat = ({ chatMessages, addMessage }) => {
 
   return (
     <ChatWrapper>
-      <Tab type="editable-card">
-        {initialPanes.map(({ title, key, closable, content }) => (
-          <TabPanel tab={title} key={key} closable={closable}>
-            {content}
-          </TabPanel>
-        ))}
-      </Tab>
-
-      <ChatMessagesComponent {...{ chatMessages }} />
+      <ChatMessagesComponent {...chatMessages} />
 
       <ChatMoves>
-        <Typography type="secondary">Дадим мафии договориться</Typography>
-        <Typography type="secondary">
+        <Typography color="secondary">Дадим мафии договориться</Typography>
+        <Typography color="secondary">
           Следующий ход через: 2 мин 40 сек
         </Typography>
       </ChatMoves>
@@ -65,7 +57,7 @@ const Chat = ({ chatMessages, addMessage }) => {
           onChange={onChangeMessage}
           onKeyPress={pressEnter}
         />
-        <Button type="primary" size="large" onClick={sendMessage}>
+        <Button size="large" onClick={sendMessage}>
           Отправить
         </Button>
       </ChatForm>
@@ -73,19 +65,21 @@ const Chat = ({ chatMessages, addMessage }) => {
   );
 };
 
-const ChatMessagesComponent = ({ chatMessages }) => {
+const ChatMessagesComponent = (chatMessages: IChatMessage[]) => {
   return (
     <ChatMessages>
       {chatMessages.map(user => (
         <ChatItem key={user.id}>
           {user.avatar ? (
-            <Avatar shape="square" src={user.avatar} />
+            <Avatar variant="square" src={user.avatar} />
           ) : (
-            <Avatar shape="square" icon={<PermIdentityOutlinedIcon />} />
+            <Avatar variant="square">
+              <PermIdentityOutlinedIcon />
+            </Avatar>
           )}
           <ChatItemMessage>
-            <Typography type="secondary">{user.name}</Typography>
-            <Typography type="primary">{user.text}</Typography>
+            <Typography color="secondary">{user.name}</Typography>
+            <Typography color="primary">{user.text}</Typography>
             <ChatItemMessageInfo>
               <ChatItemMessageCtrl>
                 <ThumbUpOutlinedIcon /> {user.likes} <ThumbDownOutlinedIcon />
