@@ -1,7 +1,9 @@
+import React from 'react';
+
 // === components ===
 import { Rules } from 'src/components';
 
-const GameRulesPage = () => {
+const GameRulesPage: React.FC = () => {
   return <Rules />;
 };
 

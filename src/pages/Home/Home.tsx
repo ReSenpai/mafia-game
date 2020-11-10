@@ -1,7 +1,9 @@
+import React from 'react';
+
 // === components ===
 import { Main } from 'src/components';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return <Main />;
 };
 
