@@ -1,6 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
