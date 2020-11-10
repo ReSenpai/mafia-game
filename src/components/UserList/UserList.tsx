@@ -1,10 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === ui ===
 import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-const UserList = () => {
+const UserList: React.FC = () => {
   const data = [
     { avatar: '', name: 'Den Ri', count: 2, isMafia: true },
     { avatar: '', name: 'Зомби Ich bin Roboter🧟‍♂️', count: 4, isMafia: false },
@@ -23,23 +24,27 @@ const UserList = () => {
   return (
     <Wrapper>
       <StyledText>
-        <Typography type="secondary">Участники: {data.length}</Typography>
+        <Typography color="secondary">Участники: {data.length}</Typography>
       </StyledText>
       <StyledList>
         <List>
           {data.map(item => (
             <ListItem key={item.name}>
               <StyledListItem>
-                <Avatar shape="square" icon={<PermIdentityOutlinedIcon />} />
+                <Avatar variant="square">
+                  <PermIdentityOutlinedIcon />
+                </Avatar>
                 <ListItemText>{item.name}</ListItemText>
-                <Badge count={item.count} showZero />
+                <Badge badgeContent={item.count} />
               </StyledListItem>
             </ListItem>
           ))}
         </List>
       </StyledList>
       <StyledText>
-        <Typography type="secondary">Мафиози в игре: {countMafia()}</Typography>
+        <Typography color="secondary">
+          Мафиози в игре: {countMafia()}
+        </Typography>
       </StyledText>
     </Wrapper>
   );

@@ -21,16 +21,27 @@ const getInitialGame = (): IGetInitialGame => {
   const id = Math.random();
   const size = (5 + id * 20) ^ 0;
 
-  const names = ['Lupusregina[beta]', 'Den Ri', 'Зомби Ich bin Roboter', 'Bunk Bunkovich', 
-    'Aleksander irreligious86', 'Anton Miroshnichenko', 'Ilya Kozyura', 'Chingiz Mamyev', 
-    'pacificescape'];
+  const names = [
+    'Lupusregina[beta]',
+    'Den Ri',
+    'Зомби Ich bin Roboter',
+    'Bunk Bunkovich',
+    'Aleksander irreligious86',
+    'Anton Miroshnichenko',
+    'Ilya Kozyura',
+    'Chingiz Mamyev',
+    'pacificescape',
+  ];
 
   return {
     id,
     name: 'Game name ' + ((id * 1000) ^ 0),
     date: new Date(),
     size,
-    players: [...names.map(name => ({name: name, id: Math.random()}))].slice(0, size),
+    players: [...names.map(name => ({ name: name, id: Math.random() }))].slice(
+      0,
+      size,
+    ),
     status: 9 < size ? 1 : 0, // 1 - open, 0 -- close ???
   };
 };

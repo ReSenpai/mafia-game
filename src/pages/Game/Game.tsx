@@ -1,9 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === components ===
 import { UserList, Layout, ChatContainer } from '../../components';
 
-const GamePage = () => {
+const GamePage: React.FC = () => {
   return (
     <Layout>
       <GameRoom>

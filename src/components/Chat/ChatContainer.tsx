@@ -1,10 +1,22 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addMessage, getChatMessagesThunk } from 'src/redux/Chat/chat_reducer';
 import { getChatMessages } from 'src/redux/Chat/chat_selectors';
 import Chat from './Chat';
+import { IChatMessage } from 'src/types';
+import { ThunkType } from 'src/redux/Auth/types';
+import { IAddMessage } from 'src/redux/Chat/types';
 
-const ChatContainer = ({ chatMessages, getChatMessagesThunk, addMessage }) => {
+interface ChatContainerProps {
+  chatMessages: IChatMessage[];
+  getChatMessagesThunk: ThunkType;
+  addMessage: IAddMessage;
+}
+const ChatContainer: React.FC<any> = ({
+  chatMessages,
+  getChatMessagesThunk,
+  addMessage,
+}) => {
   useEffect(() => {
     getChatMessagesThunk();
   }, []);
@@ -12,7 +24,7 @@ const ChatContainer = ({ chatMessages, getChatMessagesThunk, addMessage }) => {
   return <Chat {...{ chatMessages, addMessage }} />;
 };
 
-const mapDispatchToProps = state => ({
+const mapDispatchToProps = (state: any) => ({
   chatMessages: getChatMessages(state),
 });
 

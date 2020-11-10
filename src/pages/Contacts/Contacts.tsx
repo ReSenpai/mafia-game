@@ -1,10 +1,12 @@
+import React from 'react';
+
 // === material-ui ===
 import { Box, Link } from '@material-ui/core';
 
 // === components ===
 import { Layout } from 'src/components';
 
-const ContactsPage = () => {
+const ContactsPage: React.FC = () => {
   return (
     <Layout>
       <Box textAlign="center">

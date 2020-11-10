@@ -1,8 +1,13 @@
+import React from 'react';
 import styled from 'styled-components';
 import { LinearProgress } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-const Game = ({ game }) => {
+interface GameProps {
+  game: any;
+}
+
+const Game: React.FC<GameProps> = ({ game }) => {
   const date =
     game.date.getDate() +
     '.' +

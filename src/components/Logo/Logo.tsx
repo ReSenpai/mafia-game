@@ -1,9 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === assets ===
 import TitleLogo from '../../assets/icons/MAFIA.svg';
 
-const Logo = ({ size }) => {
+interface LogoProps {
+  size?: number;
+}
+
+const Logo: React.FC<LogoProps> = ({ size }) => {
   return (
     <LogoWrapper size={size}>
       <img src={TitleLogo} alt="Mafia logo" />
@@ -17,7 +22,7 @@ const LogoWrapper = styled.div`
   width: 100%;
   height: auto;
   margin: 0 auto;
-  max-width: ${({ size }) => size};
+  max-width: ${(props: LogoProps) => props.size};
 
   img {
     width: 100%;

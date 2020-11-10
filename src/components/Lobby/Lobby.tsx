@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // === material-ui ===
@@ -11,9 +11,9 @@ import Game from './GameInLobby';
 // === thunks ===
 import { getGameListThunk } from 'src/redux/Game/game_reducer';
 
-const Lobby = () => {
+const Lobby: React.FC = () => {
   const dispatch = useDispatch();
-  const lobby = useSelector(state => state.Game.lobby);
+  const lobby = useSelector((state: any) => state.Game.lobby);
 
   const getGamesList = useCallback(
     groupId => {
@@ -24,10 +24,10 @@ const Lobby = () => {
 
   if (!lobby.length) {
     console.log('lobby is emty');
-    getGamesList();
+    getGamesList(1);
   }
 
-  const games = lobby.map(game => {
+  const games = lobby.map((game: any) => {
     return (
       <ListItem dense={true} divider={true} key={game.id}>
         <Game game={game} />

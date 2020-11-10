@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { Ref, useRef } from 'react';
 import styled from 'styled-components';
 
 // === assets ===
@@ -9,12 +9,18 @@ import { useClickOutside } from 'src/hooks/useClickOutside';
 import { buttonReset, lessThen } from 'src/utils/mixins';
 import { colors } from 'src/utils/variables';
 
-const Popup = ({ children, active, toggle }) => {
-  const ref = useRef();
+export interface PopupProps {
+  children?: React.ReactNode;
+  active: boolean;
+  toggle: () => void;
+}
+
+const Popup: React.FC<PopupProps> = ({ children, active, toggle }) => {
+  const ref: Ref<any> = useRef();
   useClickOutside(ref, toggle);
 
   return (
-    <Container active={active}>
+    <Container active={active} toggle={toggle}>
       <Modal ref={ref}>
         <ModalClose>
           <button onClick={toggle}>
@@ -32,7 +38,7 @@ export default Popup;
 const { white, darkgray } = colors;
 
 const Container = styled.div`
-  display: ${props => (props.active ? 'block' : 'none')};
+  display: ${(props: PopupProps) => (props.active ? 'block' : 'none')};
   position: absolute;
   z-index: 1;
   left: 0;
@@ -52,10 +58,6 @@ const Modal = styled.div`
   max-width: 800px;
   background-color: ${darkgray};
   padding: 1em 2em;
-
-  ${lessThen.sm`
-    width: 90%;
-  `}
 `;
 
 const ModalClose = styled.div`
