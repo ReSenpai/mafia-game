@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === components ===
@@ -5,8 +6,9 @@ import { Button, Input, Popup } from 'src/components';
 
 // === utils ===
 import { colors } from 'src/utils/variables';
+import { PopupProps } from '../Popup/Popup';
 
-const RegisterPopup = ({ active, toggle }) => {
+const RegisterPopup: React.FC<PopupProps> = ({ active, toggle }) => {
   return (
     <Popup {...{ active, toggle }}>
       <ModalTitle>Регистрация</ModalTitle>
@@ -30,7 +32,16 @@ const RegisterPopup = ({ active, toggle }) => {
           <Label>Пароль</Label>
           <Input type="password" />
         </ModalFormItem>
-        <Button>регистрация</Button>
+        <Button
+          popupOptions={{
+            popup: false,
+            setPopup: () => {
+              console.log('Delete this');
+            },
+          }}
+        >
+          регистрация
+        </Button>
       </ModalForm>
     </Popup>
   );
