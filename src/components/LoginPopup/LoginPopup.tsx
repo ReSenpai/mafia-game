@@ -23,7 +23,16 @@ const LoginPopup: React.FC<PopupProps> = ({ active, toggle }) => {
           <Input type="password" />
         </ModalFormItem>
 
-        <Button>войти</Button>
+        <Button
+          popupOptions={{
+            popup: false,
+            setPopup: () => {
+              console.log('Нихера не пришло');
+            },
+          }}
+        >
+          войти
+        </Button>
       </ModalForm>
     </Popup>
   );

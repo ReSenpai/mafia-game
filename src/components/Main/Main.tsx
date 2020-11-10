@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 // === assets ===
@@ -7,7 +7,7 @@ import BgImg from '../../assets/img/main-page-2-bg.png';
 // === components ===
 import { Button, LoginPopup, Logo } from 'src/components';
 
-const Main = () => {
+const Main: React.FC = () => {
   const [popup, setPopup] = useState(false);
 
   return (

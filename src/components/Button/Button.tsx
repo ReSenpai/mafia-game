@@ -6,18 +6,15 @@ import { colors } from 'src/utils/variables';
 import { buttonReset } from 'src/utils/mixins';
 
 interface ButtonProps {
-  popupOptions?: {
-    popup: false;
-    setPopup: (bool: boolean) => Record<string, unknown>;
+  popupOptions: {
+    popup: boolean;
+    setPopup: any;
   };
   children: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({ popupOptions, children }) => {
-  const fixMePlease = () => {
-    console.log('Нихера не пришло');
-  };
-  const { setPopup } = popupOptions || fixMePlease;
+  const { setPopup } = popupOptions;
 
   return (
     <ButtonWrapper>

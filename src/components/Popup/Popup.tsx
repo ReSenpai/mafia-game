@@ -10,7 +10,7 @@ import { buttonReset, lessThen } from 'src/utils/mixins';
 import { colors } from 'src/utils/variables';
 
 export interface PopupProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   active: boolean;
   toggle: () => void;
 }
