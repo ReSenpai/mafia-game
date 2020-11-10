@@ -9,7 +9,7 @@ import { styled } from '@material-ui/core/styles';
 import Game from './GameInLobby';
 
 // === thunks ===
-import { getGameListThunk } from 'src/redux/reducers/game_reducer';
+import { getGameListThunk } from 'src/redux/Game/game_reducer';
 
 const Lobby = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-  addMessage,
-  getChatMessagesThunk,
-} from 'src/redux/reducers/chat_reducer';
-import { getChatMessages } from 'src/redux/reducers/chat_selectors';
+import { addMessage, getChatMessagesThunk } from 'src/redux/Chat/chat_reducer';
+import { getChatMessages } from 'src/redux/Chat/chat_selectors';
 import Chat from './Chat';
 
 const ChatContainer = ({ chatMessages, getChatMessagesThunk, addMessage }) => {

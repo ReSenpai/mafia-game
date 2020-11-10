@@ -1,8 +1,3 @@
-export interface IAction<T = string> {
-  type: T;
-  payload: any;
-}
-
 export interface IChatMessage {
   id: number;
   avatar: string;

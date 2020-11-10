@@ -1,33 +1,39 @@
-import { IAction } from '../../types';
 import { chatAPI } from '../../api/api';
 import { IChatMessage } from '../../types';
+import {
+  ActionsTypes,
+  IAddMessage,
+  ISetChatMessages,
+  ISetIsFetching,
+  ThunkType,
+} from './types';
 
-const SET_CHAT_MESSAGES = 'chat/SET_CHAT_MESSAGES';
-const SET_IS_FETCHING = 'chat/SET_IS_FETCHING';
-const ADD_MESSAGE = 'chat/ADD_MESSAGE';
-
-interface IInitialState {
-  chatMessages: [];
-  isFetching: boolean;
-}
-
-const initialState: IInitialState = {
-  chatMessages: [],
-  isFetching: false,
+export const SET_CHAT_MESSAGES = 'chat/SET_CHAT_MESSAGES';
+export const SET_IS_FETCHING = 'chat/SET_IS_FETCHING';
+export const ADD_MESSAGE = 'chat/ADD_MESSAGE';
+// Более сокращенная и удобная типизация initial стэйта
+const initialState = {
+  chatMessages: [] as Array<IChatMessage>,
+  isFetching: false as boolean,
 };
 
-const chatReducer = (state = initialState, action: IAction) => {
+type InitialStateType = typeof initialState;
+
+const chatReducer = (
+  state = initialState,
+  action: ActionsTypes,
+): InitialStateType => {
   switch (action.type) {
     case SET_CHAT_MESSAGES: {
       return {
         ...state,
-        chatMessages: [...state.chatMessages, ...action.payload.chatMessages],
+        chatMessages: [...state.chatMessages, ...action.chatMessages],
       };
     }
     case SET_IS_FETCHING: {
       return {
         ...state,
-        isFetching: action.payload.isFetching,
+        isFetching: action.isFetching,
       };
     }
     case ADD_MESSAGE: {
@@ -40,7 +46,7 @@ const chatReducer = (state = initialState, action: IAction) => {
             avatar:
               'https://www.myinstants.com/media/instants_images/van-darkholme.jpg.pagespeed.ce.vKDHBPAGKh.jpg',
             name: 'Van',
-            text: action.payload.message,
+            text: action.message,
             likes: 0,
             dislikes: 0,
             messageTime: '06 Ноября 17:38',
@@ -55,28 +61,26 @@ const chatReducer = (state = initialState, action: IAction) => {
 
 // Actions
 
-export const setChatMessages = (chatMessages: IChatMessage[]): IAction => ({
+export const setChatMessages = (
+  chatMessages: Array<IChatMessage>,
+): ISetChatMessages => ({
   type: SET_CHAT_MESSAGES,
-  payload: {
-    chatMessages,
-  },
+  chatMessages,
 });
-export const setIsFetching = (isFetching: boolean): IAction => ({
+export const setIsFetching = (isFetching: boolean): ISetIsFetching => ({
   type: SET_IS_FETCHING,
-  payload: {
-    isFetching,
-  },
+  isFetching,
 });
-export const addMessage = (message: string): IAction => ({
+export const addMessage = (message: string): IAddMessage => ({
   type: ADD_MESSAGE,
-  payload: { message },
+  message,
 });
 
 // Thunks
 
-export const getChatMessagesThunk = (time = 1000) => async (
-  dispatch: any,
-): Promise<void> => {
+export const getChatMessagesThunk = (
+  time = 1000,
+): ThunkType => async dispatch => {
   const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
   dispatch(setIsFetching(true));
