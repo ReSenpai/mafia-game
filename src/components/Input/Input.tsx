@@ -1,8 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 // === utils ===
 import { colors } from 'src/utils/variables';
 
-const Input = props => {
+const Input: React.FC = props => {
   return <CustomInput {...props} />;
 };
 
