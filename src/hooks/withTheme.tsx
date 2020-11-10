@@ -56,7 +56,7 @@ function createTheme(type: EThemeType = EThemeType.dark) {
 function withTheme(WrappedComponent: React.FC) {
   const ThemeWrapper = (props: any) => {
     const { type } = useSelector((state: AppStateType) => state.Game.theme);
-    const theme = createTheme(type);
+    const theme = createTheme(type as EThemeType);
 
     return (
       <StylesProvider injectFirst={true}>

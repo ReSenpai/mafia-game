@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as chatMessagesData from './emulation_request/chat_data.json';
+import chatMessagesData from './emulation_request/chat_data';
 import { IChatMessage } from 'src/types';
 
 axios.create({

@@ -1,4 +1,4 @@
-[
+export default [
     {   
         "id": 1,
         "avatar" : "https://i.ibb.co/XtHBbNn/photo-2020-02-16-13-15-55.jpg",

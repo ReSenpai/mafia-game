@@ -1,4 +1,3 @@
-import { EThemeType } from './../../hooks/withTheme';
 import getInitialGame, {
   IGetInitialGame,
 } from './../../utils/helpers/date_generators/initial_game_generator';
