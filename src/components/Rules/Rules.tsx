@@ -1,10 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 
 // === components ===
 import { Layout } from 'src/components';
 import { Typography } from '@material-ui/core';
 
-const Rules = () => {
+const Rules: React.FC = () => {
   return (
     <Layout>
       <RulesContainer>
