@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // === utils ===
 import { colors } from 'src/utils/variables';
 
-const Input: React.FC = props => {
+const Input: React.FC<any> = props => {
   return <CustomInput {...props} />;
 };
 

@@ -6,7 +6,7 @@ import { colors } from 'src/utils/variables';
 import { buttonReset } from 'src/utils/mixins';
 
 interface ButtonProps {
-  popupOptions: {
+  popupOptions?: {
     popup: false;
     setPopup: (bool: boolean) => Record<string, unknown>;
   };
