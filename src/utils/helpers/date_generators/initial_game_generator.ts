@@ -21,49 +21,16 @@ const getInitialGame = (): IGetInitialGame => {
   const id = Math.random();
   const size = (5 + id * 20) ^ 0;
 
+  const names = ['Lupusregina[beta]', 'Den Ri', 'Зомби Ich bin Roboter', 'Bunk Bunkovich', 
+    'Aleksander irreligious86', 'Anton Miroshnichenko', 'Ilya Kozyura', 'Chingiz Mamyev', 
+    'pacificescape'];
+
   return {
     id,
     name: 'Game name ' + ((id * 1000) ^ 0),
     date: new Date(),
     size,
-    players: [
-      {
-        name: 'Lupusregina[beta]',
-        id: Math.random(),
-      },
-      {
-        name: 'Den Ri',
-        id: Math.random(),
-      },
-      {
-        name: 'Зомби Ich bin Roboter',
-        id: Math.random(),
-      },
-      {
-        name: 'Bunk Bunkovich',
-        id: Math.random(),
-      },
-      {
-        name: 'Aleksander irreligious86',
-        id: Math.random(),
-      },
-      {
-        name: 'Anton Miroshnichenko',
-        id: Math.random(),
-      },
-      {
-        name: 'Ilya Kozyura',
-        id: Math.random(),
-      },
-      {
-        name: 'Chingiz Mamyev',
-        id: Math.random(),
-      },
-      {
-        name: 'pacificescape',
-        id: Math.random(),
-      },
-    ].slice(0, size),
+    players: [...names.map(name => ({name: name, id: Math.random()}))].slice(0, size),
     status: 9 < size ? 1 : 0, // 1 - open, 0 -- close ???
   };
 };
