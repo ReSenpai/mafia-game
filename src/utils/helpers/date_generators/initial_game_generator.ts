@@ -35,7 +35,7 @@ const getInitialGame = (): IGetInitialGame => {
 
   return {
     id,
-    name: 'Game name ' + ((id * 1000) ^ 0),
+    name: ((id * 1000) ^ 0).toString(),
     date: new Date(),
     size,
     players: [...names.map(name => ({ name: name, id: Math.random() }))].slice(

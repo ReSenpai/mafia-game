@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 
 // === components ===
-import { Layout, RegisterPopup } from 'src/components';
+import { Layout } from 'src/components';
 
 const Header: React.FC<unknown> = () => {
-  const [popup, setPopup] = useState(false);
-
   const Wrapper = styled('header')({
     display: 'flex',
     gap: '2em',
@@ -70,8 +68,7 @@ const Header: React.FC<unknown> = () => {
           </HeaderLink>
         </Container>
         <Container>
-          <RegisterPopup active={popup} toggle={() => setPopup(false)} />
-          <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
+          <RegLink>Регистрация</RegLink>
           <HeaderLink to="forgotten-password" activeClassName="active">
             Забыли пароль?
           </HeaderLink>

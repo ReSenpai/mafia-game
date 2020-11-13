@@ -22,8 +22,10 @@ const Game: React.FC<GameProps> = ({ game }) => {
       <FirstLine>
         <div>
           <Date>{date}</Date>
-          <Title>{game.name}</Title>
-          <MaxPlayers>Максимальное количество игроков: {game.size}</MaxPlayers>
+          <Title># {game.name}</Title>
+          <MaxPlayers>
+            Игроков: {game.players.length} / {game.size}
+          </MaxPlayers>
         </div>
         <div>
           <span>Ожидает {game.size - game.players.length} участников</span>
@@ -43,24 +45,22 @@ const Game: React.FC<GameProps> = ({ game }) => {
 
 const FirstLine = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  gap: 1em;
   margin-bottom: 10px;
 
-  div > * {
-    vertical-align: middle;
-    display: inline-block;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
   }
 `;
 
-const Date = styled.span`
-  padding-right: 10px;
-`;
-const Title = styled.span`
-  padding-right: 10px;
-`;
-const MaxPlayers = styled.span`
-  padding-left: 10px;
-`;
+const Date = styled.span``;
+const Title = styled.span``;
+const MaxPlayers = styled.span``;
 
 const IconWrapper = styled.div``;
 
