@@ -7,6 +7,7 @@ import { styled } from '@material-ui/core/styles';
 
 // === components ===
 import Game from './GameInLobby';
+import CenteredSpinner from '../CenteredSpinner/CenteredSpinner';
 
 // === thunks ===
 import { getGameListThunk } from 'src/redux/Game/game_reducer';
@@ -40,7 +41,9 @@ const Lobby: React.FC = () => {
       <TitleWrapper>
         <Typography variant="h6">Текущие игры</Typography>
       </TitleWrapper>
-      <List>{games}</List>
+
+      {games ? <List>{games}</List> : <CenteredSpinner />}
+
       <ButtonWrapper>
         <Button color="primary" variant="contained">
           Создать
