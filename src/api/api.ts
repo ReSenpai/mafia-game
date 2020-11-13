@@ -3,7 +3,7 @@ import chatMessagesData from './emulation_request/chat_data';
 import { IChatMessage } from 'src/types';
 
 axios.create({
-  baseURL: 'base-api-url',
+  baseURL: 'https://mafia-game-backend-api.herokuapp.com/graphql',
 });
 
 export const chatAPI = {
