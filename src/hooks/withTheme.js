@@ -10,7 +10,6 @@ let palette = {
   },
   background: {
     paper: '#171717',
-    default: 'rgba(48, 48, 48, 1)',
   },
   primary: {
     light: 'rgba(203, 121, 121, 1)',
@@ -31,7 +30,7 @@ let palette = {
     contrastText: 'rgba(199, 199, 199, 1)',
   },
   text: {
-    primary: 'rgba(180, 180, 180, 0.87)',
+    primary: 'rgba(200, 200, 200, 0.87)',
     secondary: 'rgba(189, 189, 189, 0.54)',
     disabled: 'rgba(167, 167, 167, 0.69)',
     hint: 'rgba(202, 202, 202, 0.38)',

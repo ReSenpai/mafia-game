@@ -15,6 +15,8 @@ const Header = props => {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
+    zIndex: 10,
+    position: 'relative',
   });
 
   const Container = styled('div')({

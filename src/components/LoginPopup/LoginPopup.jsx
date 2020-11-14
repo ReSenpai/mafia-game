@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-
 // === components ===
 import { Button, Input, Popup } from 'src/components';
+import { styled } from '@material-ui/core/styles';
 
 // === utils ===
 import { colors } from 'src/utils/variables';
@@ -29,33 +28,31 @@ const LoginPopup = ({ active, toggle }) => {
 
 export default LoginPopup;
 
-const { lightgray } = colors;
+const ModalTitle = styled('div')({
+  fontSize: '3rem',
+  textAlign: 'center',
+})
 
-const ModalTitle = styled.div`
-  font-size: 3rem;
-  text-align: center;
-`;
+const ModalForm = styled('form')({
+  display: 'flex',
+  gap: '2em',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '2em',
 
-const ModalForm = styled.form`
-  display: flex;
-  gap: 2em;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2em;
-
-  input {
-    margin-top: 0.5em;
+  input: {
+    marginTop: '0.5em',
   }
-`;
+})
 
-const ModalFormLabel = styled.label`
-  display: block;
-  text-align: left;
-  color: ${lightgray};
-`;
+const ModalFormLabel = styled('label')({
+  display: 'block',
+  textAlign: 'left',
+  // color: '${lightgray}',
+})
 
-const ModalFormItem = styled.div`
-  text-align: center;
-  width: 100%;
-`;
+const ModalFormItem = styled('div')({
+  textAlign: 'center',
+  width: '100%',
+})
