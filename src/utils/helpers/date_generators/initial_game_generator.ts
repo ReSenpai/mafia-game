@@ -16,7 +16,9 @@ export interface IGetInitialGame {
   players: Array<TPlayer>;
   status: EStatus;
 }
-
+/**
+ * Generates and receives a test copy of the game room
+ */
 const getInitialGame = (): IGetInitialGame => {
   const id = Math.random();
   const size = (5 + id * 20) ^ 0;
