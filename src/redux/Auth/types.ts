@@ -2,6 +2,15 @@ import { ThunkAction } from 'redux-thunk';
 import { AppStateType } from '..';
 import { SET_IS_AUTH, SET_IS_FETCHING, SET_USER_DATA } from './auth_reducer';
 
+export interface IInitialState {
+  userId: number | null;
+  email: string | null;
+  login: string | null;
+  isAuth: boolean;
+  isFetching: boolean;
+  captcha: string | null;
+}
+
 export interface ISetAuthUserData {
   type: typeof SET_USER_DATA;
   payload: {

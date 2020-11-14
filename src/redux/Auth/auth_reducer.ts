@@ -1,5 +1,6 @@
 import {
   ActionsTypes,
+  IInitialState,
   ISetAuthUserData,
   ISetIsAuth,
   ISetIsFetchingAuth,
@@ -10,21 +11,20 @@ export const SET_USER_DATA = 'auth/SET_USER_DATA';
 export const SET_IS_AUTH = 'auth/SET_IS_AUTH';
 export const SET_IS_FETCHING = 'auth/SET_IS_FETCHING';
 
-const initialState = {
-  userId: null as number | null,
-  email: null as string | null,
-  login: null as string | null,
-  isAuth: false as boolean,
-  isFetching: false as boolean,
-  captcha: null as string | null,
+const initialState: IInitialState = {
+  userId: null,
+  email: null,
+  login: null,
+  isAuth: false,
+  isFetching: false,
+  captcha: null,
 };
 
-type InitialStateType = typeof initialState;
 
 const authReducer = (
   state = initialState,
   action: ActionsTypes,
-): InitialStateType => {
+): IInitialState => {
   switch (action.type) {
     case SET_USER_DATA: {
       return {
