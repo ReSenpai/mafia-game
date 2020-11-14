@@ -1,22 +1,22 @@
+import { sleep } from './../../utils/helpers/timers/timers';
 import getInitialGame, {
   IGetInitialGame,
 } from './../../utils/helpers/date_generators/initial_game_generator';
-import { ISetGamesList, ISetIsFetching, TActions, ThunkType } from './types';
+import { IInitialState, ISetGamesList, ISetIsFetching, TActions, ThunkType } from './types';
+
 export const SET_IS_FETCHING = 'game/SET_IS_FETCHING';
 export const SET_GAMES_LIST = 'game/SET_GAMES_LIST';
 
-const initialState = {
-  lobby: [] as Array<IGetInitialGame>,
-  isFetching: false as boolean,
-  theme: {} as Record<string, unknown>,
+const initialState: IInitialState = {
+  lobby: [],
+  isFetching: false,
+  theme: {},
 };
-
-type InitialStateType = typeof initialState;
 
 const gameReducer = (
   state = initialState,
   action: TActions,
-): InitialStateType => {
+): IInitialState => {
   switch (action.type) {
     case SET_GAMES_LIST: {
       return {
@@ -35,22 +35,26 @@ const gameReducer = (
   }
 };
 
-// Actions
-
+/**
+ * Adds a copy of the game room to the store
+ * @param lobby 
+ */
 export const setGamesList = (lobby: Array<IGetInitialGame>): ISetGamesList => ({
   type: SET_GAMES_LIST,
   lobby,
 });
-
+/**
+ * Download status switch
+ */
 export const setIsFetching = (isFetching: boolean): ISetIsFetching => ({
   type: SET_IS_FETCHING,
   isFetching,
 });
 
-// Thunks
-
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-
+/**
+ * Get data from the server and add to the store
+ * @param page 
+ */
 export const getGameListThunk = (page = 0): ThunkType => async dispatch => {
   dispatch(setIsFetching(true));
   await sleep(1 * 1e3);
