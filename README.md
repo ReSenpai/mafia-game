@@ -28,8 +28,10 @@ _NOTE_: Please, make sure that you fixed all errors before commit.
   * Docker
   * TravisCI
 
-* ### Backend
-  * _Soon..._
+* ### [Backend](https://github.com/TicTak21/mafia-game-backend)
+  * Koa
+  * GraphQL
+  * MongoDB
 
 * ### Tests
   * _Soon..._
