@@ -8,6 +8,11 @@ import {
   SET_IS_FETCHING,
 } from './chat_reducer';
 
+export interface IInitialState {
+  chatMessages: Array<IChatMessage>;
+  isFetching: boolean;
+}
+
 export interface ISetChatMessages {
   type: typeof SET_CHAT_MESSAGES;
   chatMessages: Array<IChatMessage>;

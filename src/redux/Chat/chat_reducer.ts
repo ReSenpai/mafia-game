@@ -1,8 +1,10 @@
+import { sleep } from './../../utils/helpers/timers/timers';
 import { chatAPI } from '../../api/api';
 import { IChatMessage } from '../../types';
 import {
   ActionsTypes,
   IAddMessage,
+  IInitialState,
   ISetChatMessages,
   ISetIsFetching,
   ThunkType,
@@ -11,18 +13,16 @@ import {
 export const SET_CHAT_MESSAGES = 'chat/SET_CHAT_MESSAGES';
 export const SET_IS_FETCHING = 'chat/SET_IS_FETCHING';
 export const ADD_MESSAGE = 'chat/ADD_MESSAGE';
-// Более сокращенная и удобная типизация initial стэйта
-const initialState = {
-  chatMessages: [] as Array<IChatMessage>,
-  isFetching: false as boolean,
-};
 
-type InitialStateType = typeof initialState;
+const initialState: IInitialState = {
+  chatMessages: [],
+  isFetching: false,
+};
 
 const chatReducer = (
   state = initialState,
   action: ActionsTypes,
-): InitialStateType => {
+): IInitialState => {
   switch (action.type) {
     case SET_CHAT_MESSAGES: {
       return {
@@ -59,30 +59,38 @@ const chatReducer = (
   }
 };
 
-// Actions
-
+/**
+ * Adds an array of chat messages to the store
+ * @param chatMessages An array of chat messages
+ */
 export const setChatMessages = (
   chatMessages: Array<IChatMessage>,
 ): ISetChatMessages => ({
   type: SET_CHAT_MESSAGES,
   chatMessages,
 });
+/**
+ * Download state
+ */
 export const setIsFetching = (isFetching: boolean): ISetIsFetching => ({
   type: SET_IS_FETCHING,
   isFetching,
 });
+/**
+ * Add a new message to the overall array in the store
+ */
 export const addMessage = (message: string): IAddMessage => ({
   type: ADD_MESSAGE,
   message,
 });
 
-// Thunks
-
+/**
+ * Request an array of messages from the server (so far locally)
+ * @param time Delay time
+ */
 export const getChatMessagesThunk = (
   time = 1000,
 ): ThunkType => async dispatch => {
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-
   dispatch(setIsFetching(true));
   await sleep(time);
   const chatMessagesData = chatAPI.getChatMessages();
