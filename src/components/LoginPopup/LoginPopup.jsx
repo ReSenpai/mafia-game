@@ -31,7 +31,7 @@ export default LoginPopup;
 const ModalTitle = styled('div')({
   fontSize: '3rem',
   textAlign: 'center',
-})
+});
 
 const ModalForm = styled('form')({
   display: 'flex',
@@ -43,16 +43,16 @@ const ModalForm = styled('form')({
 
   input: {
     marginTop: '0.5em',
-  }
-})
+  },
+});
 
 const ModalFormLabel = styled('label')({
   display: 'block',
   textAlign: 'left',
   // color: '${lightgray}',
-})
+});
 
 const ModalFormItem = styled('div')({
   textAlign: 'center',
   width: '100%',
-})
+});
