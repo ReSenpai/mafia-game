@@ -38,7 +38,7 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
 
   return (
     <ChatWrapper>
-      <ChatMessagesComponent {...chatMessages} />
+      <ChatMessagesComponent  chatMessages={ chatMessages } />
 
       <ChatMoves>
         <Typography color="secondary">Дадим мафии договориться</Typography>
@@ -65,7 +65,11 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
   );
 };
 
-const ChatMessagesComponent = (chatMessages: IChatMessage[]) => {
+interface IChatMessagesComponent {
+  chatMessages: Array<IChatMessage>
+}
+
+const ChatMessagesComponent: React.FC<IChatMessagesComponent> = ({chatMessages}) => {
   return (
     <ChatMessages>
       {chatMessages.map(user => (
