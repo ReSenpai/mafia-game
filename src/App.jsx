@@ -17,22 +17,31 @@ import {
   GameLobby,
 } from './pages';
 
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache()
+});
+
 const App = () => {
   return (
-    <Paper square>
-      <HeaderContainer />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/game-rules" component={GameRulesPage} />
-        <Route path="/watch-game" component={WatchGamePage} />
-        <Route path="/lobby" component={GameLobby} />
-        <Route path="/contacts" component={ContactsPage} />
-        <Route path="/forgotten-password" component={ForgottenPasswordPage} />
-        <Route path="/game" component={GamePage} />
-        <Route path="/current-games" component={CurrentGamesPage} />
-        <Route path="*" component={Page404} />
-      </Switch>
-    </Paper>
+    <ApolloProvider client={client}>
+      <Paper square>
+        <HeaderContainer />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/game-rules" component={GameRulesPage} />
+          <Route path="/watch-game" component={WatchGamePage} />
+          <Route path="/lobby" component={GameLobby} />
+          <Route path="/contacts" component={ContactsPage} />
+          <Route path="/forgotten-password" component={ForgottenPasswordPage} />
+          <Route path="/game" component={GamePage} />
+          <Route path="/current-games" component={CurrentGamesPage} />
+          <Route path="*" component={Page404} />
+        </Switch>
+      </Paper>
+    </ApolloProvider>
   );
 };
 

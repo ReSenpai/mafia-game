@@ -136,7 +136,7 @@ export const setIsFetching = isFetching => ({
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-export const getGameListThunk = (page = 0) => async dispatch => {
+export const getGameListThunk = () => async dispatch => {
   dispatch(setIsFetching(true));
   await sleep(1 * 1e3);
 

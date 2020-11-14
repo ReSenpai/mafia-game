@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/react-hooks'
 
 // === material-ui ===
 import { Button, List, ListItem, Typography } from '@material-ui/core';
@@ -10,10 +11,27 @@ import Game from './GameInLobby';
 
 // === thunks ===
 import { getGameListThunk } from 'src/redux/reducers/game_reducer';
+// import * as getChatMessagesQuery from './getChatMessagesQuery.graphql'
+import gql from 'graphql-tag';
+
+const query = gql`
+  query getChatMessagesQuery {
+      messages {
+        time
+        text
+    }
+  }
+`
 
 const Lobby = () => {
   const dispatch = useDispatch();
   const lobby = useSelector(state => state.Game.lobby);
+
+  // graphQL
+
+  const { data, loading } = useQuery(query)
+
+  console.log(loading)
 
   const getGamesList = useCallback(
     groupId => {
@@ -46,6 +64,11 @@ const Lobby = () => {
           Создать
         </Button>
       </ButtonWrapper>
+
+      <div>
+        {data ? data.messages.map(v => (<><p>{v.time}</p><p>{v.text}</p><br></br></>)) : 'loading'}
+      </div>
+
     </>
   );
 };

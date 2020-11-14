@@ -1,0 +1,6 @@
+query getChatMessagesQuery {
+    messages {
+      time
+      text
+  }
+}

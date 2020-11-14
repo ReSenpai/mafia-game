@@ -9,7 +9,7 @@ let palette = {
     white: 'rgba(255, 255, 255, 1)',
   },
   background: {
-    paper: 'rgba(37, 37, 37, 1)',
+    paper: '#171717',
     default: 'rgba(48, 48, 48, 1)',
   },
   primary: {
