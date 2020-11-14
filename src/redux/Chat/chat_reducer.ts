@@ -42,7 +42,7 @@ const chatReducer = (
         chatMessages: [
           ...state.chatMessages,
           {
-            id: state.chatMessages.length + 1,
+            id: state.chatMessages.length + 2,
             avatar:
               'https://www.myinstants.com/media/instants_images/van-darkholme.jpg.pagespeed.ce.vKDHBPAGKh.jpg',
             name: 'Van',
