@@ -66,6 +66,9 @@ const Header: React.FC<unknown> = () => {
           <HeaderLink to="contacts" activeClassName="active">
             Контакты
           </HeaderLink>
+          <HeaderLink to="game" activeClassName="active">
+            Игра
+          </HeaderLink>
         </Container>
         <Container>
           <RegLink>Регистрация</RegLink>
