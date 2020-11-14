@@ -4,7 +4,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // === components ===
-import withTheme from 'src/hooks/withTheme';
+import withTheme from 'src/hoc/withTheme';
 import { HeaderContainer } from 'src/components';
 import { Paper } from '@material-ui/core';
 
