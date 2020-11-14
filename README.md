@@ -1,5 +1,7 @@
 # Mafia Game
 
+## [TechicalTask](./TechnicalTask.md)
+
 ## Available Scripts
 
 In the project directory, you can run:
