@@ -1,9 +1,12 @@
 // Небольшой шаблон, как примерно пишутся редьюсеры, экшены, санки.
 
+import Axios from 'axios';
+
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_IS_AUTH = 'auth/SET_IS_AUTH';
 const SET_IS_FETCHING = 'auth/SET_IS_FETCHING';
-// const SET_CAPTCHA = 'auth/SET_CAPTCHA';
+const SET_REFRESH_TOKEN = 'auth/SET_REFRESH_TOKEN';
+const SET_TOKEN = 'auth/SET_TOKEN';
 
 let initialState = {
   userId: null,
@@ -12,6 +15,8 @@ let initialState = {
   isAuth: false,
   isFetching: false,
   captcha: null,
+  token: null,
+  refreshToken: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -29,6 +34,18 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case SET_IS_FETCHING: {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
+    case SET_REFRESH_TOKEN: {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
+    case SET_TOKEN: {
       return {
         ...state,
         ...action.payload,
@@ -82,9 +99,42 @@ export const setIsFetching = isFetching => ({
   payload: { isFetching },
 });
 
+export const setRefreshToken = refreshToken => ({
+  type: SET_REFRESH_TOKEN,
+  payload: { refreshToken },
+});
+
+export const setToken = token => ({
+  type: SET_TOKEN,
+  payload: { token },
+});
+
 /**
  * Thunks. Вся асинхронщина тут.
  */
+
+/**
+ * @function loginUserThunk
+ *
+ * @param {String} login
+ * @param {String} password
+ */
+
+export const loginUserThunk = ({ login, password }) => async dispatch => {
+  dispatch(setIsFetching(true));
+  const res = await Axios.post('./api/login', {
+    login,
+    password,
+  });
+  dispatch(setIsFetching(false));
+
+  if (res.status === 200) {
+    dispatch(setIsAuth(true));
+    const { refreshToken, token } = res.data;
+    dispatch(setRefreshToken(refreshToken));
+    dispatch(setToken(token));
+  }
+};
 
 export const getAuthUserDataThunk = (time = 8000) => async dispatch => {
   const sleep = ms => new Promise(r => setTimeout(r, ms));

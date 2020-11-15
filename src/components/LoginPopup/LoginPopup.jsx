@@ -3,21 +3,48 @@ import { Button, Input, Popup } from 'src/components';
 import { styled } from '@material-ui/core/styles';
 
 // === utils ===
-import { colors } from 'src/utils/variables';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUserThunk } from 'src/redux/reducers/auth_reducer';
+import { useEffect, useState } from 'react';
 
 const LoginPopup = ({ active, toggle }) => {
+  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector(state => state.Auth);
+
+  const loginUser = async evt => {
+    evt.preventDefault();
+    dispatch(loginUserThunk(loginData));
+  };
+
+  useEffect(() => {
+    toggle()
+  }, [isAuth])
+
   return (
     <Popup {...{ active, toggle }}>
       <ModalTitle>Вход</ModalTitle>
-      <ModalForm>
+      <ModalForm onSubmit={loginUser}>
         <ModalFormItem>
           <ModalFormLabel>Логин</ModalFormLabel>
-          <Input type="text" />
+          <Input
+            value={loginData.login}
+            onChange={e =>
+              setLoginData({ ...loginData, login: e.target.value })
+            }
+            type="text"
+          />
         </ModalFormItem>
 
         <ModalFormItem>
           <ModalFormLabel>Пароль</ModalFormLabel>
-          <Input type="password" />
+          <Input
+            value={loginData.password}
+            onChange={e =>
+              setLoginData({ ...loginData, password: e.target.value })
+            }
+            type="password"
+          />
         </ModalFormItem>
 
         <Button>войти</Button>
@@ -46,7 +73,7 @@ const ModalForm = styled('form')({
   },
 });
 
-const ModalFormLabel = styled('label')({
+const ModalFormLabel = styled('div')({
   display: 'block',
   textAlign: 'left',
   // color: '${lightgray}',
