@@ -18,7 +18,7 @@ import {
 } from './pages';
 
 import { ApolloProvider } from '@apollo/client';
-import ApolloClient from './api/graphql'
+import ApolloClient from './api/graphql';
 
 const App = () => {
   return (

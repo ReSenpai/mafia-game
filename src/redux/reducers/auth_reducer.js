@@ -1,7 +1,7 @@
 // Небольшой шаблон, как примерно пишутся редьюсеры, экшены, санки.
 
 import Axios from 'axios';
-const { localStorage } = window
+const { localStorage } = window;
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_IS_AUTH = 'auth/SET_IS_AUTH';
@@ -41,14 +41,14 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case SET_REFRESH_TOKEN: {
-      localStorage.setItem('refreshToken', action.payload.refreshToken)
+      localStorage.setItem('refreshToken', action.payload.refreshToken);
       return {
         ...state,
         ...action.payload,
       };
     }
     case SET_TOKEN: {
-      localStorage.setItem('token', action.payload.token)
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -151,8 +151,8 @@ export const loginUserThunk = ({ login, password }) => async dispatch => {
 export const logoutUserThunk = () => async dispatch => {
   dispatch(setRefreshToken(''));
   dispatch(setToken(''));
-  dispatch(setIsAuth(false))
-}
+  dispatch(setIsAuth(false));
+};
 
 /**
  * @param {Number} time

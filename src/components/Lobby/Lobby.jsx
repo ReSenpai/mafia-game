@@ -16,13 +16,11 @@ import gql from 'graphql-tag';
 
 const query = gql`
   query UserQuery {
-  getUsers(
-    limit: 2
-  ) {
-    name
-    login
+    getUsers(limit: 2) {
+      name
+      login
+    }
   }
-}
 `;
 
 const Lobby = () => {
@@ -53,7 +51,7 @@ const Lobby = () => {
     );
   });
 
-  console.log(data)
+  console.log(data);
   return (
     <>
       <TitleWrapper>
