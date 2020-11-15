@@ -17,16 +17,12 @@ import {
   GameLobby,
 } from './pages';
 
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+import { ApolloProvider } from '@apollo/client';
+import ApolloClient from './api/graphql'
 
 const App = () => {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={ApolloClient}>
       <Paper square>
         <HeaderContainer />
         <Switch>

@@ -15,12 +15,14 @@ import { getGameListThunk } from 'src/redux/reducers/game_reducer';
 import gql from 'graphql-tag';
 
 const query = gql`
-  query getChatMessagesQuery {
-    messages {
-      time
-      text
-    }
+  query UserQuery {
+  getUsers(
+    limit: 2
+  ) {
+    name
+    login
   }
+}
 `;
 
 const Lobby = () => {
@@ -29,9 +31,7 @@ const Lobby = () => {
 
   // graphQL
 
-  const { data, loading } = useQuery(query);
-
-  console.log(loading);
+  const { data } = useQuery(query);
 
   const getGamesList = useCallback(
     groupId => {
@@ -53,6 +53,7 @@ const Lobby = () => {
     );
   });
 
+  console.log(data)
   return (
     <>
       <TitleWrapper>
@@ -67,10 +68,10 @@ const Lobby = () => {
 
       <div>
         {data
-          ? data.messages.map(v => (
+          ? data.getUsers.map(v => (
               <>
-                <p>{v.time}</p>
-                <p>{v.text}</p>
+                <p>{v.login}</p>
+                <p>{v.name}</p>
                 <br></br>
               </>
             ))

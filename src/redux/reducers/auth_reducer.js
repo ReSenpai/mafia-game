@@ -1,6 +1,7 @@
 // Небольшой шаблон, как примерно пишутся редьюсеры, экшены, санки.
 
 import Axios from 'axios';
+const { localStorage } = window
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const SET_IS_AUTH = 'auth/SET_IS_AUTH';
@@ -15,8 +16,8 @@ let initialState = {
   isAuth: false,
   isFetching: false,
   captcha: null,
-  token: null,
-  refreshToken: null,
+  token: localStorage.getItem('token'),
+  refreshToken: localStorage.getItem('refreshToken'),
 };
 
 const authReducer = (state = initialState, action) => {
@@ -40,12 +41,14 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case SET_REFRESH_TOKEN: {
+      localStorage.setItem('refreshToken', action.payload.refreshToken)
       return {
         ...state,
         ...action.payload,
       };
     }
     case SET_TOKEN: {
+      localStorage.setItem('token', action.payload.token)
       return {
         ...state,
         ...action.payload,
@@ -99,11 +102,18 @@ export const setIsFetching = isFetching => ({
   payload: { isFetching },
 });
 
+/**
+ * @param {Boolean} refreshToken
+ */
+
 export const setRefreshToken = refreshToken => ({
   type: SET_REFRESH_TOKEN,
   payload: { refreshToken },
 });
 
+/**
+ * @param {String} token
+ */
 export const setToken = token => ({
   type: SET_TOKEN,
   payload: { token },
@@ -114,8 +124,6 @@ export const setToken = token => ({
  */
 
 /**
- * @function loginUserThunk
- *
  * @param {String} login
  * @param {String} password
  */
@@ -135,6 +143,20 @@ export const loginUserThunk = ({ login, password }) => async dispatch => {
     dispatch(setToken(token));
   }
 };
+
+/**
+ * @param {}
+ */
+
+export const logoutUserThunk = () => async dispatch => {
+  dispatch(setRefreshToken(''));
+  dispatch(setToken(''));
+  dispatch(setIsAuth(false))
+}
+
+/**
+ * @param {Number} time
+ */
 
 export const getAuthUserDataThunk = (time = 8000) => async dispatch => {
   const sleep = ms => new Promise(r => setTimeout(r, ms));
