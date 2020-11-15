@@ -73,15 +73,17 @@ const Header = props => {
             Контакты
           </HeaderLink>
         </Container>
-        { !isAuth ?
-        <Container>
-          <RegisterPopup active={popup} toggle={() => setPopup(false)} />
-          <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
-          <HeaderLink to="forgotten-password" activeClassName="active">
-            Забыли пароль?
-          </HeaderLink>
-        </Container>
-        : '' }
+        {!isAuth ? (
+          <Container>
+            <RegisterPopup active={popup} toggle={() => setPopup(false)} />
+            <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
+            <HeaderLink to="forgotten-password" activeClassName="active">
+              Забыли пароль?
+            </HeaderLink>
+          </Container>
+        ) : (
+          ''
+        )}
       </Wrapper>
     </Layout>
   );

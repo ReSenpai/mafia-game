@@ -18,8 +18,8 @@ const LoginPopup = ({ active, toggle }) => {
   };
 
   useEffect(() => {
-    toggle()
-  }, [isAuth])
+    toggle();
+  }, [isAuth]);
 
   return (
     <Popup {...{ active, toggle }}>
