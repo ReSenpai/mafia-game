@@ -1,26 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 // === router ===
 import { BrowserRouter } from 'react-router-dom';
 
 // === styles ===
-// import 'normalize.css';
 import './index.css';
-
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 // === redux ===
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
+// === gql ===
+import { ApolloProvider } from '@apollo/client';
+import { client } from './graphql/client';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

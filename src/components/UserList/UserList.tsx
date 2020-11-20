@@ -1,12 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// === gql ===
+import { useQuery, gql } from '@apollo/client';
+
 // === ui ===
 import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
+const GET_USERS_LENGTH = gql`
+  query {
+    countUsers
+  }
+`;
+
 const UserList: React.FC = () => {
-  const data = [
+  // фетчим данные, похоже на кастомный useFetch или на SWR
+  // data, error, loading(true - loading now, false - already loaded)
+  const { data, loading } = useQuery(GET_USERS_LENGTH);
+
+  const placeholderData = [
     { avatar: '', name: 'Den Ri', count: 2, isMafia: true },
     { avatar: '', name: 'Зомби Ich bin Roboter🧟‍♂️', count: 4, isMafia: false },
     { avatar: '', name: 'Aleksandr', count: 11, isMafia: false },
@@ -19,16 +32,19 @@ const UserList: React.FC = () => {
     { avatar: '', name: 'Alex Kovalev', count: 0, isMafia: false },
   ];
 
-  const countMafia = () => data.filter(({ isMafia }) => isMafia).length;
+  const countMafia = () =>
+    placeholderData.filter(({ isMafia }) => isMafia).length;
 
   return (
     <Wrapper>
       <StyledText>
-        <Typography color="secondary">Участники: {data.length}</Typography>
+        <Typography color="secondary">
+          Участники: {loading ? 0 : data?.countUsers}
+        </Typography>
       </StyledText>
       <StyledList>
         <List>
-          {data.map(item => (
+          {placeholderData.map(item => (
             <ListItem key={item.name}>
               <StyledListItem>
                 <Avatar variant="square">
