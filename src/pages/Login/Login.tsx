@@ -10,7 +10,7 @@ const Login: React.FC<unknown> = () => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     display: 'flex',
-    gap: '1em',
+    gap: '2em',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
