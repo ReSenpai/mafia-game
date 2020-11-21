@@ -20,7 +20,6 @@ const initialState: IInitialState = {
   captcha: null,
 };
 
-
 const authReducer = (
   state = initialState,
   action: ActionsTypes,

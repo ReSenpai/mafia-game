@@ -2,7 +2,13 @@ import { sleep } from './../../utils/helpers/timers/timers';
 import getInitialGame, {
   IGetInitialGame,
 } from './../../utils/helpers/date_generators/initial_game_generator';
-import { IInitialState, ISetGamesList, ISetIsFetching, TActions, ThunkType } from './types';
+import {
+  IInitialState,
+  ISetGamesList,
+  ISetIsFetching,
+  TActions,
+  ThunkType,
+} from './types';
 
 export const SET_IS_FETCHING = 'game/SET_IS_FETCHING';
 export const SET_GAMES_LIST = 'game/SET_GAMES_LIST';
@@ -13,10 +19,7 @@ const initialState: IInitialState = {
   theme: {},
 };
 
-const gameReducer = (
-  state = initialState,
-  action: TActions,
-): IInitialState => {
+const gameReducer = (state = initialState, action: TActions): IInitialState => {
   switch (action.type) {
     case SET_GAMES_LIST: {
       return {
@@ -37,7 +40,7 @@ const gameReducer = (
 
 /**
  * Adds a copy of the game room to the store
- * @param lobby 
+ * @param lobby
  */
 export const setGamesList = (lobby: Array<IGetInitialGame>): ISetGamesList => ({
   type: SET_GAMES_LIST,
@@ -53,7 +56,7 @@ export const setIsFetching = (isFetching: boolean): ISetIsFetching => ({
 
 /**
  * Get data from the server and add to the store
- * @param page 
+ * @param page
  */
 export const getGameListThunk = (page = 0): ThunkType => async dispatch => {
   dispatch(setIsFetching(true));

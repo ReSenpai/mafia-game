@@ -5,8 +5,8 @@ import { SET_GAMES_LIST, SET_IS_FETCHING } from './game_reducer';
 
 export interface IInitialState {
   lobby: Array<IGetInitialGame>;
-  isFetching: boolean,
-  theme: Record<string, unknown>,
+  isFetching: boolean;
+  theme: Record<string, unknown>;
 }
 
 export interface ISetGamesList {
