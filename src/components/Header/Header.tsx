@@ -1,6 +1,11 @@
 import React from 'react';
+
+// === router ===
 import { NavLink } from 'react-router-dom';
+
+// === material-ui ===
 import { styled } from '@material-ui/core/styles';
+import { HomeSharp } from '@material-ui/icons';
 
 // === components ===
 import { Layout } from 'src/components';
@@ -8,16 +13,10 @@ import { Layout } from 'src/components';
 const Header: React.FC<unknown> = () => {
   const Wrapper = styled('header')({
     display: 'flex',
-    gap: '2em',
+    gap: '1em',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
-  });
-
-  const Container = styled('div')({
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '2em',
   });
 
   const HeaderLink = styled(NavLink)(({ theme }) => {
@@ -53,29 +52,28 @@ const Header: React.FC<unknown> = () => {
   return (
     <Layout>
       <Wrapper>
-        <Container>
-          <HeaderLink to="game-rules" activeClassName="active">
-            Правила
-          </HeaderLink>
-          <HeaderLink to="watch-game" activeClassName="active">
-            Посмотреть игру
-          </HeaderLink>
-          <HeaderLink to="lobby" activeClassName="active">
-            Лобби
-          </HeaderLink>
-          <HeaderLink to="contacts" activeClassName="active">
-            Контакты
-          </HeaderLink>
-          <HeaderLink to="game" activeClassName="active">
-            Игра
-          </HeaderLink>
-        </Container>
-        <Container>
-          <RegLink>Регистрация</RegLink>
-          <HeaderLink to="forgotten-password" activeClassName="active">
-            Забыли пароль?
-          </HeaderLink>
-        </Container>
+        <HeaderLink to="/" exact activeClassName="active">
+          <HomeSharp fontSize="large" />
+        </HeaderLink>
+        <HeaderLink to="game-rules" activeClassName="active">
+          Правила
+        </HeaderLink>
+        <HeaderLink to="watch-game" activeClassName="active">
+          Посмотреть игру
+        </HeaderLink>
+        <HeaderLink to="lobby" activeClassName="active">
+          Лобби
+        </HeaderLink>
+        <HeaderLink to="contacts" activeClassName="active">
+          Контакты
+        </HeaderLink>
+        <HeaderLink to="game" activeClassName="active">
+          Игра
+        </HeaderLink>
+        <RegLink>Регистрация</RegLink>
+        <HeaderLink to="forgotten-password" activeClassName="active">
+          Забыли пароль?
+        </HeaderLink>
       </Wrapper>
     </Layout>
   );
