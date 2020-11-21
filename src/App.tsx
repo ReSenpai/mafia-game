@@ -20,6 +20,7 @@ import {
   WatchGamePage,
   GameLobby,
   Login,
+  Register,
 } from './pages';
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/contacts" component={ContactsPage} />
         <Route path="/forgotten-password" component={ForgottenPasswordPage} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/game" component={GamePage} />
         <Route path="/current-games" component={CurrentGamesPage} />
         <Route path="*" component={Page404} />

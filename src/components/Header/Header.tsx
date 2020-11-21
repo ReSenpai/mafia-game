@@ -40,15 +40,6 @@ const Header: React.FC<unknown> = () => {
     };
   });
 
-  const RegLink = styled('a')(({ theme }) => {
-    return {
-      '&:hover': {
-        textDecoration: 'none',
-        color: theme.palette.secondary.main,
-      },
-    };
-  });
-
   return (
     <Layout>
       <Wrapper>
@@ -70,9 +61,11 @@ const Header: React.FC<unknown> = () => {
         <HeaderLink to="game" activeClassName="active">
           Игра
         </HeaderLink>
-        <RegLink>Регистрация</RegLink>
-        <HeaderLink to="forgotten-password" activeClassName="active">
-          Забыли пароль?
+        <HeaderLink to="register" activeClassName="active">
+          Регистрация
+        </HeaderLink>
+        <HeaderLink to="login" activeClassName="active">
+          Войти
         </HeaderLink>
       </Wrapper>
     </Layout>
