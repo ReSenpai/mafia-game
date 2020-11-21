@@ -2,22 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 // === gql ===
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { loader } from 'graphql.macro';
 
 // === ui ===
 import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-const GET_USERS_LENGTH = gql`
-  query {
-    countUsers
-  }
-`;
+const countUsers = loader(
+  '../../graphql/queries/user/countUsers.query.graphql',
+);
 
 const UserList: React.FC = () => {
-  // фетчим данные, похоже на кастомный useFetch или на SWR
-  // data, error, loading(true - loading now, false - already loaded)
-  const { data, loading } = useQuery(GET_USERS_LENGTH);
+  const { data, loading } = useQuery(countUsers);
 
   const placeholderData = [
     { avatar: '', name: 'Den Ri', count: 2, isMafia: true },

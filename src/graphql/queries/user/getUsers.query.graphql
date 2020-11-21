@@ -1,0 +1,12 @@
+query {
+  getUsers {
+    id
+    name
+    login
+    password
+    isLogged
+    isAdmin
+    updatedAt
+    createdAt
+  }
+}
