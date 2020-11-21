@@ -1,7 +1,7 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 import { colors } from '../variables';
 
-const breakpoints: any = {
+const breakpoints: { [key: string]: string } = {
   xs: '480px',
   sm: '768px',
   md: '992px',
@@ -10,7 +10,7 @@ const breakpoints: any = {
 
 export const lessThen = Object.keys(breakpoints).reduce(
   (a: Record<string, unknown>, l: string) => {
-    a[l] = (...args: any) => css`
+    a[l] = (...args: never) => css`
       @media (max-width: ${breakpoints[l]}) {
         ${css(args)};
       }
@@ -22,7 +22,7 @@ export const lessThen = Object.keys(breakpoints).reduce(
 
 export const moreThen = Object.keys(breakpoints).reduce(
   (a: Record<string, unknown>, l: string) => {
-    a[l] = (...args: any) => css`
+    a[l] = (...args: never) => css`
       @media (min-width: ${breakpoints[l]}) {
         ${css(args)};
       }
