@@ -19,6 +19,7 @@ import {
   Page404,
   WatchGamePage,
   GameLobby,
+  Login,
 } from './pages';
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/lobby" component={GameLobby} />
         <Route path="/contacts" component={ContactsPage} />
         <Route path="/forgotten-password" component={ForgottenPasswordPage} />
+        <Route path="/login" component={Login} />
         <Route path="/game" component={GamePage} />
         <Route path="/current-games" component={CurrentGamesPage} />
         <Route path="*" component={Page404} />

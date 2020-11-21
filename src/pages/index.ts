@@ -7,3 +7,4 @@ export { default as ForgottenPasswordPage } from './ForgottenPassword/ForgottenP
 export { default as GamePage } from './Game/Game';
 export { default as CurrentGamesPage } from './CurrentGames/CurrentGames';
 export { default as GameLobby } from './GameLobby/GameLobby';
+export { default as Login } from './Login/Login';
