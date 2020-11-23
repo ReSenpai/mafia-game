@@ -1,24 +1,50 @@
-import styled from 'styled-components';
-
 // === components ===
 import { Button, Input, Popup } from 'src/components';
+import { styled } from '@material-ui/core/styles';
 
 // === utils ===
-import { colors } from 'src/utils/variables';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUserThunk } from 'src/redux/reducers/auth_reducer';
+import { useEffect, useState } from 'react';
 
 const LoginPopup = ({ active, toggle }) => {
+  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector(state => state.Auth);
+
+  const loginUser = async evt => {
+    evt.preventDefault();
+    dispatch(loginUserThunk(loginData));
+  };
+
+  useEffect(() => {
+    toggle();
+  }, [isAuth]);
+
   return (
     <Popup {...{ active, toggle }}>
       <ModalTitle>Вход</ModalTitle>
-      <ModalForm>
+      <ModalForm onSubmit={loginUser}>
         <ModalFormItem>
           <ModalFormLabel>Логин</ModalFormLabel>
-          <Input type="text" />
+          <Input
+            value={loginData.login}
+            onChange={e =>
+              setLoginData({ ...loginData, login: e.target.value })
+            }
+            type="text"
+          />
         </ModalFormItem>
 
         <ModalFormItem>
           <ModalFormLabel>Пароль</ModalFormLabel>
-          <Input type="password" />
+          <Input
+            value={loginData.password}
+            onChange={e =>
+              setLoginData({ ...loginData, password: e.target.value })
+            }
+            type="password"
+          />
         </ModalFormItem>
 
         <Button>войти</Button>
@@ -29,33 +55,31 @@ const LoginPopup = ({ active, toggle }) => {
 
 export default LoginPopup;
 
-const { lightgray } = colors;
+const ModalTitle = styled('div')({
+  fontSize: '3rem',
+  textAlign: 'center',
+});
 
-const ModalTitle = styled.div`
-  font-size: 3rem;
-  text-align: center;
-`;
+const ModalForm = styled('form')({
+  display: 'flex',
+  gap: '2em',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '2em',
 
-const ModalForm = styled.form`
-  display: flex;
-  gap: 2em;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2em;
+  input: {
+    marginTop: '0.5em',
+  },
+});
 
-  input {
-    margin-top: 0.5em;
-  }
-`;
+const ModalFormLabel = styled('div')({
+  display: 'block',
+  textAlign: 'left',
+  // color: '${lightgray}',
+});
 
-const ModalFormLabel = styled.label`
-  display: block;
-  text-align: left;
-  color: ${lightgray};
-`;
-
-const ModalFormItem = styled.div`
-  text-align: center;
-  width: 100%;
-`;
+const ModalFormItem = styled('div')({
+  textAlign: 'center',
+  width: '100%',
+});

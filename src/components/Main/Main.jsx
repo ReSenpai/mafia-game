@@ -36,7 +36,7 @@ const Background = styled.div`
   height: 100%;
   width: 100%;
   margin: 0;
-  z-index: -10;
+  z-index: 0;
   overflow: hidden;
 
   img {

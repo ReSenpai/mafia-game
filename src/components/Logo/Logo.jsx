@@ -18,6 +18,7 @@ const LogoWrapper = styled.div`
   height: auto;
   margin: 0 auto;
   max-width: ${({ size }) => size};
+  /* background-color: #323299; */
 
   img {
     width: 100%;

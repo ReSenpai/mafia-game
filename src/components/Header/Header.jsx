@@ -4,9 +4,10 @@ import { styled } from '@material-ui/core/styles';
 
 // === components ===
 import { Layout, RegisterPopup } from 'src/components';
+import { useSelector } from 'react-redux';
 
 const Header = props => {
-  console.log(props);
+  const { isAuth } = useSelector(state => state.Auth);
   const [popup, setPopup] = useState(false);
 
   const Wrapper = styled('header')({
@@ -15,6 +16,8 @@ const Header = props => {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
+    zIndex: 10,
+    position: 'relative',
   });
 
   const Container = styled('div')({
@@ -70,13 +73,17 @@ const Header = props => {
             Контакты
           </HeaderLink>
         </Container>
-        <Container>
-          <RegisterPopup active={popup} toggle={() => setPopup(false)} />
-          <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
-          <HeaderLink to="forgotten-password" activeClassName="active">
-            Забыли пароль?
-          </HeaderLink>
-        </Container>
+        {!isAuth ? (
+          <Container>
+            <RegisterPopup active={popup} toggle={() => setPopup(false)} />
+            <RegLink onClick={() => setPopup(true)}>Регистрация</RegLink>
+            <HeaderLink to="forgotten-password" activeClassName="active">
+              Забыли пароль?
+            </HeaderLink>
+          </Container>
+        ) : (
+          ''
+        )}
       </Wrapper>
     </Layout>
   );
