@@ -1,5 +1,4 @@
 import { sleep } from './../../utils/helpers/timers/timers';
-import { chatAPI } from '../../api/api';
 import { IChatMessage } from '../../types';
 import {
   ActionsTypes,
@@ -93,8 +92,6 @@ export const getChatMessagesThunk = (
 ): ThunkType => async dispatch => {
   dispatch(setIsFetching(true));
   await sleep(time);
-  const chatMessagesData = chatAPI.getChatMessages();
-  dispatch(setChatMessages(chatMessagesData));
   dispatch(setIsFetching(false));
 };
 
