@@ -1,0 +1,8 @@
+query GetUsers($limit: Int) {
+  user {
+    getUsers(limit: $limit) {
+      id
+      name
+    }
+  }
+}

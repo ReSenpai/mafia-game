@@ -146,6 +146,20 @@ export type CountUsersQuery = { __typename?: 'RootQuery' } & {
   user?: Maybe<{ __typename?: 'UserQuery' } & Pick<UserQuery, 'countUsers'>>;
 };
 
+export type GetUsersQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+}>;
+
+export type GetUsersQuery = { __typename?: 'RootQuery' } & {
+  user?: Maybe<
+    { __typename?: 'UserQuery' } & {
+      getUsers?: Maybe<
+        Array<Maybe<{ __typename?: 'User' } & Pick<User, 'id' | 'name'>>>
+      >;
+    }
+  >;
+};
+
 export const CountUsersDocument = gql`
   query CountUsers {
     user {
@@ -161,4 +175,20 @@ export function useCountUsersQuery(
     query: CountUsersDocument,
     ...options,
   });
+}
+export const GetUsersDocument = gql`
+  query GetUsers($limit: Int) {
+    user {
+      getUsers(limit: $limit) {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export function useGetUsersQuery(
+  options: Omit<Urql.UseQueryArgs<GetUsersQueryVariables>, 'query'> = {},
+) {
+  return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
 }
