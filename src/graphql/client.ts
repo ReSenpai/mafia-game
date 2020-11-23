@@ -1,6 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { createClient } from 'urql';
 
-export const client = new ApolloClient({
-  uri: 'https://mafia-game-backend-api.herokuapp.com/graphql',
-  cache: new InMemoryCache(),
+export const client = createClient({
+  url: 'https://mafia-game-backend-api.herokuapp.com/graphql',
 });

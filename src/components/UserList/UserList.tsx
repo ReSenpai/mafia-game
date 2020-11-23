@@ -2,19 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 // === gql ===
-import { useQuery } from '@apollo/client';
-import { loader } from 'graphql.macro';
+import { useCountUsersQuery } from 'src/generated/graphql';
 
 // === ui ===
 import { List, ListItem, Avatar, Badge, Typography } from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
-const countUsers = loader(
-  '../../graphql/queries/user/countUsers.query.graphql',
-);
-
 const UserList: React.FC = () => {
-  const { data, loading } = useQuery(countUsers);
+  const [res] = useCountUsersQuery();
 
   const placeholderData = [
     { avatar: '', name: 'Den Ri', count: 2, isMafia: true },
@@ -36,7 +31,7 @@ const UserList: React.FC = () => {
     <Wrapper>
       <StyledText>
         <Typography color="secondary">
-          Участники: {loading ? 0 : data?.countUsers}
+          Участники: {res.data?.user?.countUsers}
         </Typography>
       </StyledText>
       <StyledList>
