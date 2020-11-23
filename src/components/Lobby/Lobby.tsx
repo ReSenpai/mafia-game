@@ -30,17 +30,15 @@ const Lobby: React.FC = () => {
 
   const games = lobby.map((game: any) => {
     return (
-      <ListItem dense={true} divider={true} key={game.id}>
+      <ListItem divider={true} key={game.id}>
         <Game game={game} />
       </ListItem>
     );
   });
 
   return (
-    <>
-      <TitleWrapper>
-        <Typography variant="h6">Текущие игры</Typography>
-      </TitleWrapper>
+    <Wrapper>
+      <Typography variant="h6">Текущие игры</Typography>
 
       {games ? <List>{games}</List> : <CenteredSpinner />}
 
@@ -49,19 +47,17 @@ const Lobby: React.FC = () => {
           Создать
         </Button>
       </ButtonWrapper>
-    </>
+    </Wrapper>
   );
 };
 
-const ButtonWrapper = styled('div')({
+const Wrapper = styled('div')({
   width: '100%',
-  margin: '10px 0',
-  display: 'flex',
-  justifyContent: 'flex-end',
 });
 
-const TitleWrapper = styled('div')({
-  padding: '16px',
+const ButtonWrapper = styled('div')({
+  display: 'flex',
+  justifyContent: 'flex-end',
 });
 
 export default Lobby;

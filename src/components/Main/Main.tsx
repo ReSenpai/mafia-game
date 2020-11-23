@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// === assets ===
-import BgImg from '../../assets/img/main-page-2-bg.png';
-
 // === components ===
 import { Logo } from 'src/components';
 
 const Main: React.FC = () => {
   return (
     <>
-      <Background>
-        <img src={BgImg} alt="" />
-      </Background>
       <Container>
         <Logo />
         <Online>online</Online>

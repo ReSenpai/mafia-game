@@ -1,7 +1,7 @@
 import React from 'react';
 
 // === components ===
-import { UserList, Layout, ChatContainer } from '../../components';
+import { UserList, ChatContainer } from '../../components';
 
 // === material-ui ===
 import { styled } from '@material-ui/core';
@@ -16,12 +16,10 @@ const GamePage: React.FC = () => {
   });
 
   return (
-    <Layout>
-      <GameRoom>
-        <ChatContainer />
-        <UserList />
-      </GameRoom>
-    </Layout>
+    <GameRoom>
+      <ChatContainer />
+      <UserList />
+    </GameRoom>
   );
 };
 
