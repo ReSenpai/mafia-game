@@ -14,17 +14,17 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 // === gql ===
-import { ApolloProvider } from '@apollo/client';
+import { Provider as UrqlProvider } from 'urql';
 import { client } from './graphql/client';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ApolloProvider client={client}>
+      <UrqlProvider value={client}>
         <Provider store={store}>
           <App />
         </Provider>
-      </ApolloProvider>
+      </UrqlProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

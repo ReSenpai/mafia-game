@@ -1,1 +1,1 @@
-export const classes: Record<string, unknown> = {};
+export const classes: { [key: string]: string } = {};

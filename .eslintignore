@@ -7,3 +7,6 @@ node_modules
 src/reportWebVitals.ts
 src/setupTests.ts
 src/react-app-env.d.ts
+
+# codegen
+src/generated

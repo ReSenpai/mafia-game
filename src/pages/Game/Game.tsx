@@ -1,26 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 
 // === components ===
-import { UserList, Layout, ChatContainer } from '../../components';
+import { UserList, ChatContainer } from '../../components';
+
+// === material-ui ===
+import { styled } from '@material-ui/core';
 
 const GamePage: React.FC = () => {
+  const GameRoom = styled('div')({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    flexWrap: 'wrap',
+    gap: '4em',
+  });
+
   return (
-    <Layout>
-      <GameRoom>
-        <ChatContainer />
-        <UserList />
-      </GameRoom>
-    </Layout>
+    <GameRoom>
+      <ChatContainer />
+      <UserList />
+    </GameRoom>
   );
 };
 
 export default GamePage;
-
-const GameRoom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4em;
-`;

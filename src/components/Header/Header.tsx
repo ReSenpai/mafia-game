@@ -1,23 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { styled } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 
-// === components ===
-import { Layout } from 'src/components';
+// === router ===
+import { NavLink } from 'react-router-dom';
+
+// === material-ui ===
+import { styled } from '@material-ui/core/styles';
+import { Menu } from '@material-ui/icons';
+import { IconButton, SwipeableDrawer } from '@material-ui/core';
 
 const Header: React.FC<unknown> = () => {
   const Wrapper = styled('header')({
-    display: 'flex',
-    gap: '2em',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  });
-
-  const Container = styled('div')({
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '2em',
+    display: 'grid',
+    gap: '1em',
+    padding: '2em 4em',
   });
 
   const HeaderLink = styled(NavLink)(({ theme }) => {
@@ -41,24 +36,28 @@ const Header: React.FC<unknown> = () => {
     };
   });
 
-  const RegLink = styled('a')(({ theme }) => {
-    return {
-      '&:hover': {
-        textDecoration: 'none',
-        color: theme.palette.secondary.main,
-      },
-    };
-  });
+  const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
   return (
-    <Layout>
-      <Wrapper>
-        <Container>
+    <div>
+      <IconButton
+        aria-label="delete"
+        onClick={() => setIsDrawerOpened(!isDrawerOpened)}
+      >
+        <Menu />
+      </IconButton>
+      <SwipeableDrawer
+        anchor="left"
+        open={isDrawerOpened}
+        onClose={() => setIsDrawerOpened(false)}
+        onOpen={() => setIsDrawerOpened(true)}
+      >
+        <Wrapper>
+          <HeaderLink to="/" exact activeClassName="active">
+            Главная
+          </HeaderLink>
           <HeaderLink to="game-rules" activeClassName="active">
             Правила
-          </HeaderLink>
-          <HeaderLink to="watch-game" activeClassName="active">
-            Посмотреть игру
           </HeaderLink>
           <HeaderLink to="lobby" activeClassName="active">
             Лобби
@@ -69,15 +68,15 @@ const Header: React.FC<unknown> = () => {
           <HeaderLink to="game" activeClassName="active">
             Игра
           </HeaderLink>
-        </Container>
-        <Container>
-          <RegLink>Регистрация</RegLink>
-          <HeaderLink to="forgotten-password" activeClassName="active">
-            Забыли пароль?
+          <HeaderLink to="register" activeClassName="active">
+            Регистрация
           </HeaderLink>
-        </Container>
-      </Wrapper>
-    </Layout>
+          <HeaderLink to="login" activeClassName="active">
+            Войти
+          </HeaderLink>
+        </Wrapper>
+      </SwipeableDrawer>
+    </div>
   );
 };
 

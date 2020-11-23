@@ -1,18 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+
+// === material-ui ===
+import { styled } from '@material-ui/core';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  const Wrapper = styled('div')({
+    display: 'grid',
+    alignContent: 'center',
+    gap: '2em',
+    maxWidth: '1440px',
+    margin: '0 auto',
+    padding: '1em 5%',
+    backgroundColor: 'paper',
+  });
+
+  return <Wrapper> {children}</Wrapper>;
 };
 
 export default Layout;
-
-const Wrapper = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 2em 5%;
-`;

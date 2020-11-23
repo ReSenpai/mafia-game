@@ -1,11 +1,15 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import styled from 'styled-components';
 
 // === material-ui ===
-import { TextField, Button, Typography, Avatar } from '@material-ui/core';
-import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
-import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownAltOutlined';
+import {
+  TextField,
+  Button,
+  Typography,
+  Avatar,
+  styled,
+} from '@material-ui/core';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import SendSharp from '@material-ui/icons/SendSharp';
 
 // === types ===
 import { IChatMessage } from 'src/types';
@@ -38,7 +42,7 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
 
   return (
     <ChatWrapper>
-      <ChatMessagesComponent  chatMessages={ chatMessages } />
+      <ChatMessagesComponent chatMessages={chatMessages} />
 
       <ChatMoves>
         <Typography color="secondary">Дадим мафии договориться</Typography>
@@ -58,7 +62,7 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
           onKeyPress={pressEnter}
         />
         <Button size="large" onClick={sendMessage}>
-          Отправить
+          <SendSharp />
         </Button>
       </ChatForm>
     </ChatWrapper>
@@ -66,10 +70,12 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
 };
 
 interface IChatMessagesComponent {
-  chatMessages: Array<IChatMessage>
+  chatMessages: Array<IChatMessage>;
 }
 
-const ChatMessagesComponent: React.FC<IChatMessagesComponent> = ({chatMessages}) => {
+const ChatMessagesComponent: React.FC<IChatMessagesComponent> = ({
+  chatMessages,
+}) => {
   return (
     <ChatMessages>
       {chatMessages.map(user => (
@@ -82,14 +88,10 @@ const ChatMessagesComponent: React.FC<IChatMessagesComponent> = ({chatMessages})
             </Avatar>
           )}
           <ChatItemMessage>
-            <Typography color="secondary">{user.name}</Typography>
-            <Typography color="primary">{user.text}</Typography>
+            <Typography color="textSecondary">{user.name}</Typography>
+            <Typography color="textPrimary">{user.text}</Typography>
             <ChatItemMessageInfo>
-              <ChatItemMessageCtrl>
-                <ThumbUpOutlinedIcon /> {user.likes} <ThumbDownOutlinedIcon />
-                {user.dislikes}
-              </ChatItemMessageCtrl>
-              <ChatItemMessageDate>{user.messageTime}</ChatItemMessageDate>
+              <div>{user.messageTime}</div>
             </ChatItemMessageInfo>
           </ChatItemMessage>
         </ChatItem>
@@ -100,66 +102,51 @@ const ChatMessagesComponent: React.FC<IChatMessagesComponent> = ({chatMessages})
 
 export default Chat;
 
-const ChatWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 80vh;
-  flex-grow: 1;
-`;
+const ChatWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  height: '80vh',
+  flexGrow: 1,
+});
 
-const ChatForm = styled.form`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
-`;
+const ChatForm = styled('form')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '1em',
+});
 
-const ChatMessages = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  overflow-y: scroll;
-`;
+const ChatMessages = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2em',
+  overflowY: 'scroll',
+});
 
-const ChatItem = styled.div`
-  display: flex;
-  gap: 1em;
-`;
+const ChatItem = styled('div')({
+  display: 'flex',
+  gap: '1em',
+});
 
-const ChatItemMessage = styled.div`
-  width: 100%;
-  * {
-    display: block;
-  }
-`;
+const ChatItemMessage = styled('div')({
+  width: '100%',
 
-const ChatItemMessageInfo = styled.div`
-  margin-top: 1em;
-  display: flex;
-  justify-content: space-between;
-`;
+  '*': {
+    display: 'block',
+  },
+});
 
-const ChatItemMessageCtrl = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1em;
+const ChatItemMessageInfo = styled('div')({
+  marginTop: '1em',
+  display: 'flex',
+  justifyContent: 'space-between',
+});
 
-  svg {
-    cursor: pointer;
-
-    &:hover {
-      fill: blue;
-    }
-  }
-`;
-
-const ChatItemMessageDate = styled.div``;
-
-const ChatMoves = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 1em;
-  font-style: italic;
-`;
+const ChatMoves = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: 'center',
+  margin: '1em',
+  fontStyle: 'italic',
+});
