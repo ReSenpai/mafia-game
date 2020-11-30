@@ -1,3 +1,4 @@
+import { useAddUserMutation } from 'src/generated/graphql';
 import {
   ActionsTypes,
   IInitialState,
@@ -54,10 +55,9 @@ export const setAuthUserData = (
   userId: number,
   email: string,
   login: string,
-  isAuth: boolean,
 ): ISetAuthUserData => ({
   type: SET_USER_DATA,
-  payload: { userId, email, login, isAuth },
+  payload: { userId, email, login },
 });
 
 export const setIsAuth = (isAuth: boolean): ISetIsAuth => ({
@@ -72,16 +72,15 @@ export const setIsFetching = (isFetching: boolean): ISetIsFetchingAuth => ({
 
 // Thunks
 
-export const getAuthUserDataThunk = (
-  time = 8000,
+export const registration = (
+  login: string, 
+  password: string,
+  addUser: ({login, password}: any) => Promise<unknown>
 ): ThunkType => async dispatch => {
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-
   dispatch(setIsFetching(true));
-  await sleep(time);
-  console.log('getAuthUserDataThunk');
+  const response = await addUser({login, password});
+  console.log(response);
   dispatch(setIsFetching(false));
-
   dispatch(setIsAuth(true));
 };
 

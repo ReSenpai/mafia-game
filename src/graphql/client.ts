@@ -1,5 +1,5 @@
 import { createClient } from 'urql';
 
 export const client = createClient({
-  url: 'https://mafia-game-backend-api.herokuapp.com/graphql',
+  url: 'http://localhost:5000/graphql',
 });

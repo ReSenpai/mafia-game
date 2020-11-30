@@ -17,7 +17,6 @@ export interface ISetAuthUserData {
     userId: number;
     email: string;
     login: string;
-    isAuth: boolean;
   };
 }
 export interface ISetIsAuth {

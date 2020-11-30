@@ -1,9 +1,7 @@
 import gql from 'graphql-tag';
 import * as Urql from 'urql';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -35,15 +33,18 @@ export type UserQuery = {
   countUsers?: Maybe<Scalars['Int']>;
 };
 
+
 /** Query to interact with `Users` collection */
 export type UserQueryGetUserByIdArgs = {
   id?: Maybe<Scalars['ID']>;
 };
 
+
 /** Query to interact with `Users` collection */
 export type UserQueryGetUserByNameArgs = {
   name?: Maybe<Scalars['String']>;
 };
+
 
 /** Query to interact with `Users` collection */
 export type UserQueryGetUsersArgs = {
@@ -68,6 +69,7 @@ export type LobbyQuery = {
   /** Returns a `Lobby` where `Lobby.id = id` in database. */
   getLobbyById?: Maybe<Lobby>;
 };
+
 
 /** Query to interact with `Lobby` collection */
 export type LobbyQueryGetLobbyByIdArgs = {
@@ -112,6 +114,7 @@ export type UserMutation = {
   updateUserById?: Maybe<User>;
 };
 
+
 /** Mutation to interact with `Users` collection. */
 export type UserMutationAddUserArgs = {
   name?: Maybe<Scalars['String']>;
@@ -123,10 +126,12 @@ export type UserMutationAddUserArgs = {
   isLogged?: Maybe<Scalars['Boolean']>;
 };
 
+
 /** Mutation to interact with `Users` collection. */
 export type UserMutationDeleteUserByIdArgs = {
   id?: Maybe<Scalars['ID']>;
 };
+
 
 /** Mutation to interact with `Users` collection. */
 export type UserMutationUpdateUserByIdArgs = {
@@ -140,55 +145,86 @@ export type UserMutationUpdateUserByIdArgs = {
   isLogged?: Maybe<Scalars['Boolean']>;
 };
 
-export type CountUsersQueryVariables = Exact<{ [key: string]: never }>;
+export type AddUserMutationVariables = Exact<{
+  login?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+}>;
 
-export type CountUsersQuery = { __typename?: 'RootQuery' } & {
-  user?: Maybe<{ __typename?: 'UserQuery' } & Pick<UserQuery, 'countUsers'>>;
-};
+
+export type AddUserMutation = (
+  { __typename?: 'RootMutation' }
+  & { user?: Maybe<(
+    { __typename?: 'UserMutation' }
+    & { addUser?: Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'id'>
+    )> }
+  )> }
+);
+
+export type CountUsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CountUsersQuery = (
+  { __typename?: 'RootQuery' }
+  & { user?: Maybe<(
+    { __typename?: 'UserQuery' }
+    & Pick<UserQuery, 'countUsers'>
+  )> }
+);
 
 export type GetUsersQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
 }>;
 
-export type GetUsersQuery = { __typename?: 'RootQuery' } & {
-  user?: Maybe<
-    { __typename?: 'UserQuery' } & {
-      getUsers?: Maybe<
-        Array<Maybe<{ __typename?: 'User' } & Pick<User, 'id' | 'name'>>>
-      >;
+
+export type GetUsersQuery = (
+  { __typename?: 'RootQuery' }
+  & { user?: Maybe<(
+    { __typename?: 'UserQuery' }
+    & { getUsers?: Maybe<Array<Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'name'>
+    )>>> }
+  )> }
+);
+
+
+export const AddUserDocument = gql`
+    mutation AddUser($login: String, $password: String) {
+  user {
+    addUser(login: $login, password: $password) {
+      id
     }
-  >;
+  }
+}
+    `;
+
+export function useAddUserMutation() {
+  return Urql.useMutation<AddUserMutation, AddUserMutationVariables>(AddUserDocument);
 };
-
 export const CountUsersDocument = gql`
-  query CountUsers {
-    user {
-      countUsers
-    }
+    query CountUsers {
+  user {
+    countUsers
   }
-`;
-
-export function useCountUsersQuery(
-  options: Omit<Urql.UseQueryArgs<CountUsersQueryVariables>, 'query'> = {},
-) {
-  return Urql.useQuery<CountUsersQuery>({
-    query: CountUsersDocument,
-    ...options,
-  });
 }
+    `;
+
+export function useCountUsersQuery(options: Omit<Urql.UseQueryArgs<CountUsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<CountUsersQuery>({ query: CountUsersDocument, ...options });
+};
 export const GetUsersDocument = gql`
-  query GetUsers($limit: Int) {
-    user {
-      getUsers(limit: $limit) {
-        id
-        name
-      }
+    query GetUsers($limit: Int) {
+  user {
+    getUsers(limit: $limit) {
+      id
+      name
     }
   }
-`;
-
-export function useGetUsersQuery(
-  options: Omit<Urql.UseQueryArgs<GetUsersQueryVariables>, 'query'> = {},
-) {
-  return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
 }
+    `;
+
+export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<GetUsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
+};
