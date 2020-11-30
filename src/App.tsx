@@ -23,18 +23,19 @@ import {
 import { userContext } from './contexts/userContext';
 
 const App = () => {
-
-  const [LoginName, SetLogin] = useState('');
-  const [IsAuth, SetIsAuth] = useState(false);
+  const [LoginName, SetLogin] = useState<string | null>(null);
+  const [IsAuth, SetIsAuth] = useState<boolean>(false);
+  const [UserId, SetUserId] = useState<string | null>(null);
 
   const user = {
     LoginName,
     IsAuth,
+    UserId,
     SetLogin,
-    SetIsAuth
+    SetIsAuth,
+    SetUserId
   }
 
-  
   return (
     <userContext.Provider value={user}>
       <Paper square>

@@ -1,50 +1,49 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 // === material-ui ===
 import { styled, Typography, TextField, Button } from '@material-ui/core';
-import { useAddUserMutation } from 'src/generated/graphql';
-import { userContext } from 'src/contexts/userContext';
 
+type TRegisterProps = {
+  registration: (login: string, password: string) => Promise<void>
+}
 
-const Register: React.FC<any> = () => {
-  const user = useContext(userContext);
-  const [,addUser] = useAddUserMutation();
+const Register: React.FC<TRegisterProps> = ({registration}) => {
   const [name, setName] = useState<string>('');
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value)
+    setName(e.target.value);
   }
   const onChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLogin(e.target.value)
+    setLogin(e.target.value);
   }
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value)
+    setPassword(e.target.value);
   }
 
-  const registration = () => {
-    addUser({login, password});
-    user?.SetIsAuth(true);
+  const register = async () => {
+    await registration(login, password);
   }
+
 
   return (
     <LoginWrapper>
       <Typography variant="h3">Регистрация</Typography>
 
       <Form noValidate autoComplete="off">
-        <TextField label="Имя" type="text" variant="filled" value={name} onChange={onChangeName} />
+        <TextField label="Имя" type="text" variant="outlined" value={name} onChange={onChangeName} />
         {/* Пока на бэке нет почты */}
         {/* <TextField label="Почта" type="email" variant="filled" /> */}
-        <TextField label="Логин" type="text" variant="filled" value={login} onChange={onChangeLogin} />
+        <TextField label="Логин" type="text" variant="outlined" value={login} onChange={onChangeLogin} />
         <TextField
           type="password"
           label="Пароль"
           autoComplete="current-password"
-          variant="filled"
+          variant="outlined"
           value={password}
           onChange={onChangePassword}
         />
-        <Button variant="contained" size="large" color="primary" onClick={registration}>
+        <Button variant="contained" size="large" color="primary" onClick={register}>
           Регистрация
         </Button>
       </Form>
