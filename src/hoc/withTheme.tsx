@@ -2,7 +2,6 @@ import React, { PropsWithChildren } from 'react';
 import { useSelector } from 'react-redux';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import { StylesProvider, MuiThemeProvider } from '@material-ui/core';
-import { AppStateType } from 'src/redux';
 
 const palette: Record<string, unknown> = {
   common: {
@@ -55,8 +54,8 @@ function createTheme(type: EThemeType = EThemeType.dark) {
 
 function withTheme(WrappedComponent: React.FC): React.FC {
   const ThemeWrapper = (props: PropsWithChildren<unknown>) => {
-    const { type } = useSelector((state: AppStateType) => state.Game.theme);
-    const theme = createTheme(type as EThemeType);
+    // const { type } = useSelector((state: any) => state.Game.theme);
+    const theme = createTheme(EThemeType.dark);
 
     return (
       <StylesProvider injectFirst={true}>

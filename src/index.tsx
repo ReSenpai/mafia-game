@@ -9,9 +9,6 @@ import { BrowserRouter } from 'react-router-dom';
 // === styles ===
 import './index.css';
 
-// === redux ===
-import { Provider } from 'react-redux';
-import store from './redux/store';
 
 // === gql ===
 import { Provider as UrqlProvider } from 'urql';
@@ -21,9 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UrqlProvider value={client}>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <App />
       </UrqlProvider>
     </BrowserRouter>
   </React.StrictMode>,

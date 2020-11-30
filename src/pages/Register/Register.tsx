@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // === material-ui ===
 import { styled, Typography, TextField, Button } from '@material-ui/core';
 import { useAddUserMutation } from 'src/generated/graphql';
-import { ThunkType } from 'src/redux/Auth/types';
+import { userContext } from 'src/contexts/userContext';
 
-type IRegisterProps = {
-  registration: (login: string, password: string, addUser: any) => ThunkType;
-}
 
-const Register: React.FC<IRegisterProps> = ({registration}) => {
+const Register: React.FC<any> = () => {
+  const user = useContext(userContext);
   const [,addUser] = useAddUserMutation();
   const [name, setName] = useState<string>('');
   const [login, setLogin] = useState<string>('');
@@ -24,8 +22,9 @@ const Register: React.FC<IRegisterProps> = ({registration}) => {
     setPassword(e.target.value)
   }
 
-  const makeRegistration = () => {
-    registration(login, password, addUser);
+  const registration = () => {
+    addUser({login, password});
+    user?.SetIsAuth(true);
   }
 
   return (
@@ -45,7 +44,7 @@ const Register: React.FC<IRegisterProps> = ({registration}) => {
           value={password}
           onChange={onChangePassword}
         />
-        <Button variant="contained" size="large" color="primary" onClick={makeRegistration}>
+        <Button variant="contained" size="large" color="primary" onClick={registration}>
           Регистрация
         </Button>
       </Form>

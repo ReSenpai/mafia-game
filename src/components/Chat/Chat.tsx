@@ -14,12 +14,8 @@ import SendSharp from '@material-ui/icons/SendSharp';
 // === types ===
 import { IChatMessage } from 'src/types';
 
-interface ChatProps {
-  chatMessages: IChatMessage[];
-  addMessage: any;
-}
 
-const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
+const Chat: React.FC<any> = () => {
   const [messageValue, changeMessage] = useState('');
 
   const onChangeMessage = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,22 +23,18 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
     changeMessage(text);
   };
 
-  const sendMessage = () => {
-    addMessage(messageValue);
-    changeMessage('');
-  };
 
   const pressEnter = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.shiftKey && event.key === 'Enter') return;
     if (event.key === 'Enter') {
       event.preventDefault();
-      sendMessage();
+      // sendMessage();
     }
   };
 
   return (
     <ChatWrapper>
-      <ChatMessagesComponent chatMessages={chatMessages} />
+      {/* <ChatMessagesComponent chatMessages={chatMessages} /> */}
 
       <ChatMoves>
         <Typography color="secondary">Дадим мафии договориться</Typography>
@@ -61,7 +53,7 @@ const Chat: React.FC<ChatProps> = ({ chatMessages, addMessage }) => {
           onChange={onChangeMessage}
           onKeyPress={pressEnter}
         />
-        <Button size="large" onClick={sendMessage}>
+        <Button size="large" >
           <SendSharp />
         </Button>
       </ChatForm>

@@ -1,36 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext } from 'react';
 import Register from './Register';
-import { AppStateType } from '../../redux/index';
-import { registration } from '../../redux/Auth/auth_reducer';
-import { ThunkType } from 'src/redux/Auth/types';
-import { getIsAuth } from 'src/redux/Auth/auth_selectors';
 import { Redirect } from 'react-router-dom';
+import { userContext } from 'src/contexts/userContext';
 
-type MapStatePropsType = {
-  isAuth: boolean
-};
-type MapDispatchPropsType = {
-  registration: (login: string, password: string, addUser: any) => ThunkType;
-}
-type OwnPropsType = {
-  //
-}
-
-export type IRegisterContainerProps = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
-
-const RegisterContainer: React.FC<any> = ({
-  registration,
-  isAuth
-}) => {
-  if (isAuth) return <Redirect to='game' />
-  return <Register {...{registration}} />;
+const RegisterContainer: React.FC<any> = () => {
+  const user = useContext(userContext);
+  if (user?.IsAuth) return <Redirect to='game' />
+  return <Register />;
 };
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-  isAuth: getIsAuth(state)
-});
-
-export default connect(mapStateToProps, {
-  registration
-})(RegisterContainer);
+export default RegisterContainer;
