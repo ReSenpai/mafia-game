@@ -1,0 +1,12 @@
+query loginUser($login: String, $password: String) {
+  user {
+    loginUser(login: $login, password: $password) {
+      id
+      name
+      login
+      updatedAt
+      createdAt
+      isAdmin
+    }
+  }
+}

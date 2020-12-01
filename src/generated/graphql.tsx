@@ -25,6 +25,8 @@ export type UserQuery = {
   getMe?: Maybe<User>;
   /** Returns a `User` where `User.id = id` in database. */
   getUserById?: Maybe<User>;
+  /** Returns a `User` where `User.login and User.password` in database. */
+  loginUser?: Maybe<User>;
   /** Returns a `User` where `User.name = name` in database. */
   getUserByName?: Maybe<User>;
   /** Returns a list of users. Use the `limit` argument to get only first `N` users. */
@@ -37,6 +39,13 @@ export type UserQuery = {
 /** Query to interact with `Users` collection */
 export type UserQueryGetUserByIdArgs = {
   id?: Maybe<Scalars['ID']>;
+};
+
+
+/** Query to interact with `Users` collection */
+export type UserQueryLoginUserArgs = {
+  login?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 
@@ -189,6 +198,23 @@ export type GetUsersQuery = (
   )> }
 );
 
+export type LoginUserQueryVariables = Exact<{
+  login?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+}>;
+
+
+export type LoginUserQuery = (
+  { __typename?: 'RootQuery' }
+  & { user?: Maybe<(
+    { __typename?: 'UserQuery' }
+    & { loginUser?: Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'name' | 'login' | 'updatedAt' | 'createdAt' | 'isAdmin'>
+    )> }
+  )> }
+);
+
 
 export const AddUserDocument = gql`
     mutation AddUser($login: String, $password: String) {
@@ -227,4 +253,22 @@ export const GetUsersDocument = gql`
 
 export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<GetUsersQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
+};
+export const LoginUserDocument = gql`
+    query loginUser($login: String, $password: String) {
+  user {
+    loginUser(login: $login, password: $password) {
+      id
+      name
+      login
+      updatedAt
+      createdAt
+      isAdmin
+    }
+  }
+}
+    `;
+
+export function useLoginUserQuery(options: Omit<Urql.UseQueryArgs<LoginUserQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<LoginUserQuery>({ query: LoginUserDocument, ...options });
 };
