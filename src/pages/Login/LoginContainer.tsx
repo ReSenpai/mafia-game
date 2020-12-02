@@ -1,0 +1,26 @@
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import { userContext } from 'src/contexts/userContext';
+import { useLoginUserMutation } from 'src/generated/graphql';
+import Login from './Login';
+
+const LoginContainer: React.FC<unknown> = () => {
+    const [, loginUser] = useLoginUserMutation();
+    const user = useContext(userContext);
+
+    const userLogin = async (login: string, password: string) => {
+        const response = await loginUser({login, password});
+        const userId = response.data?.user?.loginUser?.id;
+        if (userId) {
+            user?.SetIsAuth(true);
+            user?.SetUserId(userId);
+        } else {
+            console.error("UserId didn't come");
+        }
+    }
+
+    if (user?.IsAuth) return <Redirect to='game' />
+    return <Login userLogin={userLogin} />;
+};
+
+export default LoginContainer;

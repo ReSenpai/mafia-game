@@ -1,51 +1,24 @@
 import React, { useState } from 'react';
-
-// === router ===
 import { NavLink } from 'react-router-dom';
-
 // === material-ui ===
 import { styled } from '@material-ui/core/styles';
 import { Menu } from '@material-ui/icons';
-import { IconButton, SwipeableDrawer } from '@material-ui/core';
+import { Button, IconButton, SwipeableDrawer } from '@material-ui/core';
+import LoginContainer from 'src/pages/Login/LoginContainer';
 
 const Header: React.FC<unknown> = () => {
-  const Wrapper = styled('header')({
-    display: 'grid',
-    gap: '1em',
-    padding: '2em 4em',
-  });
-
-  const HeaderLink = styled(NavLink)(({ theme }) => {
-    return {
-      textDecoration: 'none',
-      '&:link': {
-        textDecoration: 'none',
-      },
-      '&:hover': {
-        textDecoration: 'none',
-        color: theme.palette.primary.main,
-      },
-      '&:visited': {
-        textDecoration: 'none',
-      },
-      '&.active': {
-        color: theme.palette.primary.main,
-        textDecoration: 'none',
-        fontWeight: 400,
-      },
-    };
-  });
 
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
   return (
-    <div>
+    <HeaderContainer>
       <IconButton
         aria-label="delete"
         onClick={() => setIsDrawerOpened(!isDrawerOpened)}
       >
         <Menu />
       </IconButton>
+      <LoginContainer />
       <SwipeableDrawer
         anchor="left"
         open={isDrawerOpened}
@@ -76,8 +49,41 @@ const Header: React.FC<unknown> = () => {
           </HeaderLink>
         </Wrapper>
       </SwipeableDrawer>
-    </div>
+    </HeaderContainer>
   );
 };
 
 export default Header;
+
+const HeaderContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
+
+const Wrapper = styled('header')({
+  display: 'grid',
+  gap: '1em',
+  padding: '2em 4em',
+});
+
+const HeaderLink = styled(NavLink)(({ theme }) => {
+  return {
+    textDecoration: 'none',
+    '&:link': {
+      textDecoration: 'none',
+    },
+    '&:hover': {
+      textDecoration: 'none',
+      color: theme.palette.primary.main,
+    },
+    '&:visited': {
+      textDecoration: 'none',
+    },
+    '&.active': {
+      color: theme.palette.primary.main,
+      textDecoration: 'none',
+      fontWeight: 400,
+    },
+  };
+});

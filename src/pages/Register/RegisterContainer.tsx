@@ -8,7 +8,7 @@ const RegisterContainer: React.FC<unknown> = () => {
   const [,addUser] = useAddUserMutation();
   const user = useContext(userContext);
 
-  const registration = async (login: string, password: string) => {
+  const registration = async (login: string, password: string): Promise<void> => {
     const response = await addUser({login, password});
     const userId = response.data?.user?.addUser?.id;
     user?.SetIsAuth(true);

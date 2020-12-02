@@ -1,35 +1,106 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // === materual-ui ===
-import { Link, Button, styled, TextField, Typography } from '@material-ui/core';
+import { Link, Button, styled, TextField, Typography, Modal, makeStyles, Backdrop } from '@material-ui/core';
 
-const Login: React.FC<unknown> = () => {
+type TLoginProps = {
+  userLogin: (login: string, password: string) => void
+}
+
+const Login: React.FC<TLoginProps> = ({userLogin}) => {
+  const classes = useStyles();
+
+  const [login, setLogin] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [open, setOpen] = useState<boolean>(false);
+
+  const onChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin(e.target.value);
+  }
+
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  }
+
+  const logIn = () => {
+    userLogin(login, password);
+  }
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <LoginWrapper>
-      <Typography variant="h3">Вход</Typography>
+    <div>
+      <Button color="inherit" onClick={handleOpen}>Войти</Button>
+      <Modal
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+          classes: {
+            root: classes.backDrop
+          }
+        }}>
+        <LoginWrapper>
+          <Typography variant="h3" className={classes.title}>Вход</Typography>
 
-      <Form noValidate autoComplete="off">
-        <TextField 
-          label="Логин" 
-          type="text" 
-          variant="filled"
-         />
-        <TextField
-          type="password"
-          label="Пароль"
-          autoComplete="current-password"
-          variant="filled"
-        />
-        <Button variant="contained" size="large" color="primary">
-          Войти
-        </Button>
-        <Link href="/register">Регистрация</Link>
-      </Form>
-    </LoginWrapper>
+          <Form noValidate autoComplete="off">
+            <TextField 
+              label="Логин" 
+              type="text" 
+              variant="filled"
+              value={login}
+              onChange={onChangeLogin}
+            />
+            <TextField
+              type="password"
+              label="Пароль"
+              autoComplete="current-password"
+              variant="filled"
+              value={password}
+              onChange={onChangePassword}
+            />
+            <Button 
+              variant="contained" 
+              size="large" 
+              color="primary"
+              onClick={logIn} >
+              Войти
+            </Button>
+            <Link href="/register">Регистрация</Link>
+          </Form>
+        </LoginWrapper>
+      </Modal>
+    </div>
   );
 };
 
 export default Login;
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backDrop: {
+    backdropFilter: "blur(3px)",
+    backgroundColor:'rgba(0,0,30,0.4)'
+  },
+  title: {
+    color: 'white'
+  }
+}))
 
 const LoginWrapper = styled('div')({
   position: 'absolute',
@@ -42,6 +113,7 @@ const LoginWrapper = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
+  outline: 'none'
 });
 
 const Form = styled('form')({

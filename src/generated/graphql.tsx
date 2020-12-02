@@ -25,8 +25,6 @@ export type UserQuery = {
   getMe?: Maybe<User>;
   /** Returns a `User` where `User.id = id` in database. */
   getUserById?: Maybe<User>;
-  /** Returns a `User` where `User.login and User.password` in database. */
-  loginUser?: Maybe<User>;
   /** Returns a `User` where `User.name = name` in database. */
   getUserByName?: Maybe<User>;
   /** Returns a list of users. Use the `limit` argument to get only first `N` users. */
@@ -39,13 +37,6 @@ export type UserQuery = {
 /** Query to interact with `Users` collection */
 export type UserQueryGetUserByIdArgs = {
   id?: Maybe<Scalars['ID']>;
-};
-
-
-/** Query to interact with `Users` collection */
-export type UserQueryLoginUserArgs = {
-  login?: Maybe<Scalars['String']>;
-  password?: Maybe<Scalars['String']>;
 };
 
 
@@ -117,6 +108,8 @@ export type UserMutation = {
   __typename?: 'UserMutation';
   /** Creates and adds `User` document. */
   addUser?: Maybe<User>;
+  /** Returns a `User` where `User.login and User.password` in database. */
+  loginUser?: Maybe<User>;
   /** Deletes `User` document from database where `User.id = id`. */
   deleteUserById?: Maybe<User>;
   /** Updates `User` document where `User.id = id`. */
@@ -133,6 +126,13 @@ export type UserMutationAddUserArgs = {
   createdAt?: Maybe<Scalars['String']>;
   isAdmin?: Maybe<Scalars['Boolean']>;
   isLogged?: Maybe<Scalars['Boolean']>;
+};
+
+
+/** Mutation to interact with `Users` collection. */
+export type UserMutationLoginUserArgs = {
+  login?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 
@@ -198,19 +198,19 @@ export type GetUsersQuery = (
   )> }
 );
 
-export type LoginUserQueryVariables = Exact<{
+export type LoginUserMutationVariables = Exact<{
   login?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
 }>;
 
 
-export type LoginUserQuery = (
-  { __typename?: 'RootQuery' }
+export type LoginUserMutation = (
+  { __typename?: 'RootMutation' }
   & { user?: Maybe<(
-    { __typename?: 'UserQuery' }
+    { __typename?: 'UserMutation' }
     & { loginUser?: Maybe<(
       { __typename?: 'User' }
-      & Pick<User, 'id' | 'name' | 'login' | 'updatedAt' | 'createdAt' | 'isAdmin'>
+      & Pick<User, 'id' | 'name' | 'login'>
     )> }
   )> }
 );
@@ -255,20 +255,17 @@ export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<GetUsersQueryVa
   return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
 };
 export const LoginUserDocument = gql`
-    query loginUser($login: String, $password: String) {
+    mutation loginUser($login: String, $password: String) {
   user {
     loginUser(login: $login, password: $password) {
       id
       name
       login
-      updatedAt
-      createdAt
-      isAdmin
     }
   }
 }
     `;
 
-export function useLoginUserQuery(options: Omit<Urql.UseQueryArgs<LoginUserQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<LoginUserQuery>({ query: LoginUserDocument, ...options });
+export function useLoginUserMutation() {
+  return Urql.useMutation<LoginUserMutation, LoginUserMutationVariables>(LoginUserDocument);
 };
