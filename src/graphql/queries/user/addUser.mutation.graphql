@@ -2,6 +2,8 @@ mutation AddUser($login: String, $password: String) {
   user {
     addUser(login: $login, password: $password) {
       id
+      login
+      name
     }
   }
 }

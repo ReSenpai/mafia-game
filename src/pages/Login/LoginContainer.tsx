@@ -10,12 +10,16 @@ const LoginContainer: React.FC<unknown> = () => {
 
     const userLogin = async (login: string, password: string) => {
         const response = await loginUser({login, password});
+        // TODO: деструктурировать переменные ниже
         const userId = response.data?.user?.loginUser?.id;
-        if (userId) {
-            user?.SetIsAuth(true);
-            user?.SetUserId(userId);
+        const userLogin = response.data?.user?.loginUser?.login;
+        // TODO: вынести проверку ниже в утилы, тоже самое в RegisterContainer
+        if (userId && userLogin) {
+            user.SetLogin(userLogin)
+            user.SetUserId(userId);
+            user.SetIsAuth(true);
         } else {
-            console.error("UserId didn't come");
+            console.error("UserId or userLogin didn't come");
         }
     }
 

@@ -166,7 +166,7 @@ export type AddUserMutation = (
     { __typename?: 'UserMutation' }
     & { addUser?: Maybe<(
       { __typename?: 'User' }
-      & Pick<User, 'id'>
+      & Pick<User, 'id' | 'login' | 'name'>
     )> }
   )> }
 );
@@ -221,6 +221,8 @@ export const AddUserDocument = gql`
   user {
     addUser(login: $login, password: $password) {
       id
+      login
+      name
     }
   }
 }

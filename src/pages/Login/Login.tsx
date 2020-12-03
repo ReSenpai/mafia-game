@@ -34,6 +34,14 @@ const Login: React.FC<TLoginProps> = ({userLogin}) => {
     setOpen(false);
   };
 
+  const pressEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.shiftKey && event.key === 'Enter') return;
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      logIn();
+    }
+  };
+
   return (
     <div>
       <Button color="inherit" onClick={handleOpen}>Войти</Button>
@@ -61,6 +69,7 @@ const Login: React.FC<TLoginProps> = ({userLogin}) => {
               variant="filled"
               value={login}
               onChange={onChangeLogin}
+              onKeyPress={pressEnter}
             />
             <TextField
               type="password"
@@ -69,6 +78,7 @@ const Login: React.FC<TLoginProps> = ({userLogin}) => {
               variant="filled"
               value={password}
               onChange={onChangePassword}
+              onKeyPress={pressEnter}
             />
             <Button 
               variant="contained" 
@@ -94,12 +104,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   backDrop: {
-    backdropFilter: "blur(3px)",
+    backdropFilter: "blur(5px)",
     backgroundColor:'rgba(0,0,30,0.4)'
   },
   title: {
     color: 'white'
-  }
+  },
 }))
 
 const LoginWrapper = styled('div')({
@@ -113,7 +123,10 @@ const LoginWrapper = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   textAlign: 'center',
-  outline: 'none'
+  outline: 'none',
+  padding: '15px',
+  borderRadius: '5px',
+  backgroundColor: 'rgb(4 4 31 / 50%)'
 });
 
 const Form = styled('form')({

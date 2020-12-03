@@ -3,10 +3,15 @@ import { NavLink } from 'react-router-dom';
 // === material-ui ===
 import { styled } from '@material-ui/core/styles';
 import { Menu } from '@material-ui/icons';
-import { Button, IconButton, SwipeableDrawer } from '@material-ui/core';
+import { IconButton, SwipeableDrawer } from '@material-ui/core';
 import LoginContainer from 'src/pages/Login/LoginContainer';
+import UserMenuContainer from '../UserMenu/UserMenuContainer';
 
-const Header: React.FC<unknown> = () => {
+type THeaderProps = {
+  IsAuth: boolean | undefined
+}
+
+const Header: React.FC<THeaderProps> = ({IsAuth}) => {
 
   const [isDrawerOpened, setIsDrawerOpened] = useState(false);
 
@@ -18,7 +23,9 @@ const Header: React.FC<unknown> = () => {
       >
         <Menu />
       </IconButton>
-      <LoginContainer />
+      { IsAuth
+        ? <UserMenuContainer />
+        : <LoginContainer />}
       <SwipeableDrawer
         anchor="left"
         open={isDrawerOpened}
@@ -43,9 +50,6 @@ const Header: React.FC<unknown> = () => {
           </HeaderLink>
           <HeaderLink to="register" activeClassName="active">
             Регистрация
-          </HeaderLink>
-          <HeaderLink to="login" activeClassName="active">
-            Войти
           </HeaderLink>
         </Wrapper>
       </SwipeableDrawer>
