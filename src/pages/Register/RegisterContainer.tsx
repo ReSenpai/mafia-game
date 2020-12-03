@@ -10,12 +10,20 @@ const RegisterContainer: React.FC<unknown> = () => {
 
   const registration = async (login: string, password: string): Promise<void> => {
     const response = await addUser({login, password});
+    // TODO: деструктурировать переменные ниже
     const userId = response.data?.user?.addUser?.id;
-    user?.SetIsAuth(true);
-    userId ? user?.SetUserId(userId) : console.error("UserId didn't come");
+    const userLogin = response.data?.user?.addUser?.login;
+    // TODO: вынести проверку ниже в утилы, тоже самое в LoginContainer
+    if (userId && userLogin) {
+      user.SetLogin(userLogin)
+      user.SetUserId(userId);
+      user.SetIsAuth(true);
+    } else {
+      console.error("UserId or userLogin didn't come");
+    }
   }
 
-  if (user?.IsAuth) return <Redirect to='game' />
+  if (user.IsAuth) return <Redirect to='game' />
   return <Register registration={ registration } />;
 };
 

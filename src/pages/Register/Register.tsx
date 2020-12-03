@@ -31,15 +31,15 @@ const Register: React.FC<TRegisterProps> = ({registration}) => {
       <Typography variant="h3">Регистрация</Typography>
 
       <Form noValidate autoComplete="off">
-        <TextField label="Имя" type="text" variant="outlined" value={name} onChange={onChangeName} />
+        <TextField label="Имя" type="text" variant="filled" value={name} onChange={onChangeName} />
         {/* Пока на бэке нет почты */}
         {/* <TextField label="Почта" type="email" variant="filled" /> */}
-        <TextField label="Логин" type="text" variant="outlined" value={login} onChange={onChangeLogin} />
+        <TextField label="Логин" type="text" variant="filled" value={login} onChange={onChangeLogin} />
         <TextField
           type="password"
           label="Пароль"
           autoComplete="current-password"
-          variant="outlined"
+          variant="filled"
           value={password}
           onChange={onChangePassword}
         />
