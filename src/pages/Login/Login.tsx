@@ -126,7 +126,7 @@ const LoginWrapper = styled('div')({
   outline: 'none',
   padding: '15px',
   borderRadius: '5px',
-  backgroundColor: 'rgb(4 4 31 / 50%)'
+  backgroundColor: 'rgb(4 4 31 / 95%)'
 });
 
 const Form = styled('form')({
