@@ -15,7 +15,7 @@ import SendSharp from '@material-ui/icons/SendSharp';
 import { IChatMessage } from 'src/types';
 
 
-const Chat: React.FC<any> = () => {
+const Chat: React.FC<unknown> = () => {
   const [messageValue, changeMessage] = useState('');
 
   const onChangeMessage = (event: ChangeEvent<HTMLInputElement>) => {
