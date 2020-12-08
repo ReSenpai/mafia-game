@@ -2,7 +2,7 @@ import React from 'react';
 import Chat from './Chat';
 
 
-const ChatContainer: React.FC<any> = () => {
+const ChatContainer: React.FC<unknown> = () => {
   return <Chat />;
 };
 
